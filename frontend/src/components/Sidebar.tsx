@@ -2,10 +2,64 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 import { AiSparkIcon } from "@/components/AiSparkIcon";
+import { SETTINGS_EVENT } from "@/lib/settings";
+
+function formatBytes(n: number): string {
+  if (!Number.isFinite(n) || n < 0) return "0 B";
+  if (n < 1024) return `${Math.round(n)} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`;
+  if (n < 1024 * 1024 * 1024) return `${(n / (1024 * 1024)).toFixed(1)} MB`;
+  return `${(n / (1024 * 1024 * 1024)).toFixed(1)} GB`;
+}
+
+function useStorageStats() {
+  const [stats, setStats] = useState<{ used: number; quota: number; pct: number } | null>(null);
+
+  const refresh = useCallback(async () => {
+    try {
+      if (typeof navigator !== "undefined" && navigator.storage?.estimate) {
+        const { usage = 0, quota = 0 } = await navigator.storage.estimate();
+        if (quota > 0) {
+          setStats({ used: usage, quota, pct: Math.min(100, (usage / quota) * 100) });
+          return;
+        }
+      }
+      // Fallback: measure localStorage directly against a ~5MB budget
+      let bytes = 0;
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (!k) continue;
+        bytes += (localStorage.getItem(k) || "").length * 2;
+      }
+      const budget = 5 * 1024 * 1024;
+      setStats({ used: bytes, quota: budget, pct: Math.min(100, (bytes / budget) * 100) });
+    } catch {
+      setStats(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    refresh();
+    window.addEventListener(SETTINGS_EVENT, refresh);
+    window.addEventListener("storage", refresh);
+    window.addEventListener("focus", refresh);
+    return () => {
+      window.removeEventListener(SETTINGS_EVENT, refresh);
+      window.removeEventListener("storage", refresh);
+      window.removeEventListener("focus", refresh);
+    };
+  }, [refresh]);
+
+  return { stats, refresh };
+}
 
 export function Sidebar() {
   const pathname = usePathname();
+  const { stats } = useStorageStats();
+  const pct = stats ? Math.round(stats.pct) : 0;
+  const full = pct >= 90;
 
   const navItems = [
     { href: "/", icon: "dashboard", label: "Dashboard" },
@@ -34,7 +88,7 @@ export function Sidebar() {
               }`}
             >
               {item.icon === "ai-spark" ? (
-                <AiSparkIcon size={20} />
+                <AiSparkIcon size={20} tone={isActive ? "dark" : "gold"} />
               ) : (
                 <span className={`material-symbols-outlined text-lg transition-colors ${
                   isActive ? "text-on-primary-container" : "group-hover:text-primary"
@@ -48,16 +102,21 @@ export function Sidebar() {
         })}
       </nav>
       <div className="flex flex-col gap-space-sm">
-        <div className="p-space-md rounded-xl bg-surface-container-low/60 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+        <div className="p-space-md rounded-xl bg-surface-container-low/60 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]" title={stats ? `Browser storage used by this site: ${formatBytes(stats.used)} of ${formatBytes(stats.quota)} (uploads, notes, settings)` : "Measuring browser storage…"}>
           <div className="flex items-center justify-between mb-space-xs">
             <span className="font-label-caps text-label-caps text-outline uppercase tracking-wider">Quick Storage</span>
-            <span className="font-label-caps text-label-caps text-primary">68%</span>
+            <span className={`font-label-caps text-label-caps ${full ? 'text-error' : 'text-primary'}`}>{stats ? `${pct}%` : '…'}</span>
           </div>
           <div className="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
-            <div className="h-full w-[68%] rounded-full bg-gradient-to-r from-primary-container to-secondary shadow-[0_0_8px_rgba(229,195,120,0.5)]"></div>
+            <div
+              className={`h-full rounded-full transition-[width] duration-500 ${full ? 'bg-gradient-to-r from-error-container to-error shadow-[0_0_8px_rgba(255,180,171,0.5)]' : 'bg-gradient-to-r from-primary-container to-secondary shadow-[0_0_8px_rgba(229,195,120,0.5)]'}`}
+              style={{ width: `${pct}%` }}
+            ></div>
           </div>
           <div className="mt-space-xs flex justify-between items-center">
-            <span className="font-body-sm text-body-sm text-on-surface-variant">13.6 GB / 20 GB</span>
+            <span className="font-body-sm text-body-sm text-on-surface-variant">
+              {stats ? `${formatBytes(stats.used)} / ${formatBytes(stats.quota)}` : 'Measuring…'}
+            </span>
           </div>
         </div>
         <Link href="/settings" className={`group flex items-center gap-space-md px-space-md py-space-sm rounded-xl transition-all ${

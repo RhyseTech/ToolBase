@@ -29,6 +29,17 @@ try:
         # normalize legacy "" google_sub to NULL (UNIQUE allows many NULLs, not many "")
         with engine.begin() as _conn:
             _conn.execute(_text("UPDATE users SET google_sub = NULL WHERE google_sub = ''"))
+    # Ownership / visibility columns for role-based tool sharing
+    if "tools" in _inspect(engine).get_table_names():
+        _tcols = [c["name"] for c in _inspect(engine).get_columns("tools")]
+        _tmissing = {
+            "owner_email": "VARCHAR DEFAULT ''",
+            "visibility": "VARCHAR DEFAULT 'public'",
+        }
+        for _name, _ddl in _tmissing.items():
+            if _name not in _tcols:
+                with engine.begin() as _conn:
+                    _conn.execute(_text(f"ALTER TABLE tools ADD COLUMN {_name} {_ddl}"))
 except Exception:
     pass  # fresh create_all already covers new DBs
 

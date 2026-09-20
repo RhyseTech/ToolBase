@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Header, HTTPException, Query
 from sqlalchemy.orm import Session
 from typing import List, Optional
 import os
@@ -96,15 +96,15 @@ def _live_models(provider: str, api_key: str) -> List[str]:
     if provider == "gemini":
         from google import genai
         client = genai.Client(api_key=api_key)
+        listed = list(client.models.list())  # single fetch — reused below
         names = []
-        for m in client.models.list():
-            n = getattr(m, "name", "") or ""
-            n = n.replace("models/", "")
+        for m in listed:
+            n = (getattr(m, "name", "") or "").replace("models/", "")
             if "generateContent" in (getattr(m, "supported_actions", None) or []) or "generate" in n.lower() or "gemini" in n.lower() or "gemma" in n.lower():
                 names.append(n)
-        return sorted(set(names)) or sorted(set(
-            (getattr(m, "name", "") or "").replace("models/", "") for m in client.models.list()
-        ))
+        return sorted(set(names)) or sorted(
+            {(getattr(m, "name", "") or "").replace("models/", "") for m in listed}
+        )
     if provider == "anthropic":
         import anthropic
         client = anthropic.Anthropic(api_key=api_key)
@@ -129,17 +129,20 @@ def _live_models(provider: str, api_key: str) -> List[str]:
 def list_models(
     provider: str = Query(...),
     api_key: Optional[str] = Query(default=None),
+    x_provider_key: Optional[str] = Header(default=None),
     db: Session = Depends(get_db),
 ):
     """Live available models for a provider.
 
-    Uses the saved backend key (or env fallback); pass ?api_key=… to preview
-    with an unsaved key before storing it. Falls back to presets on failure.
+    Uses the saved backend key (or env fallback). To preview with an unsaved
+    key, send it in the X-Provider-Key header (preferred — query strings leak
+    into logs/history); ?api_key=… still works for back-compat. Falls back to
+    presets on failure.
     """
     provider = (provider or "").strip().lower()
     if provider not in VALID:
         raise HTTPException(status_code=400, detail=f"provider must be one of {sorted(VALID)}")
-    key = (api_key or "").strip()
+    key = (x_provider_key or "").strip() or (api_key or "").strip()
     if not key:
         row = db.query(models.ProviderKey).filter(models.ProviderKey.provider == provider).first()
         if row and (row.api_key or "").strip():

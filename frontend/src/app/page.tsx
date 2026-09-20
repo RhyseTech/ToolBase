@@ -6,11 +6,14 @@ import { AuroraText } from "@/components/magic/AuroraText";
 import { NumberTicker } from "@/components/magic/NumberTicker";
 import { Marquee } from "@/components/magic/Marquee";
 import { Particles } from "@/components/magic/Particles";
+import { ScrollProgress } from "@/components/magic/ScrollProgress";
+import { API_BASE } from "@/lib/providers";
+import { toolHeaders } from "@/lib/server-auth";
 
 export default async function Dashboard() {
   let tools = [];
   try {
-    const res = await fetch("http://127.0.0.1:8000/api/tools/", { cache: "no-store" });
+    const res = await fetch(`${API_BASE}/api/tools/`, { cache: "no-store", headers: await toolHeaders() });
     if (res.ok) {
       tools = await res.json();
     }
@@ -22,6 +25,7 @@ export default async function Dashboard() {
     <main className="relative w-full pt-28 px-gutter min-h-screen bg-transparent">
       <ShaderBackground />
       <Particles density={36} />
+      <ScrollProgress />
 
       <div className="flex flex-col w-full relative pt-space-lg">
         {/* Ambient Light Orbs with subtle orbital drift */}

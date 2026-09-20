@@ -1,13 +1,30 @@
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Request
 from pydantic import BaseModel
 from typing import List, Optional
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models import domain as models
-from app.services.scraper import extract_text_from_url
+from app.services.scraper import assert_public_url, extract_text_from_url
 from app.services.ai import analyze_tool_content
 import time
 import os
+
+# In-memory per-IP sliding-window rate limits (no extra deps).
+# Protects LLM spend on the unauthenticated AI endpoints.
+_RATE_HITS: dict[str, list[float]] = {}
+MAX_QUESTION_CHARS = 4000
+MAX_MACRO_CHARS = 8000
+
+
+def _check_rate(request: Request, key: str, limit: int, window_s: int = 60) -> None:
+    client = (request.client.host if request and request.client else "unknown")
+    bucket = f"{key}:{client}"
+    now = time.time()
+    hits = [t for t in _RATE_HITS.get(bucket, []) if now - t < window_s]
+    if len(hits) >= limit:
+        raise HTTPException(status_code=429, detail="Rate limit exceeded — slow down and retry.")
+    hits.append(now)
+    _RATE_HITS[bucket] = hits
 
 router = APIRouter(
     prefix="/api/ai",
@@ -102,18 +119,23 @@ def _chat(provider: str, api_key: str, model: str, system: str, user: str) -> st
 import urllib.parse
 
 @router.post("/analyze-tool")
-def analyze_tool(request: AnalyzeRequest):
-    content = extract_text_from_url(request.url)
+def analyze_tool(payload: AnalyzeRequest, request: Request):
+    _check_rate(request, "analyze", limit=20)
+    try:
+        assert_public_url(payload.url)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    content = extract_text_from_url(payload.url)
     if not content:
-        print(f"Warning: Could not extract content from {request.url}, falling back to URL inference.")
+        print(f"Warning: Could not extract content from {payload.url}, falling back to URL inference.")
 
     
-    analysis_result = analyze_tool_content(request.url, content)
+    analysis_result = analyze_tool_content(payload.url, content)
     if not analysis_result:
         raise HTTPException(status_code=500, detail="AI analysis failed")
         
     try:
-        parsed_uri = urllib.parse.urlparse(request.url)
+        parsed_uri = urllib.parse.urlparse(payload.url)
         domain = '{uri.netloc}'.format(uri=parsed_uri)
         parts = domain.split('.')
         if len(parts) > 2:
@@ -135,20 +157,26 @@ def analyze_tool(request: AnalyzeRequest):
 
 
 @router.post("/ask")
-def ask_ai(request: AskRequest, db: Session = Depends(get_db)):
+def ask_ai(payload: AskRequest, request: Request, db: Session = Depends(get_db)):
     """Real chat endpoint for the Ask AI page.
 
     Builds context from live tools (+ optional attached macro) and answers
     via Groq. This replaces the hardcoded mock dialogue in the frontend.
     """
-    question = (request.question or "").strip()
+    _check_rate(request, "ask", limit=60)
+    question = (payload.question or "").strip()
     if not question:
         raise HTTPException(status_code=400, detail="Question is required")
+    if len(question) > MAX_QUESTION_CHARS:
+        raise HTTPException(status_code=400, detail=f"Question too long (max {MAX_QUESTION_CHARS} characters)")
+    macro_text = (payload.macro or "").strip()
+    if len(macro_text) > MAX_MACRO_CHARS:
+        raise HTTPException(status_code=400, detail=f"Macro too long (max {MAX_MACRO_CHARS} characters)")
 
     # Live tool context (cap to keep prompt small) — includes tags, pricing,
     # and saved vault artifacts (videos, notes, MCP, links, experiences)
-    if request.tool_ids:
-        tools = db.query(models.Tool).filter(models.Tool.id.in_(request.tool_ids)).limit(6).all()
+    if payload.tool_ids:
+        tools = db.query(models.Tool).filter(models.Tool.id.in_(payload.tool_ids)).limit(6).all()
     else:
         tools = db.query(models.Tool).limit(6).all()
     tool_lines = []
@@ -179,7 +207,7 @@ def ask_ai(request: AskRequest, db: Session = Depends(get_db)):
             + f", tags: {tags}): {(t.description or '')[:200]} [{t.url}] | vault: {vault}"
         )
     context_block = "\n".join(tool_lines) if tool_lines else "(no tools indexed yet)"
-    macro_block = f"\nAttached macro:\n{request.macro.strip()}\n" if request.macro and request.macro.strip() else ""
+    macro_block = f"\nAttached macro:\n{macro_text}\n" if macro_text else ""
 
     system = (
         "You are the ToolBase assistant. Answer using the indexed tool directory below. "
@@ -197,7 +225,7 @@ def ask_ai(request: AskRequest, db: Session = Depends(get_db)):
     user = f"Indexed tools:\n{context_block}\n{macro_block}\nQuestion: {question}"
 
     try:
-        provider = ((request.provider or "").strip().lower() or "groq")
+        provider = ((payload.provider or "").strip().lower() or "groq")
         if provider not in CHAT_PROVIDERS:
             raise HTTPException(status_code=400, detail="Unknown provider")
         api_key, saved_model = _resolve_credential(provider, db)
@@ -206,7 +234,7 @@ def ask_ai(request: AskRequest, db: Session = Depends(get_db)):
                 status_code=400,
                 detail=f"No API key for {provider} — add one in Settings → API Keys",
             )
-        model = (request.model or "").strip() or saved_model
+        model = (payload.model or "").strip() or saved_model
         if provider == "groq" and not model:
             model = os.environ.get("GROQ_MODEL", "openai/gpt-oss-20b")
         if not model:

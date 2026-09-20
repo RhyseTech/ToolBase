@@ -18,6 +18,10 @@ class Tool(Base):
     rating = Column(Float, default=0.0)
     favorite = Column(Boolean, default=False)
     archived = Column(Boolean, default=False)
+    # Ownership / visibility: admin tools are public (all users), regular
+    # users' tools are private (owner only). "" owner = legacy public tool.
+    owner_email = Column(String, default="", index=True)
+    visibility = Column(String, default="public")  # public | private
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     last_used_at = Column(DateTime(timezone=True), nullable=True)

@@ -34,4 +34,25 @@ export type SavedProviderKey = {
   has_key: boolean;
 };
 
-export const API_BASE = 'http://127.0.0.1:8000';
+// Single source of truth for the backend origin. Every fetch must use this
+// (or apiUrl below) — never hardcode 127.0.0.1:8000 — so switching hosts/ports
+// only requires NEXT_PUBLIC_BACKEND_URL.
+export const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://127.0.0.1:8000';
+
+export const apiUrl = (path: string) =>
+  `${API_BASE}${path.startsWith('/') ? path : `/${path}`}`;
+
+/** Identity header for per-user visibility scoping. Read at call time (not
+ * module load) so login/logout take effect without a reload. */
+export function authHeaders(extra?: Record<string, string>): Record<string, string> {
+  let email = '';
+  try {
+    if (typeof window !== 'undefined') {
+      const raw = window.localStorage.getItem('aitoolbox-settings-v1');
+      if (raw) email = (JSON.parse(raw).email || '').trim().toLowerCase();
+    }
+  } catch {
+    email = '';
+  }
+  return email ? { ...extra, 'X-User-Email': email } : { ...extra };
+}

@@ -48,7 +48,7 @@ export function DashboardDirectory({ tools }: { tools: any[] }) {
               reviews="Live"
               tag={tool.pricing || 'Freemium'}
               colorClass="text-primary"
-              favorite={tool.favorite}
+              favorite={tool.favorite} visibility={tool.visibility}
               layout="grid"
             />
           ))

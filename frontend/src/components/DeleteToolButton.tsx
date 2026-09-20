@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { API_BASE, authHeaders } from '@/lib/providers';
 
 export function DeleteToolButton({ id }: { id: number | string }) {
   const [isDeleting, setIsDeleting] = useState(false);
@@ -12,8 +13,9 @@ export function DeleteToolButton({ id }: { id: number | string }) {
     
     setIsDeleting(true);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/tools/${id}`, {
+      const res = await fetch(`${API_BASE}/api/tools/${id}`, {
         method: 'DELETE',
+        headers: authHeaders(),
       });
       if (res.ok) {
         router.push('/tools');

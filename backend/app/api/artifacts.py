@@ -1,9 +1,10 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from app.database import get_db
 from app.models import domain as models
 from app.schemas import domain as schemas
+from app.api.auth import is_admin_email, requester_email
 
 router = APIRouter(tags=["artifacts"])
 
@@ -17,27 +18,46 @@ def _resolve_tool_id(raw: str, db: Session) -> Optional[int]:
         pass
     slug = (str(raw) or "").strip().lower().replace("-", "").replace("_", "").replace(" ", "")
     if slug:
+        # Exact normalized match only — substring matching returned wrong tools
         for t in db.query(models.Tool).all():
             name_slug = (t.name or "").lower().replace("-", "").replace("_", "").replace(" ", "")
-            if slug == name_slug or slug in name_slug or name_slug in slug:
+            if slug and slug == name_slug:
                 return t.id
     return None
 
+
+def _assert_tool_visible(tid: int, request: Request, db: Session) -> None:
+    """Private tools hide their artifacts from everyone but owner/admin."""
+    email = requester_email(request)
+    if is_admin_email(email):
+        return
+    t = db.query(models.Tool).filter(models.Tool.id == tid).first()
+    if t is None:
+        raise HTTPException(status_code=404, detail="Tool not found")
+    owner = (t.owner_email or "")
+    if (t.visibility or "public") == "public" or not owner or owner == email:
+        return
+    raise HTTPException(status_code=404, detail="Tool not found")
+
 @router.get("/api/tools/{tool_id}/artifacts", response_model=List[schemas.ToolArtifact])
-def list_artifacts(tool_id: str, kind: Optional[str] = Query(default=None), db: Session = Depends(get_db)):
+def list_artifacts(tool_id: str, request: Request, kind: Optional[str] = Query(default=None), db: Session = Depends(get_db)):
     tid = _resolve_tool_id(tool_id, db)
     if tid is None:
         raise HTTPException(status_code=404, detail="Tool not found")
+    _assert_tool_visible(tid, request, db)
     q = db.query(models.ToolArtifact).filter(models.ToolArtifact.tool_id == tid)
     if kind:
         q = q.filter(models.ToolArtifact.kind == kind)
     return q.order_by(models.ToolArtifact.updated_at.desc().nullslast(), models.ToolArtifact.id.desc()).all()
 
 @router.post("/api/tools/{tool_id}/artifacts", response_model=schemas.ToolArtifact)
-def create_artifact(tool_id: str, payload: schemas.ToolArtifactBase, db: Session = Depends(get_db)):
+def create_artifact(tool_id: str, payload: schemas.ToolArtifactBase, request: Request, db: Session = Depends(get_db)):
     tid = _resolve_tool_id(tool_id, db)
     if tid is None:
         raise HTTPException(status_code=404, detail="Tool not found")
+    if not requester_email(request):
+        raise HTTPException(status_code=403, detail="Sign in to add items")
+    _assert_tool_visible(tid, request, db)
     kind = (payload.kind or "note").strip().lower()
     if kind not in ("note", "skill", "mcp", "prompt", "link", "video", "image", "experience"):
         kind = "note"
@@ -82,10 +102,11 @@ def delete_artifact(artifact_id: int, db: Session = Depends(get_db)):
 
 # Back-compat: personal notes endpoints used by older UI
 @router.get("/api/tools/{tool_id}/notes")
-def list_notes(tool_id: str, db: Session = Depends(get_db)):
-    return list_artifacts(tool_id, kind="note", db=db)
+def list_notes(tool_id: str, request: Request, db: Session = Depends(get_db)):
+    return list_artifacts(tool_id, request, kind="note", db=db)
+
 
 @router.post("/api/tools/{tool_id}/notes")
-def create_note(tool_id: str, payload: dict, db: Session = Depends(get_db)):
+def create_note(tool_id: str, payload: dict, request: Request, db: Session = Depends(get_db)):
     base = schemas.ToolArtifactBase(kind="note", title=payload.get("title", ""), content=payload.get("content", payload.get("note", "")))
-    return create_artifact(tool_id, base, db=db)
+    return create_artifact(tool_id, base, request, db=db)

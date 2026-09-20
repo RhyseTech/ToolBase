@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 
 /**
  * Magic UI — Scroll Progress (dependency-free port).
- * Hairline gold bar; render inside the fixed header. Hidden on
- * pages with nothing to scroll.
+ * Hairline gold bar pinned to the viewport top. Render ONLY on long
+ * content pages (Dashboard, All Tools, Tool Detail, Ask AI) — not global.
  */
 export function ScrollProgress() {
   const [p, setP] = useState(0);
@@ -35,7 +35,7 @@ export function ScrollProgress() {
   return (
     <span
       aria-hidden
-      className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gradient-to-r from-primary-container via-secondary to-primary-container shadow-[0_0_12px_rgba(229,195,120,0.55)]"
+      className="fixed top-0 left-0 z-[60] h-[2px] w-full origin-left bg-gradient-to-r from-primary-container via-secondary to-primary-container shadow-[0_0_12px_rgba(229,195,120,0.55)]"
       style={{ transform: `scaleX(${p})` }}
     />
   );

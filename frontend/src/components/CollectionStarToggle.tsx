@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { API_BASE, authHeaders } from '@/lib/providers';
 
 export function CollectionStarToggle({
   toolIds,
@@ -35,7 +36,7 @@ export function CollectionStarToggle({
       const reads = await Promise.all(
         toolIds.map(async (id) => {
           try {
-            const r = await fetch(`http://127.0.0.1:8000/api/tools/${id}`, { cache: 'no-store' });
+            const r = await fetch(`${API_BASE}/api/tools/${id}`, { cache: 'no-store', headers: authHeaders() });
             if (!r.ok) return { id, fav: null };
             const t = await r.json();
             return { id, fav: !!t.favorite };
@@ -48,7 +49,7 @@ export function CollectionStarToggle({
       const results = await Promise.all(
         needFlip.map(async (id) => {
           try {
-            const r = await fetch(`http://127.0.0.1:8000/api/tools/${id}/favorite`, { method: 'PUT' });
+            const r = await fetch(`${API_BASE}/api/tools/${id}/favorite`, { method: 'PUT', headers: authHeaders() });
             return r.ok;
           } catch {
             return false;

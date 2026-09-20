@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ShaderBackground } from "@/components/ShaderBackground";
+import { API_BASE, authHeaders } from "@/lib/providers";
 
 export default function AddTool() {
   const router = useRouter();
@@ -10,13 +11,30 @@ export default function AddTool() {
   const [stage, setStage] = useState(0); // 0: input, 1: loading, 2: review
   const [data, setData] = useState<any>(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [visibility, setVisibility] = useState<"public" | "private">("private");
+
+  // Who am I? Admins may publish globally; everyone else adds privately.
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/auth/me`, { headers: authHeaders(), cache: "no-store" });
+        if (res.ok) {
+          const me = await res.json();
+          const admin = !!me.is_admin;
+          setIsAdmin(admin);
+          setVisibility(admin ? "public" : "private");
+        }
+      } catch { /* anonymous → backend forces private */ }
+    })();
+  }, []);
 
   const handleAnalyze = async () => {
     setStage(1);
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/ai/analyze-tool", {
+      const res = await fetch(`${API_BASE}/api/ai/analyze-tool`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: authHeaders({ "Content-Type": "application/json" }),
         body: JSON.stringify({ url }),
       });
       if (res.ok) {
@@ -76,12 +94,13 @@ export default function AddTool() {
         rating: data.rating || 4.5,
         favorite: false,
         archived: false,
-        tags: data.tags || []
+        tags: data.tags || [],
+        visibility,
       };
 
-      const res = await fetch("http://127.0.0.1:8000/api/tools/", {
+      const res = await fetch(`${API_BASE}/api/tools/`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: authHeaders({ "Content-Type": "application/json" }),
         body: JSON.stringify(payload),
       });
 
@@ -249,6 +268,33 @@ export default function AddTool() {
                       + Add Tag
                     </button>
                   </div>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-label-md text-label-md text-outline uppercase tracking-wider">Visibility</label>
+                  {isAdmin ? (
+                    <div className="flex rounded-lg bg-surface-container-lowest/70 p-1 gap-1">
+                      {(["public", "private"] as const).map((v) => (
+                        <button
+                          key={v}
+                          type="button"
+                          onClick={() => setVisibility(v)}
+                          className={`flex-1 px-3 py-2 rounded-md font-label-md text-label-md capitalize transition-all ${
+                            visibility === v
+                              ? "bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(229,195,120,0.3)]"
+                              : "text-on-surface-variant hover:text-on-surface"
+                          }`}
+                        >
+                          {v === "public" ? "🌍 Global (all users)" : "🔒 Private (only me)"}
+                        </button>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-container-lowest/70 text-on-surface-variant font-body-sm text-body-sm">
+                      <span className="material-symbols-outlined text-sm text-secondary">lock</span>
+                      <span>Private — only you will see this tool. Admins can publish globally.</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

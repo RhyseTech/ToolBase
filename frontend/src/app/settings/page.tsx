@@ -14,6 +14,7 @@ import {
 import { ACCENT_PRESETS, type AccentPreset } from '@/lib/themes';
 import { tokensFromBaseColor, tokensFromBaseColorLight } from '@/lib/themes';
 import { BACKGROUND_OPTIONS } from '@/lib/shaders';
+import { authHeaders } from '@/lib/providers';
 import { AccentColorPicker } from '@/components/AccentColorPicker';
 import { ProviderKeysManager } from '@/components/ProviderKeysManager';
 import { AvatarCropper } from '@/components/AvatarCropper';
@@ -146,7 +147,7 @@ export default function Settings() {
       }
       const r = await fetch(`${BACKEND}/api/auth/profile`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({
           email: lookupEmail,
           displayName: form.displayName,
@@ -229,7 +230,7 @@ export default function Settings() {
     }
     setTestStatus((s) => ({ ...s, [id]: { state: 'testing', detail: 'Probing…' } }));
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/integrations/test', {
+      const res = await fetch(`${BACKEND}/api/integrations/test`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, config: config.trim() }),

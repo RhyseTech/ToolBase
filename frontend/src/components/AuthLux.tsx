@@ -20,6 +20,8 @@ export const goldShimmer =
 export function persistLocalProfile(patch: { displayName?: string; email?: string; avatar?: string }) {
   try {
     const s = loadSettings();
+    // persistSettings also mirrors the email into the tb_email cookie,
+    // which server components forward as X-User-Email for visibility.
     persistSettings({ ...s, ...patch });
     return true;
   } catch {

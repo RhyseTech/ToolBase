@@ -1,10 +1,12 @@
 import { ShaderBackground } from "@/components/ShaderBackground";
 import { ToolCard } from "@/components/ToolCard";
+import { API_BASE } from "@/lib/providers";
+import { toolHeaders } from "@/lib/server-auth";
 
 export default async function Favorites() {
   let favoriteTools: any[] = [];
   try {
-    const res = await fetch("http://127.0.0.1:8000/api/tools/", { cache: "no-store" });
+    const res = await fetch(`${API_BASE}/api/tools/`, { cache: "no-store", headers: await toolHeaders() });
     if (res.ok) {
       const allTools = await res.json();
       favoriteTools = allTools.filter((t: any) => t.favorite === true);
@@ -86,7 +88,7 @@ export default async function Favorites() {
                   tag={tool.pricing || 'Freemium'}
                   colorClass="text-primary"
                   tagLabel={tool.subcategory || 'Active'}
-                  favorite={tool.favorite}
+                  favorite={tool.favorite} visibility={tool.visibility}
                 />
               ))
             ) : (

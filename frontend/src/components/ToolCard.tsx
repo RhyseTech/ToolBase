@@ -5,19 +5,40 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { getLogoCandidates } from '@/lib/logo';
 import { Spotlight, setSpotlight } from '@/components/magic/MagicCard';
+import { API_BASE, authHeaders } from '@/lib/providers';
 
-export function ToolCard({ id, url, name, category, description, icon, rating, reviews, tag, colorClass, favorite = false, logo_url, layout = 'grid' }: any) {
+function VisibilityBadge({ visibility }: { visibility?: string }) {
+  const isPrivate = (visibility || 'public') === 'private';
+  return (
+    <span
+      title={isPrivate ? 'Private — only you can see this tool' : 'Global — visible to all users'}
+      className={`inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full font-label-caps text-label-caps flex-shrink-0 ${
+        isPrivate ? 'bg-secondary/15 text-secondary' : 'bg-surface-container-high/60 text-on-surface-variant'
+      }`}
+    >
+      <span className="material-symbols-outlined text-[11px]">{isPrivate ? 'lock' : 'public'}</span>
+      <span>{isPrivate ? 'Private' : 'Global'}</span>
+    </span>
+  );
+}
+
+export function ToolCard({ id, url, name, category, description, icon, rating, reviews, tag, colorClass, favorite = false, logo_url, layout = 'grid', visibility = 'public' }: any) {
   const [isFavorite, setIsFavorite] = useState(favorite);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [logoIndex, setLogoIndex] = useState(0);
+  const [favError, setFavError] = useState(false);
   const router = useRouter();
+
+  const flagFavError = () => {
+    setFavError(true);
+    setTimeout(() => setFavError(false), 2500);
+  };
 
   const logoCandidates = useMemo(
     () => getLogoCandidates({ logo_url, url }),
     [logo_url, url]
-  );
-  const activeLogo = logoCandidates[logoIndex] || '';
+  );  const activeLogo = logoCandidates[logoIndex] || '';
   const handleLogoError = () => setLogoIndex((i) => i + 1);
 
   const toggleFavorite = async () => {
@@ -28,16 +49,19 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
     setIsFavorite(!isFavorite);
     
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/tools/${id}/favorite`, {
+      const res = await fetch(`${API_BASE}/api/tools/${id}/favorite`, {
         method: 'PUT',
+        headers: authHeaders(),
       });
       if (!res.ok) {
-        // Revert on failure
+        // Revert on failure + tell the user (was silently swallowed before)
         setIsFavorite(isFavorite);
+        flagFavError();
       }
-    } catch (err) {
-      // Revert on error
+    } catch {
+      // Revert on error + tell the user
       setIsFavorite(isFavorite);
+      flagFavError();
     }
   };
 
@@ -47,8 +71,9 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
     
     setIsDeleting(true);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/tools/${id}`, {
+      const res = await fetch(`${API_BASE}/api/tools/${id}`, {
         method: 'DELETE',
+        headers: authHeaders(),
       });
       if (res.ok) {
         router.refresh();
@@ -94,6 +119,7 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
               <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
               <span>Active</span>
             </span>
+            <VisibilityBadge visibility={visibility} />
           </div>
           <div className="font-label-caps text-label-caps text-on-surface-variant mt-0.5 truncate">
             {(category || 'Uncategorized').toUpperCase()} · <span className="text-outline normal-case tracking-normal">{tag}</span>
@@ -113,7 +139,8 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
             <button
               onClick={toggleFavorite}
               aria-label="Toggle Favorite"
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isFavorite ? 'text-secondary bg-secondary/10' : 'text-outline hover:text-secondary'}`}
+              title={favError ? 'Could not save favorite — try again' : 'Toggle favorite'}
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${favError ? 'text-error bg-error/10' : isFavorite ? 'text-secondary bg-secondary/10' : 'text-outline hover:text-secondary'}`}
             >
               <span
                 className={`material-symbols-outlined text-base transition-transform ${isAnimating ? 'scale-125' : 'scale-100'}`}
@@ -170,10 +197,11 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
               <span className="material-symbols-outlined text-xs">star</span>
               <span>{rating}</span>
             </div>
-            <button 
+            <button
               onClick={toggleFavorite}
-              aria-label="Toggle Favorite" 
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isFavorite ? 'text-secondary bg-secondary/10' : 'text-outline hover:text-secondary'}`}
+              aria-label="Toggle Favorite"
+              title={favError ? 'Could not save favorite — try again' : 'Toggle favorite'}
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${favError ? 'text-error bg-error/10' : isFavorite ? 'text-secondary bg-secondary/10' : 'text-outline hover:text-secondary'}`}
             >
               <span 
                 className={`material-symbols-outlined text-base transition-transform ${isAnimating ? 'scale-125' : 'scale-100'}`} 
@@ -200,6 +228,7 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
             <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
             <span>Active</span>
           </div>
+          <VisibilityBadge visibility={visibility} />
           <span className="font-label-caps text-label-caps text-outline tracking-wider">{tag}</span>
         </div>
       </div>

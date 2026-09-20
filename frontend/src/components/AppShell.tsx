@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Sidebar } from "@/components/Sidebar";
 import { HeaderProfile } from "@/components/HeaderProfile";
-import { ScrollProgress } from "@/components/magic/ScrollProgress";
 import { HyperText } from "@/components/magic/HyperText";
 
 const CHROMELESS = ["/signin", "/signup"];
@@ -50,7 +49,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <HeaderProfile />
           </div>
         </div>
-        <ScrollProgress />
       </header>
 
       <Sidebar />

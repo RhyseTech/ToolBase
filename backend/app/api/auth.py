@@ -14,7 +14,7 @@ import secrets
 from typing import Optional
 
 import requests
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel
 from sqlalchemy import func
 from sqlalchemy.orm import Session
@@ -23,6 +23,48 @@ from app.database import get_db
 from app.models import domain as models
 
 router = APIRouter(prefix="/api/auth", tags=["auth"])
+
+
+def admin_emails() -> set:
+    return {
+        e.strip().lower()
+        for e in os.getenv("ADMIN_EMAILS", "").split(",")
+        if e.strip()
+    }
+
+
+def is_admin_email(email: str) -> bool:
+    email = (email or "").strip().lower()
+    return bool(email) and email in admin_emails()
+
+
+def requester_email(request: Request) -> str:
+    """Identity for visibility scoping: explicit header first, login cookie fallback."""
+    return (
+        request.headers.get("X-User-Email", "")
+        or request.cookies.get("tb_email", "")
+        or ""
+    ).strip().lower()
+
+
+class MeOut(BaseModel):
+    email: str = ""
+    displayName: str = ""
+    is_admin: bool = False
+
+
+@router.get("/me", response_model=MeOut)
+def me(request: Request, db: Session = Depends(get_db)):
+    """Who is calling (via X-User-Email) + whether they are an admin."""
+    email = requester_email(request)
+    if not email:
+        return MeOut()
+    user = db.query(models.User).filter(func.lower(models.User.email) == email).first()
+    return MeOut(
+        email=email,
+        displayName=(user.display_name if user else "") or "",
+        is_admin=is_admin_email(email),
+    )
 
 
 class GoogleLoginIn(BaseModel):
@@ -45,24 +87,25 @@ def verify_google_credential(credential: str) -> dict:
 
     # Path 1: google-auth library
     try:
+        from google.auth import exceptions as _google_exceptions
         from google.oauth2 import id_token as google_id_token
         from google.auth.transport import requests as google_requests
 
-        info = google_id_token.verify_oauth2_token(
-            credential, google_requests.Request(), client_id or None
-        )
+        try:
+            info = google_id_token.verify_oauth2_token(
+                credential, google_requests.Request(), client_id or None
+            )
+        except (_google_exceptions.GoogleAuthError, ValueError) as e:
+            # Definitive verification failure (bad signature, expired, wrong
+            # audience, malformed) — reject without a redundant retry below.
+            raise HTTPException(status_code=401, detail=f"Invalid Google credential: {e}")
         if client_id and info.get("aud") != client_id:
-            raise ValueError("Token audience mismatch")
+            raise HTTPException(status_code=401, detail="Token audience mismatch")
         if not info.get("sub") or not info.get("email"):
-            raise ValueError("Incomplete Google profile")
+            raise HTTPException(status_code=401, detail="Incomplete Google profile")
         return info
     except ImportError:
         pass  # google-auth not installed -> use tokeninfo fallback below
-    except Exception as e:
-        # If google-auth is installed but verification fails, surface it
-        # unless it was just a missing-module case handled above.
-        if "google.oauth2" in type(e).__module__ or "Token" in type(e).__name__ or "audience" in str(e).lower():
-            raise HTTPException(status_code=401, detail=f"Invalid Google credential: {e}")
 
     # Path 2: tokeninfo endpoint
     try:
@@ -247,6 +290,8 @@ def email_signup(payload: SignupIn, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Enter a valid email address.")
     if len(payload.password) < 8 or not any(c.isdigit() for c in payload.password):
         raise HTTPException(status_code=400, detail="Password needs at least 8 characters with a number.")
+    if len(payload.password) > 128:
+        raise HTTPException(status_code=400, detail="Password too long (max 128 characters).")
     if email_taken(db, email):
         raise HTTPException(status_code=409, detail="This email is already registered — sign in instead.")
     if username_taken(db, name):

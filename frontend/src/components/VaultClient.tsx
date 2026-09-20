@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
+import { API_BASE, authHeaders } from '@/lib/providers';
 
 type Prompt = {
   id: number;
@@ -19,7 +20,7 @@ type TestResult = {
   tokens: number;
 };
 
-const API = 'http://127.0.0.1:8000/api/prompts';
+const API = `${API_BASE}/api/prompts`;
 
 function extractVariables(body: string): string[] {
   const m = body.match(/\[[A-Z0-9_]+\]/g);
@@ -101,7 +102,7 @@ export function VaultClient({ initialPrompts }: { initialPrompts: Prompt[] }) {
     if (!window.confirm(`Delete macro "${p.title}"?`)) return;
     setDeletingId(p.id);
     try {
-      const res = await fetch(`${API}/${p.id}`, { method: 'DELETE' });
+      const res = await fetch(`${API}/${p.id}`, { method: 'DELETE', headers: authHeaders() });
       if (res.ok) {
         setPrompts((list) => list.filter((x) => x.id !== p.id));
         setResults((m) => {
@@ -128,7 +129,7 @@ export function VaultClient({ initialPrompts }: { initialPrompts: Prompt[] }) {
     try {
       const res = await fetch(`${API}/`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({ title: newTitle.trim(), prompt: newBody.trim() }),
       });
       if (res.ok) {
@@ -150,7 +151,7 @@ export function VaultClient({ initialPrompts }: { initialPrompts: Prompt[] }) {
   return (
     <>
       {/* Top Sub-header & Status Strip */}
-      <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-space-lg">
+      <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-space-lg mb-space-lg">
         <div className="flex flex-col gap-space-xs max-w-3xl">
           <div className="flex items-center gap-space-xs">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>

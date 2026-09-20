@@ -1,11 +1,13 @@
 import { ShaderBackground } from "@/components/ShaderBackground";
 import { CollectionStarToggle } from "@/components/CollectionStarToggle";
+import { API_BASE } from "@/lib/providers";
+import { toolHeaders } from "@/lib/server-auth";
 import Link from "next/link";
 
 export default async function Collections() {
   let tools: any[] = [];
   try {
-    const res = await fetch("http://127.0.0.1:8000/api/tools/", { cache: "no-store" });
+    const res = await fetch(`${API_BASE}/api/tools/`, { cache: "no-store", headers: await toolHeaders() });
     if (res.ok) {
       tools = await res.json();
     }

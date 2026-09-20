@@ -1,8 +1,9 @@
 import { ShaderBackground } from "@/components/ShaderBackground";
 import { ToolDetailClient } from "@/components/ToolDetailClient";
+import { ScrollProgress } from "@/components/magic/ScrollProgress";
+import { API_BASE } from "@/lib/providers";
+import { toolHeaders } from "@/lib/server-auth";
 import Link from "next/link";
-
-const API_BASE = "http://127.0.0.1:8000";
 
 function openRouterFallback() {
   return {
@@ -24,14 +25,15 @@ function openRouterFallback() {
 }
 
 async function fetchTool(id: string) {
+  const headers = await toolHeaders();
   // 1) direct fetch (works for numeric id AND slug after backend fix)
   try {
-    const res = await fetch(`${API_BASE}/api/tools/${encodeURIComponent(id)}`, { cache: "no-store" });
+    const res = await fetch(`${API_BASE}/api/tools/${encodeURIComponent(id)}`, { cache: "no-store", headers });
     if (res.ok) return await res.json();
   } catch {}
   // 2) list + fuzzy match (covers old DBs / id mismatch)
   try {
-    const res = await fetch(`${API_BASE}/api/tools/?limit=500`, { cache: "no-store" });
+    const res = await fetch(`${API_BASE}/api/tools/?limit=500`, { cache: "no-store", headers });
     if (res.ok) {
       const tools = await res.json();
       const slug = id.toLowerCase().replace(/[-_ ]/g, "");
@@ -68,6 +70,7 @@ export default async function ToolDetails({ params }: { params: Promise<{ id: st
 
   return (
     <main className="relative w-full pt-20 px-gutter min-h-screen bg-surface">
+      <ScrollProgress />
       <div className="flex flex-col w-full relative">
         <ShaderBackground />
         <div className="relative w-full max-w-[1600px] mx-auto pb-space-xl flex flex-col gap-space-lg">

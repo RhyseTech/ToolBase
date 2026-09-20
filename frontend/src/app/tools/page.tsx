@@ -1,10 +1,13 @@
 import { ShaderBackground } from "@/components/ShaderBackground";
 import { ToolCatalog } from "@/components/ToolCatalog";
+import { ScrollProgress } from "@/components/magic/ScrollProgress";
+import { API_BASE } from "@/lib/providers";
+import { toolHeaders } from "@/lib/server-auth";
 
 export default async function AllTools() {
   let tools = [];
   try {
-    const res = await fetch("http://127.0.0.1:8000/api/tools/", { cache: "no-store" });
+    const res = await fetch(`${API_BASE}/api/tools/`, { cache: "no-store", headers: await toolHeaders() });
     if (res.ok) {
       tools = await res.json();
     }
@@ -14,6 +17,7 @@ export default async function AllTools() {
 
   return (
     <main className="relative w-full pt-20 px-gutter min-h-screen bg-transparent">
+      <ScrollProgress />
       <div className="flex flex-col w-full relative pb-space-xl">
         <ShaderBackground />
 

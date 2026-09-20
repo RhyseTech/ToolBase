@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { API_BASE, PROVIDERS, PROVIDER_MODELS, type ProviderId, type SavedProviderKey } from '@/lib/providers';
+import { API_BASE, authHeaders, PROVIDERS, PROVIDER_MODELS, type ProviderId, type SavedProviderKey } from '@/lib/providers';
 import { ModernSelect } from '@/components/ModernSelect';
 import { AiSparkIcon } from '@/components/AiSparkIcon';
 import { NumberTicker } from '@/components/magic/NumberTicker';
@@ -19,10 +19,11 @@ type Msg = {
   latencyMs?: number;
   toolsUsed?: { id: number; name: string }[];
   macroTitle?: string;
+  macroPrompt?: string;
 };
 
-const ASK_API = 'http://127.0.0.1:8000/api/ai/ask';
-const PROMPTS_API = 'http://127.0.0.1:8000/api/prompts';
+const ASK_API = `${API_BASE}/api/ai/ask`;
+const PROMPTS_API = `${API_BASE}/api/prompts`;
 
 const STARTERS = [
   'Which indexed tools are best for rapid frontend prototyping?',
@@ -51,7 +52,7 @@ export function AskClient({ tools, macros }: { tools: Tool[]; macros: Macro[] })
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/provider-keys/options`, { cache: 'no-store' });
+        const res = await fetch(`${API_BASE}/api/provider-keys/options`, { cache: 'no-store', headers: authHeaders() });
         if (!res.ok) return;
         const data = await res.json();
         const saved: SavedProviderKey[] = data.saved || [];
@@ -75,7 +76,7 @@ export function AskClient({ tools, macros }: { tools: Tool[]; macros: Macro[] })
   const fetchLiveModels = async (p: ProviderId) => {
     setFetchingModels(true);
     try {
-      const res = await fetch(`${API_BASE}/api/provider-keys/models?provider=${p}`, { cache: 'no-store' });
+      const res = await fetch(`${API_BASE}/api/provider-keys/models?provider=${p}`, { cache: 'no-store', headers: authHeaders() });
       const data = await res.json();
       if (data.models?.length) {
         setLiveModels((m) => ({ ...m, [p]: data.models }));
@@ -114,22 +115,26 @@ export function AskClient({ tools, macros }: { tools: Tool[]; macros: Macro[] })
 
   const scrollDown = () => setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: 'smooth' }), 50);
 
-  const send = async (override?: string) => {
+  const send = async (override?: string, macroOverride?: Macro | null) => {
     const question = (override ?? input).trim();
     if (!question || sending) return;
+    // macroOverride !== undefined (regenerate path) reuses the ORIGINAL macro;
+    // otherwise the currently attached one. Previously regenerate silently used
+    // whatever was attached at click time, gaining/losing macro context.
+    const activeMacro = macroOverride !== undefined ? macroOverride : macro;
     setSending(true);
     setError(null);
-    const userMsg: Msg = { role: 'user', text: question, macroTitle: macro?.title };
+    const userMsg: Msg = { role: 'user', text: question, macroTitle: activeMacro?.title, macroPrompt: activeMacro?.prompt };
     setMessages((list) => [...list, userMsg]);
     setInput('');
     scrollDown();
     try {
       const res = await fetch(ASK_API, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({
           question,
-          macro: macro ? `${macro.title}\n${macro.prompt}` : null,
+          macro: activeMacro ? `${activeMacro.title}\n${activeMacro.prompt}` : null,
           provider,
           model,
         }),
@@ -148,7 +153,8 @@ export function AskClient({ tools, macros }: { tools: Tool[]; macros: Macro[] })
           provider: data.provider,
           latencyMs: data.latency_ms,
           toolsUsed: data.tools_used || [],
-          macroTitle: macro?.title,
+          macroTitle: activeMacro?.title,
+          macroPrompt: activeMacro?.prompt,
         },
       ]);
     } catch (e: any) {
@@ -162,12 +168,16 @@ export function AskClient({ tools, macros }: { tools: Tool[]; macros: Macro[] })
   const regenerate = async () => {
     const lastUser = [...messages].reverse().find((m) => m.role === 'user');
     if (!lastUser || sending) return;
-    // Drop the last assistant reply, re-ask the last question
+    // Drop the last assistant reply, re-ask the last question with its ORIGINAL macro
     setMessages((list) => {
       const i = list.map((m) => m.role).lastIndexOf('assistant');
       return i >= 0 ? list.slice(0, i) : list;
     });
-    await send(lastUser.text);
+    const originalMacro =
+      lastUser.macroTitle != null
+        ? { id: -1, title: lastUser.macroTitle, prompt: lastUser.macroPrompt ?? '' }
+        : null;
+    await send(lastUser.text, originalMacro);
   };
 
   const copyText = async (text: string, idx: number) => {
@@ -184,7 +194,7 @@ export function AskClient({ tools, macros }: { tools: Tool[]; macros: Macro[] })
     try {
       const res = await fetch(PROMPTS_API + '/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({
           title: `Ask AI synthesis — ${new Date().toLocaleString()}`,
           prompt: text.slice(0, 4000),

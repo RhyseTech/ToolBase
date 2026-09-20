@@ -26,6 +26,8 @@ class ToolBase(BaseModel):
     rating: Optional[float] = 0.0
     favorite: Optional[bool] = False
     archived: Optional[bool] = False
+    owner_email: Optional[str] = ""
+    visibility: Optional[str] = "public"  # public | private
 
 class ToolCreate(ToolBase):
     tags: Optional[List[str]] = []

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { API_BASE, PROVIDERS, PROVIDER_MODELS, type ProviderId, type SavedProviderKey } from '@/lib/providers';
+import { API_BASE, authHeaders, PROVIDERS, PROVIDER_MODELS, type ProviderId, type SavedProviderKey } from '@/lib/providers';
 import { ModernSelect } from '@/components/ModernSelect';
 
 export function ProviderKeysManager() {
@@ -32,8 +32,10 @@ export function ProviderKeysManager() {
     setMsg(null);
     try {
       const qs = new URLSearchParams({ provider });
-      if (apiKey.trim()) qs.set('api_key', apiKey.trim());
-      const res = await fetch(`${API_BASE}/api/provider-keys/models?${qs.toString()}`, { cache: 'no-store' });
+      // Unsaved preview key goes in a header — never in the URL (logs/history).
+      const headers: Record<string, string> = authHeaders();
+      if (apiKey.trim()) headers['X-Provider-Key'] = apiKey.trim();
+      const res = await fetch(`${API_BASE}/api/provider-keys/models?${qs.toString()}`, { cache: 'no-store', headers });
       const data = await res.json();
       const list: string[] = data.models || [];
       setLiveModels(list);
@@ -52,7 +54,7 @@ export function ProviderKeysManager() {
   const load = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/api/provider-keys/`, { cache: 'no-store' });
+      const res = await fetch(`${API_BASE}/api/provider-keys/`, { cache: 'no-store', headers: authHeaders() });
       if (res.ok) setKeys(await res.json());
     } catch {
       setMsg('Backend offline — cannot load keys.');
@@ -95,7 +97,7 @@ export function ProviderKeysManager() {
     try {
       const res = await fetch(`${API_BASE}/api/provider-keys/`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({ provider, label: label.trim(), api_key: apiKey.trim(), model: model.trim() }),
       });
       if (res.ok) {
@@ -117,7 +119,7 @@ export function ProviderKeysManager() {
   const handleDelete = async (k: SavedProviderKey) => {
     if (!window.confirm(`Remove the ${k.provider} key? Ask AI will fall back to env keys.`)) return;
     try {
-      const res = await fetch(`${API_BASE}/api/provider-keys/${k.id}`, { method: 'DELETE' });
+      const res = await fetch(`${API_BASE}/api/provider-keys/${k.id}`, { method: 'DELETE', headers: authHeaders() });
       if (res.ok) {
         setMsg(`${k.provider} key removed.`);
         await load();

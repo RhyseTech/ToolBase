@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { TypingHint } from '@/components/magic/TypingAnimation';
+import { API_BASE, authHeaders } from '@/lib/providers';
 
 const HINTS = [
   'Try pasting: openrouter.ai — models, pricing, docs…',
@@ -28,9 +29,9 @@ export function QuickIntake() {
     setAnalyzing(true);
     try {
       // 1. Analyze Tool
-      const aiRes = await fetch('http://127.0.0.1:8000/api/ai/analyze-tool', {
+      const aiRes = await fetch(`${API_BASE}/api/ai/analyze-tool`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({ url })
       });
       if (!aiRes.ok) throw new Error('Analysis failed');
@@ -62,9 +63,9 @@ export function QuickIntake() {
         tags: aiData.tags || []
       };
       
-      const saveRes = await fetch('http://127.0.0.1:8000/api/tools/', {
+      const saveRes = await fetch(`${API_BASE}/api/tools/`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(toolPayload)
       });
       

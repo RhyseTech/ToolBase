@@ -168,7 +168,7 @@ export function ToolCatalog({ tools }: { tools: any[] }) {
                 tag={tool.pricing || 'Freemium'}
                 colorClass="text-primary"
                 tagLabel={tool.subcategory || 'Active'}
-                favorite={tool.favorite}
+                favorite={tool.favorite} visibility={tool.visibility}
                 layout="grid"
               />
               </BlurFade>
@@ -194,7 +194,7 @@ export function ToolCatalog({ tools }: { tools: any[] }) {
                 tag={tool.pricing || 'Freemium'}
                 colorClass="text-primary"
                 tagLabel={tool.subcategory || 'Active'}
-                favorite={tool.favorite}
+                favorite={tool.favorite} visibility={tool.visibility}
                 layout="list"
               />
               </BlurFade>

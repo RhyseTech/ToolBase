@@ -54,10 +54,9 @@ export default function SignIn() {
       setError(data.detail || 'Incorrect email or password.');
     } catch (err) {
       if (err instanceof TypeError) {
-        // Backend unreachable — fall back to the local POC vault.
-        const name = email.split('@')[0].replace(/[._-]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-        persistLocalProfile({ displayName: name || 'Curator', email: email.trim() });
-        router.push('/');
+        // Backend unreachable — refuse to log in with unverified credentials
+        // (previously ANY credentials were accepted offline).
+        setError('Cannot reach the server — check that the backend is running, then try again.');
         return;
       }
       setError('Sign-in failed — try again.');

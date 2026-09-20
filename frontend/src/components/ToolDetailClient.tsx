@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { DeleteToolButton } from '@/components/DeleteToolButton';
 import { Backlight } from '@/components/ui/backlight';
 import { BorderBeam } from '@/components/magic/BorderBeam';
+import { API_BASE, authHeaders } from '@/lib/providers';
 
-const API = 'http://127.0.0.1:8000';
+const API = API_BASE;
 
 type Tab = 'overview' | 'notes' | 'prompts' | 'videos' | 'skill' | 'mcp' | 'links';
 
@@ -208,7 +209,7 @@ export function ToolDetailClient({ tool }: { tool: any }) {
     async function load() {
       setLoading(true);
       try {
-        const res = await fetch(`${API}/api/tools/${toolId}/artifacts`);
+        const res = await fetch(`${API}/api/tools/${toolId}/artifacts`, { headers: authHeaders() });
         if (res.ok) {
           const data = await res.json();
           if (cancelled) return;
@@ -292,7 +293,7 @@ export function ToolDetailClient({ tool }: { tool: any }) {
     try {
       const res = await fetch(`${API}/api/tools/${toolId}/artifacts`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({ kind, title, content }),
       });
       if (res.ok) return await res.json();
@@ -321,7 +322,7 @@ export function ToolDetailClient({ tool }: { tool: any }) {
     else saveLocal(toolId, cacheKind, next);
     if (typeof id === 'number') {
       try {
-        await fetch(`${API}/api/artifacts/${id}`, { method: 'DELETE' });
+        await fetch(`${API}/api/artifacts/${id}`, { method: 'DELETE', headers: authHeaders() });
       } catch {}
     }
   };
@@ -484,7 +485,7 @@ export function ToolDetailClient({ tool }: { tool: any }) {
       try {
         await fetch(`${API}/api/artifacts/${id}`, {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
+          headers: authHeaders({ 'Content-Type': 'application/json' }),
           body: JSON.stringify({ content }),
         });
       } catch {}
@@ -592,7 +593,7 @@ export function ToolDetailClient({ tool }: { tool: any }) {
                   <span className="material-symbols-outlined text-xs">verified</span>
                   VERIFIED INTELLIGENCE
                 </span>
-                <span className="font-label-caps text-label-caps text-outline uppercase tracking-widest">ATELIER DOSSIER #{String(toolId).padStart(4, '0')}</span>
+                <span className="font-label-caps text-label-caps text-outline uppercase tracking-widest">TOOLBASE DOSSIER #{String(toolId).padStart(4, '0')}</span>
               </div>
               <h1 className="font-display-md text-display-md text-on-surface tracking-tight truncate">{tool.name}</h1>
               <p className="font-body-md text-body-md text-on-surface-variant flex items-center gap-space-xs truncate">

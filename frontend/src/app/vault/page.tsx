@@ -1,10 +1,11 @@
 import { ShaderBackground } from "@/components/ShaderBackground";
 import { VaultClient } from "@/components/VaultClient";
+import { API_BASE } from "@/lib/providers";
 
 export default async function Vault() {
   let prompts: any[] = [];
   try {
-    const res = await fetch("http://127.0.0.1:8000/api/prompts/", { cache: "no-store" });
+    const res = await fetch(`${API_BASE}/api/prompts/`, { cache: "no-store" });
     if (res.ok) prompts = await res.json();
   } catch (err) {
     console.error("Failed to fetch prompts:", err);

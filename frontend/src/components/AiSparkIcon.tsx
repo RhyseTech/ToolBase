@@ -32,14 +32,14 @@ export function AiSparkIcon({ size = 20, className = '', tone = 'gold' }: { size
       height={size}
       viewBox="0 0 24 24"
       fill="none"
-      className={`ai-spark-glow shrink-0 ${className}`}
+      className={`${tone === 'gold' ? 'ai-spark-glow' : ''} shrink-0 ${className}`}
       aria-hidden
     >
       <defs>
         <linearGradient id={gid} x1="4" y1="2" x2="20" y2="22" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ffe09d" />
-          <stop offset="45%" stopColor="#e9c349" />
-          <stop offset="100%" stopColor="#af8d11" />
+          {stops.map((s) => (
+            <stop key={s.offset} offset={s.offset} stopColor={s.color} />
+          ))}
         </linearGradient>
       </defs>
       {/* large sparkle, lower-left */}

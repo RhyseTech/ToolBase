@@ -95,6 +95,8 @@ export function loadSettings(): SettingsState {
   }
 }
 
+export const IDENTITY_COOKIE = 'tb_email';
+
 export function persistSettings(s: SettingsState): boolean {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
@@ -106,7 +108,23 @@ export function persistSettings(s: SettingsState): boolean {
   if (typeof window !== 'undefined') {
     window.dispatchEvent(new CustomEvent(SETTINGS_EVENT, { detail: s }));
   }
+  syncIdentityCookie(s.email);
   return true;
+}
+
+/** Mirror the login email into a plain cookie so server components can scope
+ * reads (tool visibility) to the owner. Backend also accepts X-User-Email. */
+export function syncIdentityCookie(email: string) {
+  try {
+    if (typeof document === 'undefined') return;
+    const v = (email || '').trim().toLowerCase();
+    document.cookie =
+      v
+        ? `${IDENTITY_COOKIE}=${encodeURIComponent(v)}; path=/; max-age=31536000; samesite=lax`
+        : `${IDENTITY_COOKIE}=; path=/; max-age=0; samesite=lax`;
+  } catch {
+    /* cookies unavailable — header auth still works client-side */
+  }
 }
 
 export function resolveTheme(theme: SettingsState['theme']): 'dark' | 'light' {
