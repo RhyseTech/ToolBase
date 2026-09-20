@@ -1,0 +1,169 @@
+<!DOCTYPE html><html class="h-full bg-[#08090a]" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sign In // AI ToolBox Atelier Suite</title>
+<!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+          },
+          colors: {
+            aurum: {
+              300: '#f6e4a8',
+              400: '#edd28b',
+              500: '#e5c378',
+              600: '#d4af37',
+              700: '#b89428',
+            },
+            obsidian: {
+              950: '#050607',
+              900: '#090a0c',
+              850: '#0d0e11',
+              800: '#121317',
+              750: '#181a1f',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Typography & Atmospheric Styles -->
+<style data-purpose="typography-and-effects">
+    .font-serif-luxury {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      letter-spacing: -0.015em;
+    }
+    
+    .gold-shimmer {
+      background: linear-gradient(120deg, #f7e7b4 0%, #e5c378 40%, #edd28b 70%, #caa035 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-border-glow {
+      box-shadow: 0 0 35px -5px rgba(229, 195, 120, 0.15), 
+                  0 0 0 1px rgba(229, 195, 120, 0.22);
+    }
+
+    .gold-border-glow:hover {
+      box-shadow: 0 0 45px 0 rgba(229, 195, 120, 0.28), 
+                  0 0 0 1px rgba(229, 195, 120, 0.45);
+    }
+
+    .subtle-glass {
+      background: radial-gradient(135% 100% at 50% 0%, rgba(26, 28, 33, 0.78) 0%, rgba(13, 14, 18, 0.86) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+  </style>
+<!-- Dynamic Golden Glow & Mesh Animation Styles -->
+<style data-purpose="ambient-animations">
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.04); }
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(0px) rotate(0deg); opacity: 0.2; }
+      50% { opacity: 0.7; }
+      100% { transform: translateY(-40px) rotate(180deg); opacity: 0.1; }
+    }
+
+    .ambient-aurum-glow {
+      animation: pulseGlow 9s ease-in-out infinite;
+    }
+
+    .floating-sparkle {
+      animation: floatParticle 7s ease-in-out infinite alternate;
+    }
+  </style>
+</head>
+<body class="h-full bg-obsidian-950 text-neutral-200 font-sans antialiased selection:bg-aurum-500 selection:text-black overflow-x-hidden">
+<!-- BEGIN: PageWrapper -->
+<div class="relative min-h-screen flex flex-col justify-between overflow-hidden" data-purpose="master-container">
+<!-- Ambient Backing Lights and Glow Elements -->
+<div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+<!-- High-carat Warm Golden Ambient Orbs -->
+<div class="ambient-aurum-glow absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] h-[520px] rounded-full bg-gradient-to-b from-aurum-500/15 via-aurum-700/5 to-transparent blur-[120px]"></div>
+<div class="ambient-aurum-glow absolute bottom-0 right-10 w-[500px] h-[400px] rounded-full bg-aurum-600/10 blur-[130px] delay-1000"></div>
+<!-- Subtle Golden Grid Overlay -->
+<div class="absolute inset-0 bg-[radial-gradient(rgba(229,195,120,0.06)_1px,transparent_1px)] [background-size:32px_32px] opacity-40"></div>
+</div>
+<!-- BEGIN: LuxuryTopNavigation -->
+<header class="relative z-20 w-full px-6 sm:px-12 py-7 flex items-center justify-between border-b border-white/[0.04]">
+<!-- Brand Identity -->
+<div class="flex items-center space-x-3.5">
+<div class="w-8 h-8 rounded-lg bg-obsidian-850 border border-aurum-500/40 flex items-center justify-center shadow-[0_0_15px_rgba(229,195,120,0.2)]">
+<!-- Geometric Diamond Monogram -->
+<svg class="w-4 h-4 text-aurum-400" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+<path d="M12 2L2 12l10 10 10-10L12 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M12 6L6 12l6 6 6-6-6-6z" opacity="0.6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<div class="text-xs font-mono font-medium tracking-[0.22em] text-aurum-400 uppercase">AI ToolBox</div>
+<div class="text-[10px] tracking-[0.28em] text-neutral-400 font-sans uppercase">Atelier Sovereign Suite</div>
+</div>
+</div>
+<!-- Live Cryptographic Enclave Status -->
+<div class="hidden sm:flex items-center space-x-5 text-xs"><a class="text-xs font-sans text-neutral-400 hover:text-aurum-400 tracking-wide transition-colors duration-200" href="#concierge">Concierge Support</a></div>
+</header>
+<!-- END: LuxuryTopNavigation -->
+<!-- BEGIN: MainContentSection -->
+<main class="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-8 py-10 lg:py-14" data-purpose="auth-viewport">
+<div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+<!-- Column Left: Visual Monolith Presentation (Desktop) -->
+<div class="hidden lg:flex lg:col-span-5 flex-col justify-center relative pl-4 pr-6"><div class="relative group rounded-2xl overflow-hidden border border-aurum-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-obsidian-900 subtle-glass"><div class="relative h-[530px] w-full overflow-hidden"><img alt="AI ToolBox Atelier digital intelligence monolith with illuminated golden AI core and neural circuits" class="w-full h-full object-cover object-center filter brightness-95 contrast-105 group-hover:scale-105 transition-transform duration-1000 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3K-qT9Fpy0zOeRpwWhe0bAPySC0v_xCwIq5uQRpd7xtTijZu845bM-vI0AgHtUKZAUlOm66-LMOqjfydiqIhEgKHM9ew2KTb3HGMVld2B3IscZo5qBa4bjPhwClwhcXxr1B4CTpbe5VOS4AOCvtu4CdZLmP_PwNfAiru1s7B6HJw0WNDgLGeQjmCtJ2fPyOv9HLgNHZKc6foQIKPBoFzMCjPHv8GdwKAQFYqJb3zRRK2Dm-9zqw9t"><div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/40 to-transparent"></div><div class="absolute inset-0 bg-gradient-to-r from-obsidian-950/70 via-transparent to-obsidian-950/60"></div><div class="absolute inset-2 border border-aurum-400/20 rounded-xl pointer-events-none"></div><div class="absolute top-5 left-5 z-10 flex items-center space-x-2 px-2.5 py-1 rounded-full bg-obsidian-950/80 border border-white/10 backdrop-blur-md"><span class="w-1.5 h-1.5 rounded-full bg-aurum-400 animate-pulse"></span><span class="text-[10px] font-mono tracking-wider text-aurum-400 uppercase">Atelier Vault // Sovereign</span></div><div class="absolute bottom-6 inset-x-6 z-10 space-y-2"><div class="text-[10px] font-mono tracking-widest text-neutral-400 uppercase">ARCHITECTURAL SYNTHESIS</div><h3 class="font-serif-luxury text-2xl text-neutral-100 font-light leading-snug">Architectural <span class="gold-shimmer italic font-normal">Intelligence</span></h3><p class="text-xs text-neutral-400 font-sans tracking-normal leading-relaxed pt-1">Curated creative intelligence inside an ultra-private cryptographic sanctuary.</p></div></div></div></div>
+<!-- Column Right: The Glassmorphic Auth Card -->
+<div class="w-full lg:col-span-7 flex justify-center">
+<div class="w-full max-w-xl subtle-glass gold-border-glow rounded-2xl p-7 sm:p-10 border border-aurum-500/25 relative transition-all duration-300" data-purpose="luxury-card-container"><div class="absolute top-0 right-0 w-32 h-32 bg-aurum-400/10 rounded-bl-[80px] blur-xl pointer-events-none"></div><div class="absolute bottom-0 left-0 w-24 h-24 bg-aurum-600/10 rounded-tr-[70px] blur-xl pointer-events-none"></div><div class="space-y-2 text-left mb-8 relative z-10"><h1 class="text-3xl sm:text-4xl font-serif-luxury font-light tracking-tight text-white">Welcome to <span class="gold-shimmer italic font-normal">Atelier</span></h1><p class="text-sm text-neutral-400 font-sans leading-relaxed">Sign in to access your AI workspace.</p></div><form action="#" class="space-y-5 relative z-10" method="POST" onsubmit="event.preventDefault();"><div class="space-y-1.5"><label class="text-xs font-sans tracking-wide text-neutral-300" for="enclave-id">Email address</label><input autocomplete="email" class="w-full bg-obsidian-850/90 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-500 transition-all duration-200 focus:outline-none focus:border-aurum-500 focus:ring-1 focus:ring-aurum-500 focus:bg-obsidian-900" id="enclave-id" name="email" placeholder="name@company.com" required="" type="email"></div><div class="space-y-1.5"><div class="flex items-center justify-between"><label class="text-xs font-sans tracking-wide text-neutral-300" for="passkey-input">Password</label><a class="text-xs font-sans text-aurum-400/90 hover:text-aurum-300 transition-colors duration-150" href="#forgot-passkey">Forgot password?</a></div><div class="relative"><input autocomplete="current-password" class="w-full bg-obsidian-850/90 border border-white/10 rounded-xl px-4 pr-11 py-3.5 text-sm text-white placeholder-neutral-500 transition-all duration-200 focus:outline-none focus:border-aurum-500 focus:ring-1 focus:ring-aurum-500 focus:bg-obsidian-900 font-mono tracking-wider" id="passkey-input" name="password" placeholder="••••••••••••" required="" type="password"><button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-neutral-500 hover:text-aurum-400 focus:outline-none transition-colors" id="toggle-visibility" type="button"><svg class="w-4 h-4" fill="none" id="eye-icon" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg></button></div></div><div class="pt-2"><button class="w-full py-3.5 px-6 rounded-xl font-sans font-medium text-sm tracking-wide text-obsidian-950 bg-gradient-to-r from-aurum-400 via-aurum-500 to-aurum-600 hover:from-aurum-300 hover:to-aurum-500 shadow-[0_0_25px_rgba(229,195,120,0.35)] hover:shadow-[0_0_35px_rgba(229,195,120,0.55)] transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center space-x-2" type="submit"><span class="font-medium">Sign In to Atelier</span><svg class="w-4 h-4 text-obsidian-950 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path></svg></button></div></form><div class="mt-6 pt-5 border-t border-white/[0.08]"><button class="w-full flex items-center justify-center space-x-2.5 px-4 py-3 rounded-xl bg-obsidian-850/80 hover:bg-obsidian-800 border border-white/10 hover:border-aurum-500/40 text-neutral-300 hover:text-white transition-all duration-200 text-xs font-sans" type="button"><svg class="w-4 h-4" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path></svg><span class="font-medium tracking-wide">Continue with Google</span></button></div><div class="mt-6 text-center"><p class="text-xs text-neutral-400 font-sans">Don't have an account? <a class="text-aurum-400 font-medium hover:text-aurum-300 ml-1 underline underline-offset-4 decoration-aurum-500/40 hover:decoration-aurum-400 transition-colors" href="#request-license">Sign up →</a></p></div></div>
+</div>
+</div>
+</main>
+<!-- END: MainContentSection -->
+<!-- BEGIN: LuxuryFooter -->
+<footer class="relative z-20 py-6 px-6 sm:px-12 border-t border-white/[0.04] bg-obsidian-950/60 backdrop-blur-md"><div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left"><div class="text-xs text-neutral-500 font-sans">© Atelier Suite. All rights reserved.</div><div class="flex items-center space-x-6 text-xs text-neutral-400"><a class="hover:text-aurum-400 transition-colors" href="#privacy">Privacy</a><span class="text-neutral-700">•</span><a class="hover:text-aurum-400 transition-colors" href="#terms">Terms</a><span class="text-neutral-700">•</span><a class="hover:text-aurum-400 transition-colors" href="#security">Cryptographic Standards</a></div></div></footer>
+<!-- END: LuxuryFooter -->
+</div>
+<!-- END: PageWrapper -->
+<!-- JavaScript: Passkey Visibility Toggle -->
+<script data-purpose="toggle-passkey-visibility">
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('toggle-visibility');
+      const passkeyInput = document.getElementById('passkey-input');
+      const eyeIcon = document.getElementById('eye-icon');
+
+      if (toggleBtn && passkeyInput && eyeIcon) {
+        toggleBtn.addEventListener('click', () => {
+          const isPassword = passkeyInput.getAttribute('type') === 'password';
+          passkeyInput.setAttribute('type', isPassword ? 'text' : 'password');
+          
+          // Switch eye icon appearance
+          if (isPassword) {
+            eyeIcon.innerHTML = `
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />
+            `;
+          } else {
+            eyeIcon.innerHTML = `
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            `;
+          }
+        });
+      }
+    });
+  </script>
+
+
+</body></html>

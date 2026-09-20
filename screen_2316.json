@@ -1,0 +1,379 @@
+﻿{
+  "screenshot": {
+    "name": "projects/7341961731937648866/screens/23166e302bad496a8b5470950d7ca292/fileEntries/screenshot",
+    "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1UH5ofUFZxYZazj40eolYogSjcczP22DbZgvWhU2MplWkjm9ZHMPQd95KGqJYusOa0VHOjAIf0ZA8K1xufhIlZBDJL2HymBXhSeLhZREUrMpMWML5lkFUy1nk1rTrcazXVFimQcX0Kg2KDw2wdf4VI1DtqXTZj99byRQdXHTQG4e7hUdT7MrbDlkjkCsDilIhhOG2UP_I5PRyy-hoisVLTXnhgoPE3OU1ZhXV_F0t1PO98jvc98UVf3B3k"
+  },
+  "htmlCode": {
+    "name": "projects/7341961731937648866/screens/23166e302bad496a8b5470950d7ca292/fileEntries/html",
+    "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1YmMxZDkwNWMxM2UwMjA3Yjg4NWE0MmU1N2M5EgsSBxDU4rzW4wEYAZIBIwoKcHJvamVjdF9pZBIVQhM3MzQxOTYxNzMxOTM3NjQ4ODY2&filename=&opi=89354086",
+    "mimeType": "text/html"
+  },
+  "id": "23166e302bad496a8b5470950d7ca292",
+  "generatedBy": "HatterAgent",
+  "width": "780",
+  "height": "3110",
+  "title": "Dashboard ΓÇö Modern Luxury",
+  "prompt": "Restyle into a modern luxury product aesthetic using {{DATA:DESIGN_SYSTEM:DESIGN_SYSTEM_12}}:\n- Palette & Tone: Deep luxurious obsidian black (#090A0D, #111317) with subtle warm champagne gold / soft bronze (#D4AF37, #E5C378, #C9A96E) accents and muted platinum text. Completely remove all bright neon cyan (#64FFDA) or cyberpunk green tones.\n- Typography & Spacing: Refined editorial elegance, clean tracking, generous negative space, sophisticated uppercase micro-labels with letter-spacing (tracking-wider / tracking-widest).\n- Header & Logo: Subtle refined emblem, elegant 'AI ToolBox' brand, retain user avatar {{DATA:IMAGE:IMAGE_10}}.\n- Cards & Surfaces: Ultra-subtle hairline borders (border-white/10 or subtle metallic gradient stroke), velvety dark frosted glass (backdrop-blur-md bg-white/[0.03]), soft ambient golden/neutral glow on focused elements.\n- Hero Quick Add: Luxurious understated input field with champagne gold focus ring and an elegant champagne/bronze primary action button ('Analyze Tool ΓåÆ').\n- Metrics: Sophisticated minimalist typography (e.g. elegant serif or sleek light sans numbers with golden/platinum touches).\n- Categories & Lists: Polished pill tags and refined tool cards (Perplexity, Claude 3.5 Sonnet, Midjourney v6) with subtle luxury badges and sleek buttons.\n- Bottom navigation: Discreet, ultra-refined minimalist dock with gold accent on the active tab and understated luxury central Add button.",
+  "name": "projects/7341961731937648866/screens/23166e302bad496a8b5470950d7ca292",
+  "theme": {
+    "colorMode": "DARK",
+    "font": "INTER",
+    "roundness": "ROUND_FOUR",
+    "customColor": "#d4af37",
+    "headlineFont": "INTER",
+    "bodyFont": "INTER",
+    "labelFont": "INTER",
+    "namedColors": {
+      "primary_fixed": "#ffe088",
+      "surface": "#121315",
+      "outline_variant": "#4d4635",
+      "secondary": "#e9c176",
+      "inverse_on_surface": "#303033",
+      "error_container": "#93000a",
+      "surface_container": "#1f2022",
+      "outline": "#99907c",
+      "primary": "#f2ca50",
+      "tertiary_container": "#c8b07b",
+      "surface_container_low": "#1b1c1e",
+      "on_secondary_fixed_variant": "#5d4201",
+      "hairline-highlight": "rgba(255, 255, 255, 0.08)",
+      "surface_container_highest": "#343537",
+      "background": "#121315",
+      "on_tertiary_fixed": "#251a00",
+      "surface_dim": "#121315",
+      "inverse_surface": "#e3e2e5",
+      "on_tertiary_fixed_variant": "#55451a",
+      "tertiary": "#e5cb94",
+      "error": "#ffb4ab",
+      "surface_variant": "#343537",
+      "hairline-border": "#1E2229",
+      "on_primary_container": "#554300",
+      "on_tertiary": "#3d2e05",
+      "surface-subtle": "#0E1013",
+      "secondary_fixed": "#ffdea5",
+      "primary_fixed_dim": "#e9c349",
+      "on_background": "#e3e2e5",
+      "on_secondary": "#412d00",
+      "text-primary": "#F4F5F7",
+      "primary_container": "#d4af37",
+      "surface-elevated": "#1B1F26",
+      "platinum-muted": "#D6DBE2",
+      "on_secondary_fixed": "#261900",
+      "on_primary_fixed_variant": "#574500",
+      "surface_tint": "#e9c349",
+      "on_primary_fixed": "#241a00",
+      "on_surface": "#e3e2e5",
+      "on_surface_variant": "#d0c5af",
+      "champagne-glow": "rgba(212, 175, 55, 0.12)",
+      "inverse_primary": "#735c00",
+      "text-secondary": "#A2A7B0",
+      "on_tertiary_container": "#534318",
+      "text-tertiary": "#626873",
+      "on_primary": "#3c2f00",
+      "on_error": "#690005",
+      "surface-panel": "#14171C",
+      "surface-canvas": "#08090B",
+      "on_secondary_container": "#dab36a",
+      "surface_container_high": "#292a2c",
+      "surface_container_lowest": "#0d0e10",
+      "tertiary_fixed_dim": "#ddc48d",
+      "surface_bright": "#38393b",
+      "secondary_container": "#604403",
+      "on_error_container": "#ffdad6",
+      "tertiary_fixed": "#fae0a7",
+      "secondary_fixed_dim": "#e9c176"
+    },
+    "colorVariant": "FIDELITY",
+    "overridePrimaryColor": "#d4af37",
+    "overrideSecondaryColor": "#c5a059",
+    "overrideTertiaryColor": "#e2c992",
+    "overrideNeutralColor": "#08090b",
+    "spacingScale": 2,
+    "typography": {
+      "body-md": {
+        "fontFamily": "Inter",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22px",
+        "letterSpacing": "0.005em"
+      },
+      "label-md": {
+        "fontFamily": "Inter",
+        "fontSize": "11px",
+        "fontWeight": "500",
+        "lineHeight": "16px",
+        "letterSpacing": "0.06em"
+      },
+      "headline-lg": {
+        "fontFamily": "Inter",
+        "fontSize": "26px",
+        "fontWeight": "400",
+        "lineHeight": "34px",
+        "letterSpacing": "-0.02em"
+      },
+      "headline-sm": {
+        "fontFamily": "Inter",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "lineHeight": "22px",
+        "letterSpacing": "-0.005em"
+      },
+      "headline-xl-mobile": {
+        "fontFamily": "Inter",
+        "fontSize": "28px",
+        "fontWeight": "300",
+        "lineHeight": "36px",
+        "letterSpacing": "-0.02em"
+      },
+      "label-lg": {
+        "fontFamily": "Inter",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "lineHeight": "18px",
+        "letterSpacing": "0.03em"
+      },
+      "label-sm": {
+        "fontFamily": "Inter",
+        "fontSize": "10px",
+        "fontWeight": "600",
+        "lineHeight": "14px",
+        "letterSpacing": "0.08em"
+      },
+      "headline-md": {
+        "fontFamily": "Inter",
+        "fontSize": "19px",
+        "fontWeight": "500",
+        "lineHeight": "26px",
+        "letterSpacing": "-0.01em"
+      },
+      "body-sm": {
+        "fontFamily": "Inter",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px",
+        "letterSpacing": "0.01em"
+      },
+      "headline-xl": {
+        "fontFamily": "Inter",
+        "fontSize": "36px",
+        "fontWeight": "300",
+        "lineHeight": "44px",
+        "letterSpacing": "-0.025em"
+      },
+      "headline-lg-mobile": {
+        "fontFamily": "Inter",
+        "fontSize": "22px",
+        "fontWeight": "400",
+        "lineHeight": "28px",
+        "letterSpacing": "-0.015em"
+      },
+      "body-lg": {
+        "fontFamily": "Inter",
+        "fontSize": "16px",
+        "fontWeight": "300",
+        "lineHeight": "26px",
+        "letterSpacing": "0em"
+      }
+    },
+    "spacing": {
+      "space-xs": "0.25rem",
+      "space-md": "1rem",
+      "space-lg": "1.5rem",
+      "space-xl": "2.5rem",
+      "gutter": "1.25rem",
+      "margin": "1.5rem",
+      "space-sm": "0.5rem"
+    },
+    "headlineFontFamily": "Inter",
+    "bodyFontFamily": "Inter",
+    "labelFontFamily": "Inter"
+  },
+  "deviceType": "MOBILE",
+  "screenType": "DESIGN",
+  "screenMetadata": {
+    "agentType": "PRO_AGENT",
+    "status": "COMPLETE"
+  },
+  "designSystem": {
+    "name": "assets/c296c98d34e14423994cbad493d0f35b",
+    "designSystem": {
+      "displayName": "Obsidian & Champagne Atelier",
+      "styleGuidelines": "## Brand & Style\n\nThis design system embodies an ultra-refined, understated luxury digital product aesthetic inspired by the disciplined craftsmanship of Leica, Bang & Olufsen, and Apple Pro hardware interfaces. It moves decisively away from aggressive cyberpunk neon palettes toward an environment of whisper-quiet sophistication, intellectual calm, and immaculate precision.\n\nThe target audience consists of discerning professionals, collectors, and design connoisseurs who value restraint, architectural rigor, and tactile subtlety over loud visual ornament. The interface should evoke the sensation of handling a bespoke physical instrument: deep velvet obsidian grounds, warm brushed champagne and muted bronze highlights, satiny frosted glass, and hair-thin platinum delineations.\n\nThe design movement synthesizes **High-End Minimalism** with **Tactile Precision Glassmorphism**:\n- Deep, low-reflection matte surfaces replace flat synthetic grays with rich obsidian depth.\n- Generous, intentional negative space establishes composure and focus.\n- Micro-interactions are velvety, damped, and continuous, utilizing smooth physics rather than abrupt snappy jumps.\n- Accents do not shout; they illuminate with soft ambient radiance.\n\n## Layout & Spacing\n\nThe layout philosophy champions spatial composure and deliberate pacing. Whitespace is an active luxury material, allowing each component to breathe without competing for visual primacy.\n\n- **Grid Architecture:** \n  - Desktop: 12-column adaptive grid constrained to a maximum centered canvas of 1440px, flanked by minimum 48px outer margins.\n  - Tablet (768pxΓÇô1024px): 8-column layout with 24px margins.\n  - Mobile (\u003c=480px): 4-column layout with 20px outer margin and 16px gutters.\n- **Rhythm & Distance:** \n  - `space-xs` (4px) and `space-sm` (8px) define tight internal groupings (icon-to-label, badge clusters).\n  - `space-md` (16px) sets standard structural element gaps.\n  - `space-lg` (24px) and `space-xl` (40px) govern inter-card boundaries, editorial sectioning, and breathing space around hero items.\n\n## Elevation & Depth\n\nDepth avoids coarse, high-contrast drop shadows. Instead, it relies on **chiseled tonal layers, soft ambient vignetting, and tactile glassmorphism**.\n\n- **Level 0 (Floor):** Flat obsidian ground (`#08090B`) with no elevation.\n- **Level 1 (Structural Tiers):** Recessed or resting modules sit on `#0E1013` or `#14171C` with a continuous 1px perimeter border: `border: 1px solid #1E2229`. An inner inset edge simulates an edge-lit surface: `box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05)`.\n- **Level 2 (Floating & Contextual):** Drawers, menus, and inspector panels use a translucent composite: `background: rgba(20, 23, 28, 0.78)`, `backdrop-filter: blur(20px) saturate(140%)`, and an ultra-diffused atmospheric shadow: `box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.07)`.\n- **Active State Radiance:** When a component is actively engaged, its outline warms to subtle champagne gold (`rgba(212, 175, 55, 0.4)`) paired with a whisper of ambient bloom: `box-shadow: 0 0 24px -4px rgba(212, 175, 55, 0.12)`.\n\n## Components\n\n### Buttons\n- **Primary:** Warm champagne gold background (`#D4AF37`) with obsidian text (`#08090B`), weight 500. Height: 40px (desktop), 44px (mobile touch targets). Zero heavy shadow; subtle brightness transition on hover (`#E2C992`) with damped 200ms ease.\n- **Secondary (Metallic Hairline):** Translucent background (`rgba(255, 255, 255, 0.03)`), 1px border (`#1E2229`), text `#F4F5F7`. Hover initiates a delicate border shift to `#C5A059` and an interior lift to `rgba(255, 255, 255, 0.06)`.\n- **Ghost:** Minimal padding, text `#A2A7B0`, shifting to `#D4AF37` upon hover with no container background.\n\n### Input Fields & Controls\n- **Text Inputs:** Height 42px, background `#0E1013`, 1px border `#1E2229`, text `#F4F5F7` with placeholder in `#626873`. Upon focus, the border seamlessly transitions to muted gold (`#D4AF37`) with a 2px outer aura in `rgba(212, 175, 55, 0.15)`.\n- **Checkboxes & Radios:** 18x18px, background `#0E1013`, 1px border `#1E2229`. When checked, the background fills with `#D4AF37` displaying an obsidian interior checkmark or radio dot.\n\n### Badges & Chips\n- **Metallic Badges:** Compact 22px height. Border: 1px `rgba(212, 175, 55, 0.25)`. Background: `rgba(212, 175, 55, 0.05)`. Text: `label-sm` in `#E2C992`.\n- **Muted Platinum Chips:** Border 1px `#1E2229`, text `#A2A7B0`. On selection, transitions to champagne fill with a 1px border in `#C5A059`.\n\n### Cards & Modules\n- **Editorial Containers:** Composed of `#14171C` backing, framed by a 1px `#1E2229` hairline border and top-edge highlight (`rgba(255, 255, 255, 0.06)`). Padding is spacious (`space-lg` to `space-xl`).\n- **Interactive Rows / Lists:** Separated by 1px subtle divider lines (`#1E2229`). On hover, rows reveal a velvety `#1B1F26` surface tint and a discreet warm champagne indicator needle at the left margin.\n\n### Glassmorphic Overlays & Sliders\n- **Range Sliders:** 2px track in `#1E2229` with active run in `#D4AF37`. Precision thumb is a 14px brushed metallic sphere with a 1px border (`#E2C992`) and delicate drop-shadow (`0 2px 8px rgba(0, 0, 0, 0.6)`).\n- **Floating Modals:** Blurred backdrop with dark obsidian-tinted frosted glass (`rgba(14, 16, 19, 0.85)`), hairline satin contour, and quiet, high-legibility typographic alignment.",
+      "theme": {
+        "colorMode": "DARK",
+        "font": "INTER",
+        "roundness": "ROUND_FOUR",
+        "customColor": "#d4af37",
+        "headlineFont": "INTER",
+        "bodyFont": "INTER",
+        "labelFont": "INTER",
+        "namedColors": {
+          "background": "#121315",
+          "tertiary": "#e5cb94",
+          "surface-panel": "#14171C",
+          "surface-subtle": "#0E1013",
+          "on_tertiary_fixed_variant": "#55451a",
+          "inverse_primary": "#735c00",
+          "text-tertiary": "#626873",
+          "surface_container_high": "#292a2c",
+          "on_error_container": "#ffdad6",
+          "primary_container": "#d4af37",
+          "on_secondary_container": "#dab36a",
+          "tertiary_fixed_dim": "#ddc48d",
+          "on_background": "#e3e2e5",
+          "primary_fixed_dim": "#e9c349",
+          "on_secondary_fixed": "#261900",
+          "surface": "#121315",
+          "on_tertiary": "#3d2e05",
+          "error": "#ffb4ab",
+          "secondary": "#e9c176",
+          "on_tertiary_container": "#534318",
+          "secondary_fixed_dim": "#e9c176",
+          "surface_dim": "#121315",
+          "on_secondary_fixed_variant": "#5d4201",
+          "on_surface_variant": "#d0c5af",
+          "surface_container_highest": "#343537",
+          "primary": "#f2ca50",
+          "outline": "#99907c",
+          "secondary_container": "#604403",
+          "tertiary_fixed": "#fae0a7",
+          "on_primary_container": "#554300",
+          "surface_container": "#1f2022",
+          "surface_bright": "#38393b",
+          "outline_variant": "#4d4635",
+          "surface_container_lowest": "#0d0e10",
+          "primary_fixed": "#ffe088",
+          "surface-canvas": "#08090B",
+          "error_container": "#93000a",
+          "surface_container_low": "#1b1c1e",
+          "inverse_on_surface": "#303033",
+          "champagne-glow": "rgba(212, 175, 55, 0.12)",
+          "surface-elevated": "#1B1F26",
+          "text-secondary": "#A2A7B0",
+          "secondary_fixed": "#ffdea5",
+          "on_error": "#690005",
+          "surface_tint": "#e9c349",
+          "on_surface": "#e3e2e5",
+          "platinum-muted": "#D6DBE2",
+          "hairline-highlight": "rgba(255, 255, 255, 0.08)",
+          "on_primary_fixed": "#241a00",
+          "tertiary_container": "#c8b07b",
+          "inverse_surface": "#e3e2e5",
+          "text-primary": "#F4F5F7",
+          "on_tertiary_fixed": "#251a00",
+          "on_secondary": "#412d00",
+          "on_primary": "#3c2f00",
+          "on_primary_fixed_variant": "#574500",
+          "surface_variant": "#343537",
+          "hairline-border": "#1E2229"
+        },
+        "designMd": "---\nname: Obsidian & Champagne Atelier\ncolors:\n  surface: '#121315'\n  surface-dim: '#121315'\n  surface-bright: '#38393b'\n  surface-container-lowest: '#0d0e10'\n  surface-container-low: '#1b1c1e'\n  surface-container: '#1f2022'\n  surface-container-high: '#292a2c'\n  surface-container-highest: '#343537'\n  on-surface: '#e3e2e5'\n  on-surface-variant: '#d0c5af'\n  inverse-surface: '#e3e2e5'\n  inverse-on-surface: '#303033'\n  outline: '#99907c'\n  outline-variant: '#4d4635'\n  surface-tint: '#e9c349'\n  primary: '#f2ca50'\n  on-primary: '#3c2f00'\n  primary-container: '#d4af37'\n  on-primary-container: '#554300'\n  inverse-primary: '#735c00'\n  secondary: '#e9c176'\n  on-secondary: '#412d00'\n  secondary-container: '#604403'\n  on-secondary-container: '#dab36a'\n  tertiary: '#e5cb94'\n  on-tertiary: '#3d2e05'\n  tertiary-container: '#c8b07b'\n  on-tertiary-container: '#534318'\n  error: '#ffb4ab'\n  on-error: '#690005'\n  error-container: '#93000a'\n  on-error-container: '#ffdad6'\n  primary-fixed: '#ffe088'\n  primary-fixed-dim: '#e9c349'\n  on-primary-fixed: '#241a00'\n  on-primary-fixed-variant: '#574500'\n  secondary-fixed: '#ffdea5'\n  secondary-fixed-dim: '#e9c176'\n  on-secondary-fixed: '#261900'\n  on-secondary-fixed-variant: '#5d4201'\n  tertiary-fixed: '#fae0a7'\n  tertiary-fixed-dim: '#ddc48d'\n  on-tertiary-fixed: '#251a00'\n  on-tertiary-fixed-variant: '#55451a'\n  background: '#121315'\n  on-background: '#e3e2e5'\n  surface-variant: '#343537'\n  surface-canvas: '#08090B'\n  surface-subtle: '#0E1013'\n  surface-panel: '#14171C'\n  surface-elevated: '#1B1F26'\n  hairline-border: '#1E2229'\n  hairline-highlight: rgba(255, 255, 255, 0.08)\n  text-primary: '#F4F5F7'\n  text-secondary: '#A2A7B0'\n  text-tertiary: '#626873'\n  champagne-glow: rgba(212, 175, 55, 0.12)\n  platinum-muted: '#D6DBE2'\ntypography:\n  headline-xl:\n    fontFamily: Inter\n    fontSize: 36px\n    fontWeight: '300'\n    lineHeight: 44px\n    letterSpacing: -0.025em\n  headline-xl-mobile:\n    fontFamily: Inter\n    fontSize: 28px\n    fontWeight: '300'\n    lineHeight: 36px\n    letterSpacing: -0.02em\n  headline-lg:\n    fontFamily: Inter\n    fontSize: 26px\n    fontWeight: '400'\n    lineHeight: 34px\n    letterSpacing: -0.02em\n  headline-lg-mobile:\n    fontFamily: Inter\n    fontSize: 22px\n    fontWeight: '400'\n    lineHeight: 28px\n    letterSpacing: -0.015em\n  headline-md:\n    fontFamily: Inter\n    fontSize: 19px\n    fontWeight: '500'\n    lineHeight: 26px\n    letterSpacing: -0.01em\n  headline-sm:\n    fontFamily: Inter\n    fontSize: 16px\n    fontWeight: '500'\n    lineHeight: 22px\n    letterSpacing: -0.005em\n  body-lg:\n    fontFamily: Inter\n    fontSize: 16px\n    fontWeight: '300'\n    lineHeight: 26px\n    letterSpacing: 0em\n  body-md:\n    fontFamily: Inter\n    fontSize: 14px\n    fontWeight: '400'\n    lineHeight: 22px\n    letterSpacing: 0.005em\n  body-sm:\n    fontFamily: Inter\n    fontSize: 12px\n    fontWeight: '400'\n    lineHeight: 18px\n    letterSpacing: 0.01em\n  label-lg:\n    fontFamily: Inter\n    fontSize: 13px\n    fontWeight: '500'\n    lineHeight: 18px\n    letterSpacing: 0.03em\n  label-md:\n    fontFamily: Inter\n    fontSize: 11px\n    fontWeight: '500'\n    lineHeight: 16px\n    letterSpacing: 0.06em\n  label-sm:\n    fontFamily: Inter\n    fontSize: 10px\n    fontWeight: '600'\n    lineHeight: 14px\n    letterSpacing: 0.08em\nrounded:\n  sm: 0.125rem\n  DEFAULT: 0.25rem\n  md: 0.375rem\n  lg: 0.5rem\n  xl: 0.75rem\n  full: 9999px\nspacing:\n  gutter: 1.25rem\n  margin: 1.5rem\n  space-xs: 0.25rem\n  space-sm: 0.5rem\n  space-md: 1rem\n  space-lg: 1.5rem\n  space-xl: 2.5rem\n---\n\n## Brand & Style\n\nThis design system embodies an ultra-refined, understated luxury digital product aesthetic inspired by the disciplined craftsmanship of Leica, Bang & Olufsen, and Apple Pro hardware interfaces. It moves decisively away from aggressive cyberpunk neon palettes toward an environment of whisper-quiet sophistication, intellectual calm, and immaculate precision.\n\nThe target audience consists of discerning professionals, collectors, and design connoisseurs who value restraint, architectural rigor, and tactile subtlety over loud visual ornament. The interface should evoke the sensation of handling a bespoke physical instrument: deep velvet obsidian grounds, warm brushed champagne and muted bronze highlights, satiny frosted glass, and hair-thin platinum delineations.\n\nThe design movement synthesizes **High-End Minimalism** with **Tactile Precision Glassmorphism**:\n- Deep, low-reflection matte surfaces replace flat synthetic grays with rich obsidian depth.\n- Generous, intentional negative space establishes composure and focus.\n- Micro-interactions are velvety, damped, and continuous, utilizing smooth physics rather than abrupt snappy jumps.\n- Accents do not shout; they illuminate with soft ambient radiance.\n\n## Colors\n\nThe chromatic palette is anchored in deep velvet darkness and warm metallic nobility, completely stripping out high-saturation neon greens in favor of brushed champagne, antique gold, and platinum luster.\n\n- **Foundational Grounds:**\n  - `surface-canvas` (`#08090B`): Infinite obsidian baseline absorbing extraneous visual noise.\n  - `surface-subtle` (`#0E1013`): Sub-recesses, content cavities, and inactive track regions.\n  - `surface-panel` (`#14171C`): Standard modular surfaces, cards, and structured groupings.\n  - `surface-elevated` (`#1B1F26`): Floating contextual controls, popovers, and elevated sheets.\n\n- **Metallic Accents:**\n  - `Primary Accent` (`#D4AF37`): Muted champagne gold, serving as the focal signature for definitive actions, primary indicators, and curated focal selections.\n  - `Secondary Accent` (`#C5A059`): Warm bronze for delicate active borders, icon highlights, and secondary hierarchy elements.\n  - `Tertiary Accent` (`#E2C992`): Pale gold silk for subtle hover feedback, illuminated text cues, and fine filigree rings.\n  - `champagne-glow` (`rgba(212, 175, 55, 0.12)`): Backlight illumination creating a low-lux aura rather than harsh specular reflection.\n\n- **Structural Dividers & Text:**\n  - Hairline borders pair a base edge (`#1E2229`) with an ethereal inner highlight (`rgba(255, 255, 255, 0.08)`) to mimic the beveled chamfer of anodized aluminum and diamond-cut black titanium.\n  - Typography steps from crisp ivory (`#F4F5F7`) down to muted platinum (`#A2A7B0`) and discrete slate (`#626873`).\n\n## Typography\n\nThe typographic hierarchy prioritizes restraint, editorial poise, and structural balance using **Inter**. Heavy, high-impact weights are consciously eliminated; authoritative presence is instead expressed through light weights (`300` and `400`), calibrated kerning, and generous leading.\n\n- **Headlines:** Large titles employ light (`300`) and regular (`400`) weights with slight negative letter tracking (`-0.025em`), echoing modern luxury horology and editorial art books.\n- **Body:** Body copy features an airy line-height (`1.6x`) in neutral tones, guaranteeing unhurried, comfortable reading on high-density displays.\n- **Labels & Metrology:** Small functional badges and technical readouts use `label-md` and `label-sm` with expanded tracking (`+0.06em` to `+0.08em`) and uppercase styling to evoke micro-etched serial numbers and precision calibration scales.\n- **Smoothing:** Subpixel antialiasing is mandatory across all targets to preserve the hairline stroke purity of light characters against obsidian backdrops.\n\n## Layout & Spacing\n\nThe layout philosophy champions spatial composure and deliberate pacing. Whitespace is an active luxury material, allowing each component to breathe without competing for visual primacy.\n\n- **Grid Architecture:** \n  - Desktop: 12-column adaptive grid constrained to a maximum centered canvas of 1440px, flanked by minimum 48px outer margins.\n  - Tablet (768pxΓÇô1024px): 8-column layout with 24px margins.\n  - Mobile (\u003c=480px): 4-column layout with 20px outer margin and 16px gutters.\n- **Rhythm & Distance:** \n  - `space-xs` (4px) and `space-sm` (8px) define tight internal groupings (icon-to-label, badge clusters).\n  - `space-md` (16px) sets standard structural element gaps.\n  - `space-lg` (24px) and `space-xl` (40px) govern inter-card boundaries, editorial sectioning, and breathing space around hero items.\n\n## Elevation & Depth\n\nDepth avoids coarse, high-contrast drop shadows. Instead, it relies on **chiseled tonal layers, soft ambient vignetting, and tactile glassmorphism**.\n\n- **Level 0 (Floor):** Flat obsidian ground (`#08090B`) with no elevation.\n- **Level 1 (Structural Tiers):** Recessed or resting modules sit on `#0E1013` or `#14171C` with a continuous 1px perimeter border: `border: 1px solid #1E2229`. An inner inset edge simulates an edge-lit surface: `box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05)`.\n- **Level 2 (Floating & Contextual):** Drawers, menus, and inspector panels use a translucent composite: `background: rgba(20, 23, 28, 0.78)`, `backdrop-filter: blur(20px) saturate(140%)`, and an ultra-diffused atmospheric shadow: `box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.07)`.\n- **Active State Radiance:** When a component is actively engaged, its outline warms to subtle champagne gold (`rgba(212, 175, 55, 0.4)`) paired with a whisper of ambient bloom: `box-shadow: 0 0 24px -4px rgba(212, 175, 55, 0.12)`.\n\n## Shapes\n\nThe shape system adopts **Level 1 (Soft)** rounding. Radii are modest, crisp, and architectural, referencing the precisely milled radiused corners of precision aluminum instruments rather than bulbous consumer software.\n\n- **Base Radius (0.25rem / 4px):** Applied to badges, indicators, segmented control selectors, and inline code blocks.\n- **Container Radius (0.5rem / 8px):** Applied to buttons, input fields, cards, and modal dialogs.\n- **Surface Panels (0.75rem / 12px):** Reserved for major view containers, sheet overlays, and prominent hero showcases.\n- **Full Pill Exclusions:** Circular geometry is restricted solely to status pips, avatars, and pure micro-toggles to retain the system's structured discipline.\n\n## Components\n\n### Buttons\n- **Primary:** Warm champagne gold background (`#D4AF37`) with obsidian text (`#08090B`), weight 500. Height: 40px (desktop), 44px (mobile touch targets). Zero heavy shadow; subtle brightness transition on hover (`#E2C992`) with damped 200ms ease.\n- **Secondary (Metallic Hairline):** Translucent background (`rgba(255, 255, 255, 0.03)`), 1px border (`#1E2229`), text `#F4F5F7`. Hover initiates a delicate border shift to `#C5A059` and an interior lift to `rgba(255, 255, 255, 0.06)`.\n- **Ghost:** Minimal padding, text `#A2A7B0`, shifting to `#D4AF37` upon hover with no container background.\n\n### Input Fields & Controls\n- **Text Inputs:** Height 42px, background `#0E1013`, 1px border `#1E2229`, text `#F4F5F7` with placeholder in `#626873`. Upon focus, the border seamlessly transitions to muted gold (`#D4AF37`) with a 2px outer aura in `rgba(212, 175, 55, 0.15)`.\n- **Checkboxes & Radios:** 18x18px, background `#0E1013`, 1px border `#1E2229`. When checked, the background fills with `#D4AF37` displaying an obsidian interior checkmark or radio dot.\n\n### Badges & Chips\n- **Metallic Badges:** Compact 22px height. Border: 1px `rgba(212, 175, 55, 0.25)`. Background: `rgba(212, 175, 55, 0.05)`. Text: `label-sm` in `#E2C992`.\n- **Muted Platinum Chips:** Border 1px `#1E2229`, text `#A2A7B0`. On selection, transitions to champagne fill with a 1px border in `#C5A059`.\n\n### Cards & Modules\n- **Editorial Containers:** Composed of `#14171C` backing, framed by a 1px `#1E2229` hairline border and top-edge highlight (`rgba(255, 255, 255, 0.06)`). Padding is spacious (`space-lg` to `space-xl`).\n- **Interactive Rows / Lists:** Separated by 1px subtle divider lines (`#1E2229`). On hover, rows reveal a velvety `#1B1F26` surface tint and a discreet warm champagne indicator needle at the left margin.\n\n### Glassmorphic Overlays & Sliders\n- **Range Sliders:** 2px track in `#1E2229` with active run in `#D4AF37`. Precision thumb is a 14px brushed metallic sphere with a 1px border (`#E2C992`) and delicate drop-shadow (`0 2px 8px rgba(0, 0, 0, 0.6)`).\n- **Floating Modals:** Blurred backdrop with dark obsidian-tinted frosted glass (`rgba(14, 16, 19, 0.85)`), hairline satin contour, and quiet, high-legibility typographic alignment.",
+        "colorVariant": "FIDELITY",
+        "overridePrimaryColor": "#d4af37",
+        "overrideSecondaryColor": "#c5a059",
+        "overrideTertiaryColor": "#e2c992",
+        "overrideNeutralColor": "#08090b",
+        "spacingScale": 2,
+        "typography": {
+          "headline-lg-mobile": {
+            "fontFamily": "Inter",
+            "fontSize": "22px",
+            "fontWeight": "400",
+            "lineHeight": "28px",
+            "letterSpacing": "-0.015em"
+          },
+          "label-sm": {
+            "fontFamily": "Inter",
+            "fontSize": "10px",
+            "fontWeight": "600",
+            "lineHeight": "14px",
+            "letterSpacing": "0.08em"
+          },
+          "headline-lg": {
+            "fontFamily": "Inter",
+            "fontSize": "26px",
+            "fontWeight": "400",
+            "lineHeight": "34px",
+            "letterSpacing": "-0.02em"
+          },
+          "headline-sm": {
+            "fontFamily": "Inter",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "lineHeight": "22px",
+            "letterSpacing": "-0.005em"
+          },
+          "label-lg": {
+            "fontFamily": "Inter",
+            "fontSize": "13px",
+            "fontWeight": "500",
+            "lineHeight": "18px",
+            "letterSpacing": "0.03em"
+          },
+          "body-sm": {
+            "fontFamily": "Inter",
+            "fontSize": "12px",
+            "fontWeight": "400",
+            "lineHeight": "18px",
+            "letterSpacing": "0.01em"
+          },
+          "body-lg": {
+            "fontFamily": "Inter",
+            "fontSize": "16px",
+            "fontWeight": "300",
+            "lineHeight": "26px",
+            "letterSpacing": "0em"
+          },
+          "headline-xl-mobile": {
+            "fontFamily": "Inter",
+            "fontSize": "28px",
+            "fontWeight": "300",
+            "lineHeight": "36px",
+            "letterSpacing": "-0.02em"
+          },
+          "headline-xl": {
+            "fontFamily": "Inter",
+            "fontSize": "36px",
+            "fontWeight": "300",
+            "lineHeight": "44px",
+            "letterSpacing": "-0.025em"
+          },
+          "label-md": {
+            "fontFamily": "Inter",
+            "fontSize": "11px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "letterSpacing": "0.06em"
+          },
+          "body-md": {
+            "fontFamily": "Inter",
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "lineHeight": "22px",
+            "letterSpacing": "0.005em"
+          },
+          "headline-md": {
+            "fontFamily": "Inter",
+            "fontSize": "19px",
+            "fontWeight": "500",
+            "lineHeight": "26px",
+            "letterSpacing": "-0.01em"
+          }
+        },
+        "spacing": {
+          "space-lg": "1.5rem",
+          "space-md": "1rem",
+          "space-xs": "0.25rem",
+          "space-xl": "2.5rem",
+          "margin": "1.5rem",
+          "gutter": "1.25rem",
+          "space-sm": "0.5rem"
+        },
+        "headlineFontFamily": "Inter",
+        "bodyFontFamily": "Inter",
+        "labelFontFamily": "Inter"
+      }
+    },
+    "version": "1"
+  }
+}

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#e5c378", "surface-dim": "#121316", "on-secondary": "#3c2f00", "secondary-fixed-dim": "#e9c349", "on-error-container": "#ffdad6", "on-secondary-container": "#342800", "secondary-fixed": "#ffe088", "on-tertiary": "#26313f", "on-surface-variant": "#d0c5b4", "on-secondary-fixed": "#241a00", "surface-container-lowest": "#0d0e11", "secondary": "#e9c349", "on-tertiary-fixed": "#101c29", "background": "#121316", "inverse-surface": "#e3e2e6", "primary-fixed-dim": "#e4c277", "outline-variant": "#4d4639", "surface-container-high": "#292a2d", "surface-tint": "#e4c277", "tertiary-fixed-dim": "#bbc7d9", "primary-fixed": "#ffdf9b", "surface-bright": "#38393d", "surface-container-highest": "#343538", "surface": "#121316", "on-tertiary-container": "#485463", "on-primary-fixed": "#251a00", "on-background": "#e3e2e6", "surface-container-low": "#1b1b1f", "on-surface": "#e3e2e6", "tertiary-container": "#bcc8da", "error": "#ffb4ab", "on-primary-container": "#684f0f", "on-error": "#690005", "inverse-primary": "#745b1a", "inverse-on-surface": "#2f3034", "outline": "#999080", "tertiary-fixed": "#d7e3f6", "primary": "#ffe09d", "on-primary": "#3f2e00", "error-container": "#93000a", "surface-variant": "#343538", "secondary-container": "#af8d11", "tertiary": "#d8e4f6", "on-tertiary-fixed-variant": "#3c4856", "on-secondary-fixed-variant": "#574500", "surface-container": "#1f1f23", "on-primary-fixed-variant": "#5a4302" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem", "gutter": "1.5rem", "margin": "3rem", "space-lg": "1.5rem", "gutter-tablet": "1rem", "margin-tablet": "1.5rem", "space-xl": "2.5rem" }, "fontFamily": { "body-md": ["Inter"], "body-sm": ["Inter"], "headline-lg": ["Inter"], "label-caps": ["Inter"], "headline-md": ["Inter"], "display-md": ["Inter"], "label-md": ["Inter"], "display-lg": ["Inter"], "body-lg": ["Inter"], "headline-sm": ["Inter"], "label-lg": ["Inter"] }, "fontSize": { "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "label-caps": ["10px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" }], "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "display-md": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "label-md": ["11px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.025em", "fontWeight": "300" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "500" }], "label-lg": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }] } } } }</script><meta content="web_dashboard" name="shell-type"/></head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 h-20 bg-surface-container-lowest/80 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div class="h-20 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-[280px]"><div class="relative flex items-center justify-center p-space-xs rounded-full bg-surface-container-high/40 shadow-[0_0_15px_rgba(229,195,120,0.15)]"><img alt="Brand logo. - Primary color: #64ffda
+- Font: inter
+- Mode: dark
+- Roundness: rounded-sm
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WDAuPk3LjBeLe1nmEKfCDayYzTnYE4zr1OLwZIqUWK5kmyzMXlMQIleCvL5LVG89lYTBmjtCfRpYLNW9tdB8ZvjBSy2MZJUu8OcVgQeD5io7enXjVZduXp2sMOu5xNLr_avPsTSbzrdiWX4fqrpNxqknqgwnAoLdl3Ofhz4Ihld-R6DiSIhw06lPIl1LXvFsLTvn6iZb7ySq1Z0JQsQjtnIrvXdkNd9R8qKiTDkQLNnQI2gQajJQ5Tbw"/><span class="absolute inset-0 rounded-full shadow-[inset_0_0_8px_rgba(229,195,120,0.4)] pointer-events-none"></span></div><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm tracking-wider text-on-surface uppercase">AI ToolBox</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-high/60 font-label-caps text-label-caps text-secondary tracking-widest shadow-[0_0_10px_rgba(233,195,73,0.2)]">ATELIER SUITE</span></div></div><div class="hidden md:flex flex-1 max-w-xl items-center justify-center"><div class="group relative flex items-center w-full max-w-md h-10 px-space-md rounded-full bg-surface-container-low/60 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] hover:bg-surface-container-high/60 transition-all duration-300"><span class="material-symbols-outlined text-on-surface-variant text-base mr-space-sm group-hover:text-primary transition-colors">search</span><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 select-none">Search tools, prompts, models...</span><kbd class="flex items-center gap-space-xs px-space-xs py-0.5 rounded bg-surface-container-highest/80 font-label-caps text-label-caps text-on-surface-variant group-hover:text-primary group-hover:shadow-[0_0_8px_rgba(255,224,157,0.3)] transition-all">⌘K</kbd></div></div><div class="flex items-center gap-space-md justify-end min-w-[280px]"><a class="relative group overflow-hidden flex items-center gap-space-xs px-space-md py-space-sm rounded-full bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-lg text-label-lg shadow-[0_0_20px_rgba(229,195,120,0.25)] hover:shadow-[0_0_25px_rgba(229,195,120,0.45)] transition-all" data-path="add-review-tool" href="#"><span class="material-symbols-outlined text-sm">add</span><span>Add Tool</span><span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out"></span></a><div class="relative flex items-center justify-center w-10 h-10 rounded-full bg-surface-container-high/40 text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_rgba(233,195,73,0.8)]"></span></div><div class="relative p-0.5 rounded-full bg-gradient-to-tr from-secondary to-primary-container shadow-[0_0_12px_rgba(229,195,120,0.3)] cursor-pointer"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UGdBuQRnkxxRNEGzbUKQsQl6THHD3CVNEYhfu94MHP22YkfoAqZdrxHYKoovqN8sQ69cdJ0eAJF8G59oNeoT1B9nW_7e5X1lGO5d89nlHX62na1E0uI6gfSKJeOsgAcLb_KBx32cN7srob_4qb5UqNRYJes1zhZS_z9DrGkVr7okiCSLtqJXFKIvSQgt-3_noS9v-VxAOGIQG6_zCjWyEdP4tb7YTdKwaGg9N19DgsWXb5MpuXnRdQNg"/></div></div></div></header><aside class="fixed left-0 top-20 bottom-0 w-72 z-40 bg-surface-container-lowest/70 backdrop-blur-2xl shadow-[4px_0_24px_rgba(0,0,0,0.4)] flex flex-col justify-between p-space-md transition-all duration-300"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-medium shadow-[0_0_15px_rgba(229,195,120,0.2)]"><div class="px-space-md py-space-xs font-label-caps text-label-caps text-outline uppercase tracking-widest">Navigation</div><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="dashboard" href="#">Dashboard</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="curated-directory" href="#">All Tools</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="favorites" href="#">Favorites</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="categories" href="#">Collections / Categories</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="prompt-vault" href="#">Prompt Vault</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="ask-ai" href="#">Ask AI</a></nav><div class="flex flex-col gap-space-sm"><div class="p-space-md rounded-xl bg-surface-container-low/60 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"><div class="flex items-center justify-between mb-space-xs"><span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Quick Storage</span><span class="font-label-caps text-label-caps text-primary">68%</span></div><div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden"><div class="h-full w-[68%] rounded-full bg-gradient-to-r from-primary-container to-secondary shadow-[0_0_8px_rgba(229,195,120,0.5)]"></div></div><div class="mt-space-xs flex justify-between items-center"><span class="font-body-sm text-body-sm text-on-surface-variant">13.6 GB / 20 GB</span></div></div><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="settings" href="#">Settings</a></div></aside><div class="pl-72"><main class="relative w-full pt-20 px-gutter min-h-screen bg-surface"><div class="flex flex-col w-full relative min-w-0 pb-space-xl">
+<!-- Subtle WebGL Fluid Background Layer -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40">
+
+<div class="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface pointer-events-none"></div>
+</div>
+<div class="relative z-10 flex flex-col w-full max-w-[1600px] mx-auto gap-space-xl">
+<!-- Header & Quick Status Strip -->
+<section class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg pt-space-md">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(233,195,73,0.8)] animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">
+            Priority Workbench // High-Compute Enclave
+          </span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">
+          Starred Sovereign <span class="text-primary-container drop-shadow-[0_0_20px_rgba(229,195,120,0.35)]">Artifacts</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Quick-access executive suite for your most critical daily AI engines, automated agents, and prompt pipelines with instant hotkeys and dedicated compute tunnels.
+        </p>
+</div>
+<!-- Action Strip -->
+<div class="flex flex-wrap items-center gap-space-sm self-start lg:self-end">
+<!-- Live Compute Pill -->
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low/70 backdrop-blur-2xl shadow-sm text-on-surface">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Tunnel:</span>
+<span class="font-label-md text-label-md text-primary font-medium">Optimal (28ms)</span>
+</div>
+<!-- Reorder Deck -->
+<button class="group flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high/40 hover:bg-surface-container-high/80 text-on-surface-variant hover:text-on-surface transition-all duration-300 shadow-sm" type="button">
+<span class="material-symbols-outlined text-base group-hover:text-primary transition-colors">swap_vert</span>
+<span class="font-label-md text-label-md">Reorder Deck</span>
+</button>
+<!-- Primary Add Favorite -->
+<button class="relative group overflow-hidden flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-lg text-label-lg shadow-[0_0_25px_rgba(229,195,120,0.3)] hover:shadow-[0_0_30px_rgba(229,195,120,0.5)] transition-all" type="button">
+<span class="material-symbols-outlined text-base">star</span>
+<span>+ Add to Favorites</span>
+<span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out"></span>
+</button>
+</div>
+</section>
+<!-- Metrics & Telemetry HUD -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Tile 1 -->
+<div class="relative overflow-hidden flex flex-col justify-between p-space-md rounded-xl bg-surface-container-low/70 backdrop-blur-2xl shadow-md group hover:bg-surface-container-high/50 transition-all duration-300">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Pinned Workhorses</span>
+<span class="material-symbols-outlined text-base text-primary-container">shield</span>
+</div>
+<div class="flex items-baseline justify-between mt-space-md">
+<span class="font-headline-lg text-headline-lg text-on-surface font-light">32 <span class="font-body-sm text-body-sm text-on-surface-variant">Engines</span></span>
+<!-- Inline Sparkline Graphic -->
+<svg class="w-20 h-7 text-secondary" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 80 28">
+<path d="M1 20L15 14L28 22L42 8L55 12L70 4L79 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-secondary">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+<span>100% Operational Capacity</span>
+</div>
+</div>
+<!-- Tile 2 -->
+<div class="relative overflow-hidden flex flex-col justify-between p-space-md rounded-xl bg-surface-container-low/70 backdrop-blur-2xl shadow-md group hover:bg-surface-container-high/50 transition-all duration-300">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Curator Aggregate</span>
+<span class="material-symbols-outlined text-base text-secondary">grade</span>
+</div>
+<div class="flex items-baseline justify-between mt-space-md">
+<span class="font-headline-lg text-headline-lg text-on-surface font-light">4.94 <span class="font-body-sm text-body-sm text-on-surface-variant">/ 5.0</span></span>
+<span class="font-label-caps text-label-caps px-space-xs py-0.5 rounded bg-primary/10 text-primary uppercase">Top Tier</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-xs text-primary">thumb_up</span>
+<span>Evaluated across 16.4k runs</span>
+</div>
+</div>
+<!-- Tile 3 -->
+<div class="relative overflow-hidden flex flex-col justify-between p-space-md rounded-xl bg-surface-container-low/70 backdrop-blur-2xl shadow-md group hover:bg-surface-container-high/50 transition-all duration-300">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Daily Sovereign Runs</span>
+<span class="material-symbols-outlined text-base text-primary-container">bolt</span>
+</div>
+<div class="flex items-baseline justify-between mt-space-md">
+<span class="font-headline-lg text-headline-lg text-on-surface font-light">24 <span class="font-body-sm text-body-sm text-on-surface-variant">Invocations</span></span>
+<span class="font-label-caps text-label-caps text-secondary flex items-center font-medium">+12.4%</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span>Median latency: <strong class="text-on-surface font-medium">182ms</strong></span>
+</div>
+</div>
+<!-- Tile 4 -->
+<div class="relative overflow-hidden flex flex-col justify-between p-space-md rounded-xl bg-surface-container-low/70 backdrop-blur-2xl shadow-md group hover:bg-surface-container-high/50 transition-all duration-300">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Direct Keybindings</span>
+<span class="material-symbols-outlined text-base text-secondary">keyboard</span>
+</div>
+<div class="flex items-baseline justify-between mt-space-md">
+<span class="font-headline-lg text-headline-lg text-on-surface font-light">10 <span class="font-body-sm text-body-sm text-on-surface-variant">Mapped</span></span>
+<kbd class="font-label-caps text-label-caps px-space-xs py-0.5 rounded bg-surface-container-highest text-primary">⌥1 – ⌥0</kbd>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-xs text-secondary">sync_saved_locally</span>
+<span>Hardware accelerator bound</span>
+</div>
+</div>
+</section>
+<!-- Filters, Navigation & Control Bar -->
+<section class="flex flex-col gap-space-md">
+<!-- Filter Tabs Strip -->
+<div class="flex items-center justify-between overflow-x-auto pb-space-xs gap-space-md scrollbar-none">
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase tracking-wider shadow-sm transition-all">
+            All Starred (32)
+          </button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-low/60 hover:bg-surface-container-high/50 text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-all">
+            Daily Drivers (8)
+          </button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-low/60 hover:bg-surface-container-high/50 text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-all">
+            Code Copilots (7)
+          </button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-low/60 hover:bg-surface-container-high/50 text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-all">
+            Heavy Reasoning (6)
+          </button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-low/60 hover:bg-surface-container-high/50 text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-all">
+            Generative Visuals (5)
+          </button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-low/60 hover:bg-surface-container-high/50 text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-all">
+            Autonomous Agents (6)
+          </button>
+</div>
+<!-- Density / Layout View Toggles -->
+<div class="hidden sm:flex items-center p-0.5 rounded-full bg-surface-container-low/80 backdrop-blur-xl shrink-0">
+<button aria-label="Grid view" class="p-space-xs rounded-full bg-surface-container-high text-primary shadow-sm">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+</button>
+<button aria-label="List view" class="p-space-xs rounded-full text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm">view_agenda</span>
+</button>
+</div>
+</div>
+<!-- Search & Sort Secondary Controls -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-space-sm p-space-sm rounded-xl bg-surface-container-low/60 backdrop-blur-2xl shadow-sm">
+<div class="flex items-center gap-space-sm w-full md:w-80">
+<span class="material-symbols-outlined text-on-surface-variant text-base pl-space-xs">filter_list</span>
+<input class="w-full bg-transparent font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none" placeholder="Filter by title, tag, or hotkey (e.g. ⌥2)..." type="text"/>
+</div>
+<div class="flex items-center gap-space-md self-end md:self-auto">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Sort by:</span>
+<select aria-label="Sort favorites" class="bg-surface-container-high/70 text-on-surface font-label-md text-label-md px-space-sm py-space-xs rounded-lg focus:outline-none cursor-pointer">
+<option>Launch Frequency (Desc)</option>
+<option>Curator Rating (5.0 → 1.0)</option>
+<option>Latency (Fastest First)</option>
+<option>Alphabetical</option>
+</select>
+</div>
+<span class="font-label-caps text-label-caps text-outline">|</span>
+<span class="font-label-caps text-label-caps text-secondary font-medium tracking-wide">6 Active Workhorses Displayed</span>
+</div>
+</div>
+</section>
+<!-- Pinned Workhorse Cards Grid (6 Prominent Luxury Glass Cards) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- Card 1: Perplexity Pro -->
+<article class="relative flex flex-col justify-between rounded-xl bg-surface-container-low/70 backdrop-blur-2xl p-space-lg shadow-xl hover:bg-surface-container-high/60 transition-all duration-300 group">
+<div class="flex flex-col gap-space-md">
+<!-- Top Row: Icon, Title, Hotkey, Star -->
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shadow-inner group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-2xl text-secondary">explore</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium">Perplexity Pro</h2>
+<kbd class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-caps text-label-caps">⌥1</kbd>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Search &amp; Synthesis</span>
+</div>
+</div>
+<button aria-label="Toggle star" class="text-secondary p-1 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<!-- Curator Evaluation Note -->
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+            Primary daily driver for competitive intelligence and verified whitepaper synthesis with zero ad bloat.
+          </p>
+<!-- Telemetry Badges Strip -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/80 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-xs text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>5.0</span>
+<span class="text-on-surface-variant text-[10px]">(4,820 runs)</span>
+</div>
+<div class="px-space-xs py-0.5 rounded bg-surface-container-high/80 text-on-surface-variant font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary-container">speed</span>
+<span>140ms</span>
+</div>
+<div class="px-space-xs py-0.5 rounded bg-surface-container-high/80 text-secondary font-label-caps text-label-caps uppercase">
+              Edge Direct • Dedicated
+            </div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-0.5">
+<span>Dossier</span>
+<span class="material-symbols-outlined text-xs">north_east</span>
+</button>
+<button class="relative group/btn overflow-hidden flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-md text-label-md shadow-md hover:shadow-lg transition-all">
+<span>Launch Workhorse</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</article>
+<!-- Card 2: Claude 3.5 Sonnet -->
+<article class="relative flex flex-col justify-between rounded-xl bg-surface-container-low/70 backdrop-blur-2xl p-space-lg shadow-xl hover:bg-surface-container-high/60 transition-all duration-300 group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shadow-inner group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-2xl text-secondary">neurology</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium">Claude 3.5 Sonnet</h2>
+<kbd class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-caps text-label-caps">⌥2</kbd>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Architectural Reasoning</span>
+</div>
+</div>
+<button aria-label="Toggle star" class="text-secondary p-1 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+            Flawless code architecture, refactoring, and nuanced multi-agent system design.
+          </p>
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/80 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-xs text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>5.0</span>
+<span class="text-on-surface-variant text-[10px]">(6,110 runs)</span>
+</div>
+<div class="px-space-xs py-0.5 rounded bg-surface-container-high/80 text-on-surface-variant font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">layers</span>
+<span>200k High-Res</span>
+</div>
+<div class="px-space-xs py-0.5 rounded bg-surface-container-high/80 text-secondary font-label-caps text-label-caps uppercase">
+              Priority API Tier
+            </div>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-0.5">
+<span>Dossier</span>
+<span class="material-symbols-outlined text-xs">north_east</span>
+</button>
+<button class="relative group/btn overflow-hidden flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-md text-label-md shadow-md hover:shadow-lg transition-all">
+<span>Launch Workhorse</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</article>
+<!-- Card 3: Cursor IDE -->
+<article class="relative flex flex-col justify-between rounded-xl bg-surface-container-low/70 backdrop-blur-2xl p-space-lg shadow-xl hover:bg-surface-container-high/60 transition-all duration-300 group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shadow-inner group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-2xl text-secondary">terminal</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium">Cursor IDE</h2>
+<kbd class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-caps text-label-caps">⌥3</kbd>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Codebase Orchestrator</span>
+</div>
+</div>
+<button aria-label="Toggle star" class="text-secondary p-1 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+            Full repo embeddings with lightning-fast localized indexing and multi-file code editing.
+          </p>
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/80 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-xs text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9</span>
+<span class="text-on-surface-variant text-[10px]">(2,340 runs)</span>
+</div>
+<div class="px-space-xs py-0.5 rounded bg-surface-container-high/80 text-secondary font-label-caps text-label-caps uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span>
+<span>Local Daemon Active</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-0.5">
+<span>Dossier</span>
+<span class="material-symbols-outlined text-xs">north_east</span>
+</button>
+<button class="relative group/btn overflow-hidden flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-md text-label-md shadow-md hover:shadow-lg transition-all">
+<span>Launch Workhorse</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</article>
+<!-- Card 4: Midjourney v6 -->
+<article class="relative flex flex-col justify-between rounded-xl bg-surface-container-low/70 backdrop-blur-2xl p-space-lg shadow-xl hover:bg-surface-container-high/60 transition-all duration-300 group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shadow-inner group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-2xl text-secondary">palette</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium">Midjourney v6</h2>
+<kbd class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-caps text-label-caps">⌥4</kbd>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Generative Visuals</span>
+</div>
+</div>
+<button aria-label="Toggle star" class="text-secondary p-1 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+            High aesthetic fidelity and hyper-refined texture rendering for brand assets and pitch decks.
+          </p>
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/80 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-xs text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9</span>
+<span class="text-on-surface-variant text-[10px]">(1,980 runs)</span>
+</div>
+<div class="px-space-xs py-0.5 rounded bg-surface-container-high/80 text-secondary font-label-caps text-label-caps uppercase">
+              Fast Relay Ready
+            </div>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-0.5">
+<span>Dossier</span>
+<span class="material-symbols-outlined text-xs">north_east</span>
+</button>
+<button class="relative group/btn overflow-hidden flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-md text-label-md shadow-md hover:shadow-lg transition-all">
+<span>Launch Workhorse</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</article>
+<!-- Card 5: ElevenLabs -->
+<article class="relative flex flex-col justify-between rounded-xl bg-surface-container-low/70 backdrop-blur-2xl p-space-lg shadow-xl hover:bg-surface-container-high/60 transition-all duration-300 group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shadow-inner group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-2xl text-secondary">graphic_eq</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium">ElevenLabs</h2>
+<kbd class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-caps text-label-caps">⌥5</kbd>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Voice &amp; Audio Synthesis</span>
+</div>
+</div>
+<button aria-label="Toggle star" class="text-secondary p-1 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+            Ultra-low jitter studio voiceover pipeline for investor briefs and product walkthroughs.
+          </p>
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/80 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-xs text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.8</span>
+<span class="text-on-surface-variant text-[10px]">(840 runs)</span>
+</div>
+<div class="px-space-xs py-0.5 rounded bg-surface-container-high/80 text-secondary font-label-caps text-label-caps uppercase">
+              HQ Voice Lock
+            </div>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-0.5">
+<span>Dossier</span>
+<span class="material-symbols-outlined text-xs">north_east</span>
+</button>
+<button class="relative group/btn overflow-hidden flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-md text-label-md shadow-md hover:shadow-lg transition-all">
+<span>Launch Workhorse</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</article>
+<!-- Card 6: v0 by Vercel -->
+<article class="relative flex flex-col justify-between rounded-xl bg-surface-container-low/70 backdrop-blur-2xl p-space-lg shadow-xl hover:bg-surface-container-high/60 transition-all duration-300 group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shadow-inner group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-2xl text-secondary">devices</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-medium">v0 by Vercel</h2>
+<kbd class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-caps text-label-caps">⌥6</kbd>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Generative UI Frameworks</span>
+</div>
+</div>
+<button aria-label="Toggle star" class="text-secondary p-1 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+            Rapid UI component prototyping with instant Tailwind CSS and clean React primitives export.
+          </p>
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/80 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-xs text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.7</span>
+<span class="text-on-surface-variant text-[10px]">(1,410 runs)</span>
+</div>
+<div class="px-space-xs py-0.5 rounded bg-surface-container-high/80 text-secondary font-label-caps text-label-caps uppercase">
+              Next.js Live Sync
+            </div>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-0.5">
+<span>Dossier</span>
+<span class="material-symbols-outlined text-xs">north_east</span>
+</button>
+<button class="relative group/btn overflow-hidden flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-md text-label-md shadow-md hover:shadow-lg transition-all">
+<span>Launch Workhorse</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</article>
+</section>
+<!-- Quick Hotkey Floating Dock Bar -->
+<aside class="sticky bottom-6 z-30 w-full max-w-5xl mx-auto">
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md p-space-sm px-space-md rounded-2xl bg-surface-container-lowest/85 backdrop-blur-3xl shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+<!-- Shortcuts Array -->
+<div class="flex items-center gap-space-xs overflow-x-auto w-full sm:w-auto scrollbar-none py-1">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider pl-1 pr-2 hidden md:inline">Quick Launch:</span>
+<button class="group flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-high/50 hover:bg-primary-container/20 text-on-surface transition-all shrink-0">
+<kbd class="font-label-caps text-label-caps text-primary bg-surface-container-highest px-1 py-0.5 rounded">⌥1</kbd>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">Perplexity</span>
+</button>
+<button class="group flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-high/50 hover:bg-primary-container/20 text-on-surface transition-all shrink-0">
+<kbd class="font-label-caps text-label-caps text-primary bg-surface-container-highest px-1 py-0.5 rounded">⌥2</kbd>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">Claude</span>
+</button>
+<button class="group flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-high/50 hover:bg-primary-container/20 text-on-surface transition-all shrink-0">
+<kbd class="font-label-caps text-label-caps text-primary bg-surface-container-highest px-1 py-0.5 rounded">⌥3</kbd>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">Cursor</span>
+</button>
+<button class="group flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-high/50 hover:bg-primary-container/20 text-on-surface transition-all shrink-0">
+<kbd class="font-label-caps text-label-caps text-primary bg-surface-container-highest px-1 py-0.5 rounded">⌥4</kbd>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">Midjourney</span>
+</button>
+<button class="group flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-high/50 hover:bg-primary-container/20 text-on-surface transition-all shrink-0">
+<kbd class="font-label-caps text-label-caps text-primary bg-surface-container-highest px-1 py-0.5 rounded">⌥5</kbd>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">ElevenLabs</span>
+</button>
+<button class="group flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-high/50 hover:bg-primary-container/20 text-on-surface transition-all shrink-0">
+<kbd class="font-label-caps text-label-caps text-primary bg-surface-container-highest px-1 py-0.5 rounded">⌥6</kbd>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">v0</span>
+</button>
+<button class="group flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-high/50 hover:bg-primary-container/20 text-on-surface transition-all shrink-0">
+<kbd class="font-label-caps text-label-caps text-primary bg-surface-container-highest px-1 py-0.5 rounded">⌥7</kbd>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">GPT-4o</span>
+</button>
+</div>
+<!-- Dock Actions -->
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="flex items-center gap-1 px-space-sm py-1 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-base">tune</span>
+<span class="hidden lg:inline">Configure</span>
+</button>
+<button class="flex items-center gap-1 px-space-sm py-1 rounded-lg bg-primary-container/10 hover:bg-primary-container/20 text-primary font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-base">cached</span>
+<span>Sync Tunnels</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<script>
+  // Ensure the Favorites sidebar navigation item is visually highlighted as active
+  document.addEventListener("DOMContentLoaded", () => {
+    const favoritesNavLink = document.querySelector('aside nav a[data-path="favorites"]');
+    if (favoritesNavLink) {
+      favoritesNavLink.classList.add("bg-primary-container", "text-on-primary-container", "font-medium", "shadow-[0_0_15px_rgba(229,195,120,0.2)]");
+      favoritesNavLink.classList.remove("text-on-surface-variant");
+    }
+
+    // Global Keydown Handler for Hotkeys ⌥1 to ⌥6
+    window.addEventListener("keydown", (e) => {
+      if (e.altKey && !isNaN(e.key) && Number(e.key) >= 1 && Number(e.key) <= 6) {
+        e.preventDefault();
+        const index = Number(e.key) - 1;
+        const cards = document.querySelectorAll("article");
+        if (cards[index]) {
+          cards[index].classList.add("ring-2", "ring-primary-container", "scale-[1.02]");
+          setTimeout(() => {
+            cards[index].classList.remove("ring-2", "ring-primary-container", "scale-[1.02]");
+          }, 400);
+        }
+      }
+    });
+  });
+</script></main></div></body></html>

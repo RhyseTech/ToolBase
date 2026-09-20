@@ -1,0 +1,347 @@
+﻿{
+    "screenshot":  {
+                       "name":  "projects/7341961731937648866/screens/cf14eb49044648148365fc354cb35fa3/fileEntries/screenshot",
+                       "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1XBpduTzv_AHKtZc4Ofoz6w8629r8LP-Pv9XTJFIobEYrAgJoPZ63iiCjY2zDsPC84dNKAmeZwxwU6X_uUc19RpnaJmNUC2fQqz431K8kdNnZFLH-12wW1lHOkkGi3pAFJKq_-klRrEQryOFNQy0yfyvNCDnp8a7R_mUE1ZmOWxhWYWh5v3ua-nZiNWUuuP6VZ2eBvYcGQ5Yj7Sb6LuU1NI0bUqUCZ9BHoYaf_487ohzxjXT-yi4O0mEA"
+                   },
+    "htmlCode":  {
+                     "name":  "projects/7341961731937648866/screens/cf14eb49044648148365fc354cb35fa3/fileEntries/html",
+                     "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1YmM3YzIxNjU5OTkwNTRjYzdkMWE0MzdlNmIxEgsSBxDU4rzW4wEYAZIBIwoKcHJvamVjdF9pZBIVQhM3MzQxOTYxNzMxOTM3NjQ4ODY2\u0026filename=\u0026opi=89354086",
+                     "mimeType":  "text/html"
+                 },
+    "id":  "cf14eb49044648148365fc354cb35fa3",
+    "generatedBy":  "figaro_agent",
+    "width":  "2560",
+    "height":  "4860",
+    "title":  "Ask AI — Sovereign Autonomous Intelligence",
+    "prompt":  "Design a high-end luxury PC desktop \u0027Ask AI — Sovereign Autonomous Intelligence\u0027 workspace for Atelier Suite / AI ToolBox, perfectly matching the design language of SCREEN_4 (Prompt Vault), SCREEN_6 (Collections), and SCREEN_8 (Favorites) in the Velvet Aurum design system.\n\nKey visual and structural requirements:\n\n1. Sub-Header \u0026 Status Tag:\n- Top badge: \"● SOVEREIGN REASONING LAYER // ENCLAVE SYNERGY V4.8 | ZERO-DATA RETENTION ACTIVE\"\n- Main Title: \"Ask AI \u0026 Sovereign Copilot\" with editorial typography, \"Sovereign Copilot\" in luminous champagne gold italics (#e5c378).\n- Subtitle: \"Autonomous cross-enclave synthesis query engine. Seamlessly reasons across your 127 indexed AI tools, prompt macros, and encrypted benchmark dossiers.\"\n- Right controls:\n  * Model Selector pill dropdown: \"Claude 3.5 Sonnet (Direct Enclave)\" with latency badge \"⚡ 14ms\"\n  * Mode pill: \"Deep Synthesis \u0026 Audit\"\n  * Action button: \"+ New Session\" with glass frosted border and \"Clear Context\" button\n\n2. Top Telemetry HUD (4 Glass Metric Cards in a row):\n- Card 1: \"INDEXED KNOWLEDGE BASE\" -\u003e \"127 Instruments\" with subtext \"100% Vectorized\" and gold sync pill \"● LIVE\".\n- Card 2: \"CONTEXT WINDOW\" -\u003e \"184k / 200k\" with visual mini progress bar and \"3.2k Reserve\" tag.\n- Card 3: \"SYNTHESIS LATENCY\" -\u003e \"210ms\" with \"+34% Faster\" badge and \"Local GPU Accelerator\".\n- Card 4: \"ZERO-DRIFT FIDELITY\" -\u003e \"99.8%\" with a sleek gold sparkline wave curve and \"Verified Audit\".\n\n3. Main Interactive Workspace (Two-Column Desktop Split View):\n- LEFT / MAIN COLUMN (Conversational Canvas \u0026 Reasoning Timeline, ~68% width):\n  * Session Title Bar: \"Session #402: High-Concurrence Multi-Agent Orchestration \u0026 Model Stacking\" with timestamp \"Active · 3m ago\" and export button.\n  * Turn 1 (User Query Bubble):\n    - Avatar / Tag: \"V. STERLING · MANAGING DIRECTOR\" (with luxury amber/gold initials or badge)\n    - Prompt text: \"Evaluate our current tool stack for enterprise full-stack prototyping. Should we replace v0 + Cursor with Devin for autonomous frontend sprints, or keep the hybrid LangGraph supervisor pipeline? Reference our Prompt Vault macros.\"\n  * Turn 2 (Ask AI Sovereign Response Bubble):\n    - Avatar / Tag: \"ATELIER INTELLIGENCE // CLAUDE 3.5 ENCLAVE\" with a glowing amber/gold diamond icon and \"REASONED IN 480MS · 1,420 TOKENS\"\n    - \"SYNTHETIC REASONING CHAIN\" collapsible panel (open state): Showing 3 verified steps:\n       1. \"Retrieved 3 Tool Dossiers: Cursor IDE (★ 4.9), v0 by Vercel (★ 4.7), Devin (★ 4.8)\"\n       2. \"Cross-referenced Prompt Vault Macro #06: Autonomous Multi-Agent Swarm Orchestrator\"\n       3. \"Benchmarked Cost \u0026 Latency Tradeoffs ($0.04/turn vs $2.80/task)\"\n    - Executive Synthesis Response:\n      * Clear, authoritative markdown text with bullet points, comparison chips, and architectural recommendation.\n      * Recommendation: \"Retain Hybrid Architecture. Use v0 for initial high-fidelity component scaffold, Cursor for targeted precision AST refactoring, and LangGraph for high-level PR verification loops. Full autonomous agents (Devin) currently exhibit a 3.4x latency penalty for interactive design iterations.\"\n    - Referenced Tool Artifact Chips (interactive mini-cards embedded in response):\n      * Card A: \"Cursor IDE\" with icon, \"4.9 ★\", \"Codebase Orchestrator\", \"⌥3 hotkey\", and \"Open Dossier ↗\"\n      * Card B: \"v0 by Vercel\" with icon, \"4.7 ★\", \"Generative UI Frameworks\", \"⌥6 hotkey\", and \"Open Dossier ↗\"\n      * Card C: \"Devin\" with icon, \"4.8 ★\", \"Autonomous Engineer\", \"Explore Discipline ↗\"\n    - Quick Actions under AI response: \"Copy Synthesis\", \"Fork to Prompt Vault\", \"Insert into Workspace Bundle\", \"Regenerate with Sonar\".\n\n  * Bottom Query Composer Input (Floating Glass Luxury Bar):\n    - Textarea with placeholder: \"Ask anything across your AI toolbox, dossiers, or paste a prompt macro...\"\n    - Attached context pills: \"Attached: [Systems Architecture Teardown Macro]\", \"Active Enclave: Local Ollama + Cloud Sonnet\"\n    - Left controls: Attach file / tool icon, Macro Picker (\"⌥P\"), Web Retrieval toggle (Active).\n    - Right controls: Token counter (\"142 / 200k tokens\"), Send button in luminous gold (\"Execute Query ↵\").\n\n- RIGHT COLUMN (Inspector \u0026 Knowledge Context Drawer, ~32% width):\n  * Card 1: \"Quick Macro Injection\" (From Prompt Vault)\n    - 3 one-click injectable prompt cards:\n      * \"Principal Systems Architecture Teardown\" (Claude 3.5 · 240t) -\u003e `[Inject]`\n      * \"Empirical Research \u0026 Whitepaper Verification\" (Sonar · 160t) -\u003e `[Inject]`\n      * \"Production Design System \u0026 React Blueprint\" (v0 · 380t) -\u003e `[Inject]`\n  * Card 2: \"Active Context References\"\n    - Pinned tools: Perplexity Pro (28ms), Claude 3.5 Sonnet (Edge), Midjourney v6.1.\n    - Status indicator: \"Zero Hallucination Grounding: 100% on Atelier Corpus\".\n  * Card 3: \"Recent Enclave Conversations\"\n    - \"Q3 AI Tech Stack Rationalization\" (12m ago)\n    - \"Fine-Tuning Local Llama 3 on Design Tokens\" (Yesterday)\n    - \"Midjourney v6 Prompts for Luxury Watch Editorial\" (2 days ago)\n\n4. Bottom Dock / Status Strip:\n- Fast Hotkey Reference: \"⌥ + K Command Palette | ⌥ + P Insert Macro | ⌥ + 1-6 Launch Workhorse | ⌘ + ↵ Execute\"\n- API Sync status: \"Enclave Tunnel: Optimal (18ms) · TLS 1.3 End-to-End Encrypted\"\n\nColor Palette \u0026 Visuals:\n- Dark luxury obsidian background (#0d0e11 / #121316), subtle golden borders (#e5c378 at 20-30% opacity), glassmorphic backdrop-blur cards, warm champagne typography accents, crisp monospaced tags for telemetry and hotkeys.\n- Matches exact layout rhythm, typography, and polish of SCREEN_4, SCREEN_6, and SCREEN_8.",
+    "name":  "projects/7341961731937648866/screens/cf14eb49044648148365fc354cb35fa3",
+    "theme":  {
+                  "colorMode":  "DARK",
+                  "font":  "INTER",
+                  "roundness":  "ROUND_EIGHT",
+                  "customColor":  "#e5c378",
+                  "headlineFont":  "INTER",
+                  "bodyFont":  "INTER",
+                  "labelFont":  "INTER",
+                  "namedColors":  {
+                                      "inverse_primary":  "#745b1a",
+                                      "secondary_fixed":  "#ffe088",
+                                      "on_secondary_fixed":  "#241a00",
+                                      "surface_container":  "#1f1f23",
+                                      "primary":  "#ffe09d",
+                                      "on_primary_fixed":  "#251a00",
+                                      "tertiary":  "#d8e4f6",
+                                      "on_error_container":  "#ffdad6",
+                                      "primary_fixed_dim":  "#e4c277",
+                                      "secondary_fixed_dim":  "#e9c349",
+                                      "surface_tint":  "#e4c277",
+                                      "outline":  "#999080",
+                                      "on_error":  "#690005",
+                                      "surface_bright":  "#38393d",
+                                      "on_tertiary_fixed_variant":  "#3c4856",
+                                      "inverse_surface":  "#e3e2e6",
+                                      "error_container":  "#93000a",
+                                      "tertiary_fixed_dim":  "#bbc7d9",
+                                      "on_tertiary_fixed":  "#101c29",
+                                      "surface_variant":  "#343538",
+                                      "on_secondary_container":  "#342800",
+                                      "surface_container_highest":  "#343538",
+                                      "on_secondary":  "#3c2f00",
+                                      "on_primary_fixed_variant":  "#5a4302",
+                                      "background":  "#121316",
+                                      "error":  "#ffb4ab",
+                                      "on_tertiary":  "#26313f",
+                                      "on_primary":  "#3f2e00",
+                                      "on_tertiary_container":  "#485463",
+                                      "outline_variant":  "#4d4639",
+                                      "on_surface_variant":  "#d0c5b4",
+                                      "inverse_on_surface":  "#2f3034",
+                                      "on_surface":  "#e3e2e6",
+                                      "on_primary_container":  "#684f0f",
+                                      "tertiary_container":  "#bcc8da",
+                                      "surface_container_lowest":  "#0d0e11",
+                                      "secondary":  "#e9c349",
+                                      "secondary_container":  "#af8d11",
+                                      "surface_container_high":  "#292a2d",
+                                      "on_secondary_fixed_variant":  "#574500",
+                                      "on_background":  "#e3e2e6",
+                                      "primary_fixed":  "#ffdf9b",
+                                      "surface_dim":  "#121316",
+                                      "surface_container_low":  "#1b1b1f",
+                                      "tertiary_fixed":  "#d7e3f6",
+                                      "surface":  "#121316",
+                                      "primary_container":  "#e5c378"
+                                  },
+                  "colorVariant":  "FIDELITY",
+                  "overridePrimaryColor":  "#e5c378",
+                  "overrideSecondaryColor":  "#d4af37",
+                  "overrideTertiaryColor":  "#6e7a8a",
+                  "overrideNeutralColor":  "#08090c",
+                  "spacingScale":  2,
+                  "typography":  {
+                                     "display-md":  {
+                                                        "fontFamily":  "Inter",
+                                                        "fontSize":  "36px",
+                                                        "fontWeight":  "400",
+                                                        "lineHeight":  "44px",
+                                                        "letterSpacing":  "-0.02em"
+                                                    },
+                                     "body-sm":  {
+                                                     "fontFamily":  "Inter",
+                                                     "fontSize":  "12px",
+                                                     "fontWeight":  "400",
+                                                     "lineHeight":  "18px",
+                                                     "letterSpacing":  "0.01em"
+                                                 },
+                                     "headline-sm":  {
+                                                         "fontFamily":  "Inter",
+                                                         "fontSize":  "18px",
+                                                         "fontWeight":  "500",
+                                                         "lineHeight":  "26px",
+                                                         "letterSpacing":  "-0.005em"
+                                                     },
+                                     "body-md":  {
+                                                     "fontFamily":  "Inter",
+                                                     "fontSize":  "14px",
+                                                     "fontWeight":  "400",
+                                                     "lineHeight":  "22px",
+                                                     "letterSpacing":  "0em"
+                                                 },
+                                     "headline-md":  {
+                                                         "fontFamily":  "Inter",
+                                                         "fontSize":  "22px",
+                                                         "fontWeight":  "500",
+                                                         "lineHeight":  "30px",
+                                                         "letterSpacing":  "-0.01em"
+                                                     },
+                                     "display-lg":  {
+                                                        "fontFamily":  "Inter",
+                                                        "fontSize":  "48px",
+                                                        "fontWeight":  "300",
+                                                        "lineHeight":  "56px",
+                                                        "letterSpacing":  "-0.025em"
+                                                    },
+                                     "label-lg":  {
+                                                      "fontFamily":  "Inter",
+                                                      "fontSize":  "13px",
+                                                      "fontWeight":  "500",
+                                                      "lineHeight":  "18px",
+                                                      "letterSpacing":  "0.02em"
+                                                  },
+                                     "headline-lg":  {
+                                                         "fontFamily":  "Inter",
+                                                         "fontSize":  "28px",
+                                                         "fontWeight":  "400",
+                                                         "lineHeight":  "36px",
+                                                         "letterSpacing":  "-0.015em"
+                                                     },
+                                     "label-md":  {
+                                                      "fontFamily":  "Inter",
+                                                      "fontSize":  "11px",
+                                                      "fontWeight":  "600",
+                                                      "lineHeight":  "16px",
+                                                      "letterSpacing":  "0.06em"
+                                                  },
+                                     "body-lg":  {
+                                                     "fontFamily":  "Inter",
+                                                     "fontSize":  "16px",
+                                                     "fontWeight":  "400",
+                                                     "lineHeight":  "24px",
+                                                     "letterSpacing":  "0em"
+                                                 },
+                                     "label-caps":  {
+                                                        "fontFamily":  "Inter",
+                                                        "fontSize":  "10px",
+                                                        "fontWeight":  "600",
+                                                        "lineHeight":  "14px",
+                                                        "letterSpacing":  "0.12em"
+                                                    }
+                                 },
+                  "spacing":  {
+                                  "gutter":  "1.5rem",
+                                  "space-lg":  "1.5rem",
+                                  "space-md":  "1rem",
+                                  "space-sm":  "0.5rem",
+                                  "gutter-tablet":  "1rem",
+                                  "margin-tablet":  "1.5rem",
+                                  "space-xl":  "2.5rem",
+                                  "space-xs":  "0.25rem",
+                                  "margin":  "3rem"
+                              },
+                  "headlineFontFamily":  "Inter",
+                  "bodyFontFamily":  "Inter",
+                  "labelFontFamily":  "Inter"
+              },
+    "deviceType":  "DESKTOP",
+    "screenType":  "DESIGN",
+    "screenMetadata":  {
+                           "agentType":  "PRO_AGENT",
+                           "status":  "COMPLETE"
+                       },
+    "designSystem":  {
+                         "name":  "assets/0888ef858f404cc386bd5396cf46fc5a",
+                         "designSystem":  {
+                                              "displayName":  "Velvet Aurum",
+                                              "styleGuidelines":  "## Brand \u0026 Style\n\nThis design system targets high-net-worth individuals, wealth managers, and discerning connoisseurs who operate in elite fintech, private asset stewardship, and haute-horlogerie digital spaces. The aesthetic communicates poise, precision, and sovereign calm. It avoids gratuitous ornament, relying instead on optical depth, pristine micro-details, and expansive breathing room to project silent authority.\n\nThe core visual style is an architectural fusion of **Minimalism** and **Refined Glassmorphism**. Elements appear suspended in deep void space over obsidian depths, rendered with optical micro-textures, ultra-subtle champagne refraction, and delicate hairline edges that catch light like diamond-cut sapphire crystal. Every interaction prioritizes effortless scanning, fluid transitions, and visual serenity.\n\n## Layout \u0026 Spacing\n\nThe layout embraces high-order spatial composition, favoring generous margins and distinct separation over dense packing.\n\n- **Grid Architecture:** Desktop views employ a 12-column fluid grid framed within a maximum container width of `1600px`. Tablet viewports (`768px` to `1024px`) consolidate to an 8-column layout with reduced gutters (`1rem`) and outer canvas margins (`1.5rem`).\n- **Vertical Flow:** Section-level spacing requires a minimum of `2.5rem` to `4rem` separation to reinforce the feeling of an exclusive gallery.\n- **Micro Rhythm:** All spatial gaps between nested content items adhere strictly to a `4px` base step: `space-xs` (4px), `space-sm` (8px), `space-md` (16px), `space-lg` (24px), and `space-xl` (40px).\n\n## Elevation \u0026 Depth\n\nDepth is established through translucent stacking, controlled background diffusion, and chromatic aura glows rather than opaque drop shadows.\n\n- **Atmospheric Aura Backdrops:** Soft, localized radial gradients in deep champagne (`rgba(212, 175, 55, 0.04)`) and pale slate (`rgba(110, 122, 138, 0.03)`) are anchored behind key focal regions with blurs between `80px` and `140px`.\n- **Glass Surface Profiles:**\n  - *Tier 0 (Base Plate):* Pure `#08090C` with optional micro-mesh grain.\n  - *Tier 1 (Persistent Containers \u0026 Panels):* Fill `rgba(255, 255, 255, 0.03)`, `backdrop-filter: blur(24px) saturate(180%)`, border `1px solid rgba(255, 255, 255, 0.07)`.\n  - *Tier 2 (Floating Modals, Flyouts, Popovers):* Fill `rgba(15, 17, 21, 0.75)`, `backdrop-filter: blur(32px)`, border `1px solid rgba(212, 175, 55, 0.25)`, soft ambient shadow `0 24px 48px -12px rgba(0, 0, 0, 0.65)`.\n- **Specular Hairlines:** Interactive elements use an inner light catch: a top inner shadow `inset 0 1px 0 0 rgba(255, 255, 255, 0.12)` paired with a soft perimeter edge.\n\n## Components\n\n### Buttons\n- **Primary Luxury:** Surface fill of linear gradient (`135deg, #E5C378, #D4AF37`), sharp `#08090C` typography, no border, subtle champagne glow on hover (`0 0 20px rgba(229, 195, 120, 0.35)`).\n- **Secondary Glass:** Translucent fill `rgba(255, 255, 255, 0.04)`, hairline border `rgba(255, 255, 255, 0.12)`, text `#F5F6F8`. Hover scales border to `rgba(212, 175, 55, 0.4)` and fill to `rgba(255, 255, 255, 0.08)`.\n- **Ghost/Minimal:** Transparent fill, text `#9BA1AB`, transitioning to `#E5C378` on pointer-enter with zero horizontal shift.\n\n### Input Fields\n- Dark crystalline trough styling: `rgba(8, 9, 12, 0.6)` inner fill, bordered by `1px solid rgba(255, 255, 255, 0.08)`.\n- Focus state: Border transitions to `rgba(212, 175, 55, 0.5)` with an ambient champagne outer halo (`0 0 0 3px rgba(212, 175, 55, 0.1)`). Placeholder copy is muted (`#5A606B`).\n\n### Cards \u0026 Panels\n- Constructed using Tier 1 frosted glass with an asymmetric top-border highlight (`inset 0 1px 0 0 rgba(255, 255, 255, 0.15)`).\n- Hover states on interactive cards smoothly transition the hairline border from neutral white-alpha to `rgba(212, 175, 55, 0.35)`.\n\n### Chips \u0026 Badges\n- Pill-curved compact markers (`12px` vertical padding, uppercase `label-caps` typography).\n- Fill `rgba(255, 255, 255, 0.03)`, hairline border `rgba(255, 255, 255, 0.08)`. Active/Selected chips feature a soft gold wash `rgba(212, 175, 55, 0.1)` with gold hairline border `rgba(212, 175, 55, 0.4)`.\n\n### Checkboxes \u0026 Radios\n- Box/Circle dimensions: `18px × 18px` with `1px` border in `rgba(255, 255, 255, 0.2)`.\n- Selected: Solid champagne background (`#D4AF37`) with obsidian checkmark icon or center dot, accompanied by an ultra-subtle golden radiance blur.\n\n### Lists \u0026 Row Items\n- Separated by hairline dividers (`1px solid rgba(255, 255, 255, 0.04)`).\n- Hover state applies a soft, edge-to-edge ambient glass wash (`rgba(255, 255, 255, 0.02)` to `rgba(255, 255, 255, 0.04)`) with effortless 150ms ease-out timing.",
+                                              "theme":  {
+                                                            "colorMode":  "DARK",
+                                                            "font":  "INTER",
+                                                            "roundness":  "ROUND_EIGHT",
+                                                            "customColor":  "#e5c378",
+                                                            "headlineFont":  "INTER",
+                                                            "bodyFont":  "INTER",
+                                                            "labelFont":  "INTER",
+                                                            "namedColors":  {
+                                                                                "inverse_on_surface":  "#2f3034",
+                                                                                "outline_variant":  "#4d4639",
+                                                                                "on_tertiary_fixed_variant":  "#3c4856",
+                                                                                "surface_bright":  "#38393d",
+                                                                                "secondary_fixed_dim":  "#e9c349",
+                                                                                "on_tertiary_fixed":  "#101c29",
+                                                                                "surface_dim":  "#121316",
+                                                                                "surface_tint":  "#e4c277",
+                                                                                "on_surface_variant":  "#d0c5b4",
+                                                                                "on_secondary_fixed_variant":  "#574500",
+                                                                                "surface_container_high":  "#292a2d",
+                                                                                "background":  "#121316",
+                                                                                "outline":  "#999080",
+                                                                                "secondary":  "#e9c349",
+                                                                                "surface_container":  "#1f1f23",
+                                                                                "surface_container_highest":  "#343538",
+                                                                                "on_error":  "#690005",
+                                                                                "tertiary_container":  "#bcc8da",
+                                                                                "on_secondary":  "#3c2f00",
+                                                                                "primary":  "#ffe09d",
+                                                                                "surface_container_lowest":  "#0d0e11",
+                                                                                "primary_fixed_dim":  "#e4c277",
+                                                                                "tertiary":  "#d8e4f6",
+                                                                                "on_primary_container":  "#684f0f",
+                                                                                "surface":  "#121316",
+                                                                                "on_error_container":  "#ffdad6",
+                                                                                "error":  "#ffb4ab",
+                                                                                "secondary_fixed":  "#ffe088",
+                                                                                "inverse_primary":  "#745b1a",
+                                                                                "on_surface":  "#e3e2e6",
+                                                                                "on_tertiary_container":  "#485463",
+                                                                                "inverse_surface":  "#e3e2e6",
+                                                                                "on_secondary_fixed":  "#241a00",
+                                                                                "on_primary":  "#3f2e00",
+                                                                                "primary_container":  "#e5c378",
+                                                                                "on_tertiary":  "#26313f",
+                                                                                "on_primary_fixed_variant":  "#5a4302",
+                                                                                "tertiary_fixed":  "#d7e3f6",
+                                                                                "surface_variant":  "#343538",
+                                                                                "on_background":  "#e3e2e6",
+                                                                                "primary_fixed":  "#ffdf9b",
+                                                                                "on_secondary_container":  "#342800",
+                                                                                "error_container":  "#93000a",
+                                                                                "on_primary_fixed":  "#251a00",
+                                                                                "surface_container_low":  "#1b1b1f",
+                                                                                "tertiary_fixed_dim":  "#bbc7d9",
+                                                                                "secondary_container":  "#af8d11"
+                                                                            },
+                                                            "designMd":  "---\nname: Velvet Aurum\ncolors:\n  surface: \u0027#121316\u0027\n  surface-dim: \u0027#121316\u0027\n  surface-bright: \u0027#38393d\u0027\n  surface-container-lowest: \u0027#0d0e11\u0027\n  surface-container-low: \u0027#1b1b1f\u0027\n  surface-container: \u0027#1f1f23\u0027\n  surface-container-high: \u0027#292a2d\u0027\n  surface-container-highest: \u0027#343538\u0027\n  on-surface: \u0027#e3e2e6\u0027\n  on-surface-variant: \u0027#d0c5b4\u0027\n  inverse-surface: \u0027#e3e2e6\u0027\n  inverse-on-surface: \u0027#2f3034\u0027\n  outline: \u0027#999080\u0027\n  outline-variant: \u0027#4d4639\u0027\n  surface-tint: \u0027#e4c277\u0027\n  primary: \u0027#ffe09d\u0027\n  on-primary: \u0027#3f2e00\u0027\n  primary-container: \u0027#e5c378\u0027\n  on-primary-container: \u0027#684f0f\u0027\n  inverse-primary: \u0027#745b1a\u0027\n  secondary: \u0027#e9c349\u0027\n  on-secondary: \u0027#3c2f00\u0027\n  secondary-container: \u0027#af8d11\u0027\n  on-secondary-container: \u0027#342800\u0027\n  tertiary: \u0027#d8e4f6\u0027\n  on-tertiary: \u0027#26313f\u0027\n  tertiary-container: \u0027#bcc8da\u0027\n  on-tertiary-container: \u0027#485463\u0027\n  error: \u0027#ffb4ab\u0027\n  on-error: \u0027#690005\u0027\n  error-container: \u0027#93000a\u0027\n  on-error-container: \u0027#ffdad6\u0027\n  primary-fixed: \u0027#ffdf9b\u0027\n  primary-fixed-dim: \u0027#e4c277\u0027\n  on-primary-fixed: \u0027#251a00\u0027\n  on-primary-fixed-variant: \u0027#5a4302\u0027\n  secondary-fixed: \u0027#ffe088\u0027\n  secondary-fixed-dim: \u0027#e9c349\u0027\n  on-secondary-fixed: \u0027#241a00\u0027\n  on-secondary-fixed-variant: \u0027#574500\u0027\n  tertiary-fixed: \u0027#d7e3f6\u0027\n  tertiary-fixed-dim: \u0027#bbc7d9\u0027\n  on-tertiary-fixed: \u0027#101c29\u0027\n  on-tertiary-fixed-variant: \u0027#3c4856\u0027\n  background: \u0027#121316\u0027\n  on-background: \u0027#e3e2e6\u0027\n  surface-variant: \u0027#343538\u0027\ntypography:\n  display-lg:\n    fontFamily: Inter\n    fontSize: 48px\n    fontWeight: \u0027300\u0027\n    lineHeight: 56px\n    letterSpacing: -0.025em\n  display-md:\n    fontFamily: Inter\n    fontSize: 36px\n    fontWeight: \u0027400\u0027\n    lineHeight: 44px\n    letterSpacing: -0.02em\n  headline-lg:\n    fontFamily: Inter\n    fontSize: 28px\n    fontWeight: \u0027400\u0027\n    lineHeight: 36px\n    letterSpacing: -0.015em\n  headline-md:\n    fontFamily: Inter\n    fontSize: 22px\n    fontWeight: \u0027500\u0027\n    lineHeight: 30px\n    letterSpacing: -0.01em\n  headline-sm:\n    fontFamily: Inter\n    fontSize: 18px\n    fontWeight: \u0027500\u0027\n    lineHeight: 26px\n    letterSpacing: -0.005em\n  body-lg:\n    fontFamily: Inter\n    fontSize: 16px\n    fontWeight: \u0027400\u0027\n    lineHeight: 24px\n    letterSpacing: 0em\n  body-md:\n    fontFamily: Inter\n    fontSize: 14px\n    fontWeight: \u0027400\u0027\n    lineHeight: 22px\n    letterSpacing: 0em\n  body-sm:\n    fontFamily: Inter\n    fontSize: 12px\n    fontWeight: \u0027400\u0027\n    lineHeight: 18px\n    letterSpacing: 0.01em\n  label-lg:\n    fontFamily: Inter\n    fontSize: 13px\n    fontWeight: \u0027500\u0027\n    lineHeight: 18px\n    letterSpacing: 0.02em\n  label-md:\n    fontFamily: Inter\n    fontSize: 11px\n    fontWeight: \u0027600\u0027\n    lineHeight: 16px\n    letterSpacing: 0.06em\n  label-caps:\n    fontFamily: Inter\n    fontSize: 10px\n    fontWeight: \u0027600\u0027\n    lineHeight: 14px\n    letterSpacing: 0.12em\nrounded:\n  sm: 0.25rem\n  DEFAULT: 0.5rem\n  md: 0.75rem\n  lg: 1rem\n  xl: 1.5rem\n  full: 9999px\nspacing:\n  gutter: 1.5rem\n  gutter-tablet: 1rem\n  margin: 3rem\n  margin-tablet: 1.5rem\n  space-xs: 0.25rem\n  space-sm: 0.5rem\n  space-md: 1rem\n  space-lg: 1.5rem\n  space-xl: 2.5rem\n---\n\n## Brand \u0026 Style\n\nThis design system targets high-net-worth individuals, wealth managers, and discerning connoisseurs who operate in elite fintech, private asset stewardship, and haute-horlogerie digital spaces. The aesthetic communicates poise, precision, and sovereign calm. It avoids gratuitous ornament, relying instead on optical depth, pristine micro-details, and expansive breathing room to project silent authority.\n\nThe core visual style is an architectural fusion of **Minimalism** and **Refined Glassmorphism**. Elements appear suspended in deep void space over obsidian depths, rendered with optical micro-textures, ultra-subtle champagne refraction, and delicate hairline edges that catch light like diamond-cut sapphire crystal. Every interaction prioritizes effortless scanning, fluid transitions, and visual serenity.\n\n## Colors\n\nThe palette is rooted in an abyss of warm-tinted obsidian blacks, punctuated by luminous champagne golds that serve strictly as intentional focal points.\n\n- **Canvas \u0026 Backdrops:** `#08090C` serves as the primary canvas root, paired with `#0F1115` for subtle planar shifts and base layer divisions.\n- **Glass Fill Layers:** Surfaces use translucent white washes ranging from `rgba(255, 255, 255, 0.025)` for base cards up to `rgba(255, 255, 255, 0.07)` for active or interactive overlays.\n- **Champagne Accents:** `#E5C378` acts as the primary interactive light source and high-emphasis metric value, while `#D4AF37` grounds secondary accents, subtle glows, and active indicators.\n- **Micro-Hairlines:** Structural borders leverage `rgba(255, 255, 255, 0.08)` for neutral containment and `rgba(212, 175, 55, 0.3)` for focused or premium states.\n- **Text \u0026 Content Hierarchy:** High-emphasis copy utilizes `#F5F6F8` (optical white), mid-level copy uses `#9BA1AB`, and muted metadata rests at `#5A606B`.\n\n## Typography\n\nTypographic execution relies exclusively on **Inter**, tuned to showcase pristine technical balance and neutral elegance.\n\n- **Weight Discipline:** Display titles leverage light (`300`) and regular (`400`) weights to convey airiness and restraint, preventing large text from overwhelming translucent surfaces.\n- **Tabular Numerals:** For balances, time-series telemetry, and financial statistics, activate the `tnum` (tabular figures) OpenType feature.\n- **Labels \u0026 Microcopy:** `label-caps` is reserved for metadata labels, card tags, and status trackers, styled in uppercase with tracking between `+0.06em` and `+0.12em` to guarantee sharp optical delineation at micro scales.\n\n## Layout \u0026 Spacing\n\nThe layout embraces high-order spatial composition, favoring generous margins and distinct separation over dense packing.\n\n- **Grid Architecture:** Desktop views employ a 12-column fluid grid framed within a maximum container width of `1600px`. Tablet viewports (`768px` to `1024px`) consolidate to an 8-column layout with reduced gutters (`1rem`) and outer canvas margins (`1.5rem`).\n- **Vertical Flow:** Section-level spacing requires a minimum of `2.5rem` to `4rem` separation to reinforce the feeling of an exclusive gallery.\n- **Micro Rhythm:** All spatial gaps between nested content items adhere strictly to a `4px` base step: `space-xs` (4px), `space-sm` (8px), `space-md` (16px), `space-lg` (24px), and `space-xl` (40px).\n\n## Elevation \u0026 Depth\n\nDepth is established through translucent stacking, controlled background diffusion, and chromatic aura glows rather than opaque drop shadows.\n\n- **Atmospheric Aura Backdrops:** Soft, localized radial gradients in deep champagne (`rgba(212, 175, 55, 0.04)`) and pale slate (`rgba(110, 122, 138, 0.03)`) are anchored behind key focal regions with blurs between `80px` and `140px`.\n- **Glass Surface Profiles:**\n  - *Tier 0 (Base Plate):* Pure `#08090C` with optional micro-mesh grain.\n  - *Tier 1 (Persistent Containers \u0026 Panels):* Fill `rgba(255, 255, 255, 0.03)`, `backdrop-filter: blur(24px) saturate(180%)`, border `1px solid rgba(255, 255, 255, 0.07)`.\n  - *Tier 2 (Floating Modals, Flyouts, Popovers):* Fill `rgba(15, 17, 21, 0.75)`, `backdrop-filter: blur(32px)`, border `1px solid rgba(212, 175, 55, 0.25)`, soft ambient shadow `0 24px 48px -12px rgba(0, 0, 0, 0.65)`.\n- **Specular Hairlines:** Interactive elements use an inner light catch: a top inner shadow `inset 0 1px 0 0 rgba(255, 255, 255, 0.12)` paired with a soft perimeter edge.\n\n## Shapes\n\nThe design system employs a refined radius scale (`roundedness: 2`), balancing structured geometric precision with organic softness.\n\n- **Base Components:** Standard inputs, buttons, chips, and small interactive items carry an `8px` (`0.5rem`) radius.\n- **Glass Panels \u0026 Cards:** Structural containers adopt a `16px` (`1rem`, `rounded-lg`) corner curvature.\n- **Overlays \u0026 Dialogs:** Large elevated sheets, modals, and spotlight modules expand to `24px` (`1.5rem`, `rounded-xl`).\n- **Continuous Edge Integrity:** Child elements nested against the inner perimeter of a parent card must scale down their radii to match the concentric boundary formula: `R_inner = R_outer - Padding`.\n\n## Components\n\n### Buttons\n- **Primary Luxury:** Surface fill of linear gradient (`135deg, #E5C378, #D4AF37`), sharp `#08090C` typography, no border, subtle champagne glow on hover (`0 0 20px rgba(229, 195, 120, 0.35)`).\n- **Secondary Glass:** Translucent fill `rgba(255, 255, 255, 0.04)`, hairline border `rgba(255, 255, 255, 0.12)`, text `#F5F6F8`. Hover scales border to `rgba(212, 175, 55, 0.4)` and fill to `rgba(255, 255, 255, 0.08)`.\n- **Ghost/Minimal:** Transparent fill, text `#9BA1AB`, transitioning to `#E5C378` on pointer-enter with zero horizontal shift.\n\n### Input Fields\n- Dark crystalline trough styling: `rgba(8, 9, 12, 0.6)` inner fill, bordered by `1px solid rgba(255, 255, 255, 0.08)`.\n- Focus state: Border transitions to `rgba(212, 175, 55, 0.5)` with an ambient champagne outer halo (`0 0 0 3px rgba(212, 175, 55, 0.1)`). Placeholder copy is muted (`#5A606B`).\n\n### Cards \u0026 Panels\n- Constructed using Tier 1 frosted glass with an asymmetric top-border highlight (`inset 0 1px 0 0 rgba(255, 255, 255, 0.15)`).\n- Hover states on interactive cards smoothly transition the hairline border from neutral white-alpha to `rgba(212, 175, 55, 0.35)`.\n\n### Chips \u0026 Badges\n- Pill-curved compact markers (`12px` vertical padding, uppercase `label-caps` typography).\n- Fill `rgba(255, 255, 255, 0.03)`, hairline border `rgba(255, 255, 255, 0.08)`. Active/Selected chips feature a soft gold wash `rgba(212, 175, 55, 0.1)` with gold hairline border `rgba(212, 175, 55, 0.4)`.\n\n### Checkboxes \u0026 Radios\n- Box/Circle dimensions: `18px × 18px` with `1px` border in `rgba(255, 255, 255, 0.2)`.\n- Selected: Solid champagne background (`#D4AF37`) with obsidian checkmark icon or center dot, accompanied by an ultra-subtle golden radiance blur.\n\n### Lists \u0026 Row Items\n- Separated by hairline dividers (`1px solid rgba(255, 255, 255, 0.04)`).\n- Hover state applies a soft, edge-to-edge ambient glass wash (`rgba(255, 255, 255, 0.02)` to `rgba(255, 255, 255, 0.04)`) with effortless 150ms ease-out timing.",
+                                                            "colorVariant":  "FIDELITY",
+                                                            "overridePrimaryColor":  "#e5c378",
+                                                            "overrideSecondaryColor":  "#d4af37",
+                                                            "overrideTertiaryColor":  "#6e7a8a",
+                                                            "overrideNeutralColor":  "#08090c",
+                                                            "spacingScale":  2,
+                                                            "typography":  {
+                                                                               "headline-lg":  {
+                                                                                                   "fontFamily":  "Inter",
+                                                                                                   "fontSize":  "28px",
+                                                                                                   "fontWeight":  "400",
+                                                                                                   "lineHeight":  "36px",
+                                                                                                   "letterSpacing":  "-0.015em"
+                                                                                               },
+                                                                               "body-md":  {
+                                                                                               "fontFamily":  "Inter",
+                                                                                               "fontSize":  "14px",
+                                                                                               "fontWeight":  "400",
+                                                                                               "lineHeight":  "22px",
+                                                                                               "letterSpacing":  "0em"
+                                                                                           },
+                                                                               "label-caps":  {
+                                                                                                  "fontFamily":  "Inter",
+                                                                                                  "fontSize":  "10px",
+                                                                                                  "fontWeight":  "600",
+                                                                                                  "lineHeight":  "14px",
+                                                                                                  "letterSpacing":  "0.12em"
+                                                                                              },
+                                                                               "body-sm":  {
+                                                                                               "fontFamily":  "Inter",
+                                                                                               "fontSize":  "12px",
+                                                                                               "fontWeight":  "400",
+                                                                                               "lineHeight":  "18px",
+                                                                                               "letterSpacing":  "0.01em"
+                                                                                           },
+                                                                               "headline-sm":  {
+                                                                                                   "fontFamily":  "Inter",
+                                                                                                   "fontSize":  "18px",
+                                                                                                   "fontWeight":  "500",
+                                                                                                   "lineHeight":  "26px",
+                                                                                                   "letterSpacing":  "-0.005em"
+                                                                                               },
+                                                                               "headline-md":  {
+                                                                                                   "fontFamily":  "Inter",
+                                                                                                   "fontSize":  "22px",
+                                                                                                   "fontWeight":  "500",
+                                                                                                   "lineHeight":  "30px",
+                                                                                                   "letterSpacing":  "-0.01em"
+                                                                                               },
+                                                                               "body-lg":  {
+                                                                                               "fontFamily":  "Inter",
+                                                                                               "fontSize":  "16px",
+                                                                                               "fontWeight":  "400",
+                                                                                               "lineHeight":  "24px",
+                                                                                               "letterSpacing":  "0em"
+                                                                                           },
+                                                                               "display-lg":  {
+                                                                                                  "fontFamily":  "Inter",
+                                                                                                  "fontSize":  "48px",
+                                                                                                  "fontWeight":  "300",
+                                                                                                  "lineHeight":  "56px",
+                                                                                                  "letterSpacing":  "-0.025em"
+                                                                                              },
+                                                                               "label-lg":  {
+                                                                                                "fontFamily":  "Inter",
+                                                                                                "fontSize":  "13px",
+                                                                                                "fontWeight":  "500",
+                                                                                                "lineHeight":  "18px",
+                                                                                                "letterSpacing":  "0.02em"
+                                                                                            },
+                                                                               "display-md":  {
+                                                                                                  "fontFamily":  "Inter",
+                                                                                                  "fontSize":  "36px",
+                                                                                                  "fontWeight":  "400",
+                                                                                                  "lineHeight":  "44px",
+                                                                                                  "letterSpacing":  "-0.02em"
+                                                                                              },
+                                                                               "label-md":  {
+                                                                                                "fontFamily":  "Inter",
+                                                                                                "fontSize":  "11px",
+                                                                                                "fontWeight":  "600",
+                                                                                                "lineHeight":  "16px",
+                                                                                                "letterSpacing":  "0.06em"
+                                                                                            }
+                                                                           },
+                                                            "spacing":  {
+                                                                            "gutter-tablet":  "1rem",
+                                                                            "gutter":  "1.5rem",
+                                                                            "space-md":  "1rem",
+                                                                            "space-lg":  "1.5rem",
+                                                                            "margin-tablet":  "1.5rem",
+                                                                            "space-sm":  "0.5rem",
+                                                                            "space-xl":  "2.5rem",
+                                                                            "margin":  "3rem",
+                                                                            "space-xs":  "0.25rem"
+                                                                        },
+                                                            "headlineFontFamily":  "Inter",
+                                                            "bodyFontFamily":  "Inter",
+                                                            "labelFontFamily":  "Inter"
+                                                        }
+                                          },
+                         "version":  "1"
+                     }
+}

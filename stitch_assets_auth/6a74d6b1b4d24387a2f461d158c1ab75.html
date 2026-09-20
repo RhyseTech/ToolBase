@@ -1,0 +1,268 @@
+<!DOCTYPE html><html class="dark scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Commission Workspace — AI ToolBox // Atelier Suite</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: {
+              950: '#07080a',
+              900: '#0d0e11',
+              850: '#121316',
+              800: '#1a1c22'
+            },
+            aurum: {
+              300: '#fae6a6',
+              400: '#f0d38d',
+              500: '#e5c378',
+              600: '#d4af37',
+              700: '#b89228'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'Playfair Display', 'serif'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+          },
+          animation: {
+            'aurum-pulse': 'aurumPulse 8s ease-in-out infinite alternate',
+            'float-slow': 'floatSlow 14s ease-in-out infinite alternate',
+            'shimmer': 'shimmer 3s ease-in-out infinite'
+          },
+          keyframes: {
+            aurumPulse: {
+              '0%': { opacity: '0.25', transform: 'scale(0.98)' },
+              '100%': { opacity: '0.45', transform: 'scale(1.05)' }
+            },
+            floatSlow: {
+              '0%': { transform: 'translateY(0px)' },
+              '100%': { transform: 'translateY(-12px)' }
+            },
+            shimmer: {
+              '0%, 100%': { opacity: '0.7' },
+              '50%': { opacity: '1' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Lucide Icons CDN for luxury vector badges -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Custom Core Styles -->
+<style data-purpose="custom-aurum-glow">
+    .glow-gold-subtle {
+      box-shadow: 0 0 35px -8px rgba(229, 195, 120, 0.18);
+    }
+    .glow-gold-intense {
+      box-shadow: 0 0 45px 0px rgba(212, 175, 55, 0.28);
+    }
+    .hairline-gold {
+      border: 1px solid rgba(229, 195, 120, 0.22);
+    }
+    .hairline-gold-focus:focus-within {
+      border-color: rgba(229, 195, 120, 0.75);
+      box-shadow: 0 0 20px -3px rgba(229, 195, 120, 0.35);
+    }
+    .glass-specular {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.005) 100%);
+    }
+  </style>
+</head>
+<body class="bg-obsidian-950 text-slate-200 min-h-screen relative font-sans antialiased overflow-x-hidden selection:bg-aurum-500 selection:text-black">
+<!-- BEGIN: AmbientCinematicBackground -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" data-purpose="ambient-lighting-layer"><div class="absolute inset-0 z-0"><img alt="Obsidian Luxury Monolith" class="w-full h-full object-cover object-center opacity-25 mix-blend-luminosity filter blur-[2px] scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1WQD8rGHx8LKbrrPOnnQsKYz0YBFNys5J8ahmYrRwNeubBaMH3VL5bvKH0p9YI4GtIA0wrbnlASeY8FyQErNWNz93oSu-vt92QLsj6E78koFuqAR_acg30qlkb9cvz3K-40wkncpIQcx4RdTraiph23kRpy_5Sq3PzLgz-e44BvTQhMIlaqvvfIb2wS4b_nOB8ELr9BjGQubXdLQkt9a1i3l1nwQf2eKFF0LW27DnUFILA7TzhLu5_D_Q"><div class="absolute inset-0 bg-gradient-to-t from-[#07080a] via-[#07080a]/85 to-[#07080a]/90"></div><div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(229,195,120,0.08),transparent_70%)]"></div></div><div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[550px] bg-gradient-to-b from-aurum-500/15 via-aurum-600/5 to-transparent rounded-full blur-[140px] animate-aurum-pulse pointer-events-none"></div><div class="absolute top-1/3 -left-64 w-[500px] h-[500px] bg-aurum-700/10 rounded-full blur-[160px] pointer-events-none"></div><div class="absolute bottom-10 -right-48 w-[600px] h-[600px] bg-amber-400/5 rounded-full blur-[180px] pointer-events-none"></div><canvas class="absolute inset-0 z-10 opacity-70" height="1090" id="aurum-dust-canvas" width="1280"></canvas></div>
+<!-- END: AmbientCinematicBackground -->
+<!-- BEGIN: TopBarNavigation -->
+<header class="relative z-30 border-b border-white/5 backdrop-blur-md bg-obsidian-950/60">
+<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<!-- Monogram & Atelier Brand Identity -->
+<a class="group flex items-center gap-3.5 focus:outline-none" data-purpose="brand-link" href="#">
+<div class="w-9 h-9 rounded-lg bg-gradient-to-br from-aurum-400 via-aurum-600 to-amber-900/60 p-[1px] shadow-lg shadow-aurum-600/10">
+<div class="w-full h-full bg-obsidian-900 rounded-[7px] flex items-center justify-center transition-all group-hover:bg-transparent">
+<span class="font-serif font-black text-aurum-400 group-hover:text-black tracking-widest text-sm transition-colors">𐤀</span>
+</div>
+</div>
+<div>
+<div class="text-[13px] font-mono tracking-[0.25em] text-aurum-400 uppercase font-semibold">AI ToolBox</div>
+<div class="text-[10px] tracking-[0.35em] text-zinc-400 uppercase font-mono">Atelier Suite // Sovereign</div>
+</div>
+</a>
+<!-- Security Trust Telemetry Indicator -->
+<!-- Quick Switch to Sign In -->
+<div class="flex items-center gap-3"><span class="text-xs text-zinc-400 hidden sm:inline">Already have an account?</span><a class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-aurum-400 hover:text-aurum-300 transition-colors border border-aurum-500/25 px-3.5 py-1.5 rounded-lg bg-aurum-500/5 hover:bg-aurum-500/10" href="#signin"><span class="">Sign In</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up-right" aria-hidden="true" class="lucide lucide-arrow-up-right w-3.5 h-3.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div>
+</div>
+</header>
+<!-- END: TopBarNavigation -->
+<!-- BEGIN: MainContent -->
+<main class="relative z-20 flex flex-col items-center justify-center min-h-[calc(100vh-69px)] px-4 py-12 lg:py-16">
+<!-- Central Glassmorphic Obsidian Card -->
+<div class="w-full max-w-5xl relative" data-purpose="registration-card-wrapper"><div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-aurum-600/25 via-aurum-400/10 to-transparent blur-2xl opacity-60 pointer-events-none"></div><div class="relative backdrop-blur-2xl bg-[#121316]/90 border border-[#e5c378]/25 shadow-2xl rounded-2xl overflow-hidden glow-gold-subtle grid grid-cols-1 lg:grid-cols-12"><div class="relative hidden lg:flex lg:col-span-5 flex-col justify-between p-8 border-r border-white/5 overflow-hidden bg-gradient-to-b from-[#0e0f13] to-[#07080a]"><div class="absolute inset-0 z-0"><img alt="Atelier Monolith Artwork" class="w-full h-full object-cover object-center filter transition-transform duration-700 hover:scale-105 opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3K-qT9Fpy0zOeRpwWhe0bAPySC0v_xCwIq5uQRpd7xtTijZu845bM-vI0AgHtUKZAUlOm66-LMOqjfydiqIhEgKHM9ew2KTb3HGMVld2B3IscZo5qBa4bjPhwClwhcXxr1B4CTpbe5VOS4AOCvtu4CdZLmP_PwNfAiru1s7B6HJw0WNDgLGeQjmCtJ2fPyOv9HLgNHZKc6foQIKPBoFzMCjPHv8GdwKAQFYqJb3zRRK2Dm-9zqw9t"><div class="absolute inset-0 bg-gradient-to-t from-[#07080a] via-[#07080a]/60 to-transparent"></div><div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#121316]/80"></div></div><div class="relative z-10 flex items-center justify-between"><div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian-950/80 border border-aurum-500/30 backdrop-blur-md"><span class="w-1.5 h-1.5 rounded-full bg-aurum-400 animate-pulse"></span><span class="text-[10px] font-mono tracking-widest uppercase text-aurum-300">Atelier Provision // Mk.VII</span></div><span class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">HSM 4096-E</span></div><div class="relative z-10 mt-auto pt-32"><div class="p-5 rounded-xl bg-obsidian-950/70 border border-white/10 backdrop-blur-md shadow-xl"><p class="text-[11px] font-mono tracking-[0.2em] text-aurum-400 uppercase mb-1.5">Architectural Synthesis</p><p class="font-serif text-xl text-white font-medium leading-snug tracking-tight">Sovereign Intelligence, <span class="italic font-normal text-aurum-300">Crafted to Endure.</span></p><div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-zinc-400"><span class="">ISOLATED CLUSTER</span><span class="text-aurum-400 font-semibold">ZERO-TELEMETRY</span></div></div></div></div><div class="lg:col-span-7 p-7 sm:p-10 flex flex-col justify-center relative"><div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-aurum-500/10 to-transparent pointer-events-none"></div><div class="absolute -top-px left-12 right-12 h-px bg-gradient-to-r from-transparent via-[#e5c378]/60 to-transparent"></div><div class="mb-8"><div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-aurum-500/10 border border-aurum-500/20 text-aurum-400 text-[10px] font-mono tracking-widest uppercase mb-3"><span class="">Private Registration</span></div><h1 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold tracking-tight text-white mb-2">Begin with <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-aurum-300 to-aurum-500 font-normal">Atelier</span></h1><p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Create your sovereign workspace for curated machine intelligence.</p></div><form class="space-y-4" id="commission-form" onsubmit="event.preventDefault(); handleCommissionSubmit();"><div><label class="block text-[11px] font-mono uppercase tracking-wider text-zinc-300 mb-1.5" for="fullName">Full Name</label><div class="relative hairline-gold-focus rounded-xl transition-all"><div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user" aria-hidden="true" class="lucide lucide-user w-4 h-4"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div><input class="w-full pl-10 pr-4 py-2.5 bg-[#0d0e11]/80 border border-white/10 rounded-xl text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-aurum-500 focus:ring-1 focus:ring-aurum-500 transition duration-200" id="fullName" placeholder="Julian Sterling" required="" type="text"></div></div><div><label class="block text-[11px] font-mono uppercase tracking-wider text-zinc-300 mb-1.5" for="workEmail">Work Email Address</label><div class="relative hairline-gold-focus rounded-xl transition-all"><div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" aria-hidden="true" class="lucide lucide-mail w-4 h-4"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></div><input class="w-full pl-10 pr-4 py-2.5 bg-[#0d0e11]/80 border border-white/10 rounded-xl text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-aurum-500 focus:ring-1 focus:ring-aurum-500 transition duration-200" id="workEmail" placeholder="j.sterling@consortium.ch" required="" type="email"></div></div><div><div class="flex items-center justify-between mb-1.5"><label class="block text-[11px] font-mono uppercase tracking-wider text-zinc-300" for="passkey">Master Password</label><span class="text-[10px] font-mono text-zinc-500 uppercase">Encrypted at Rest</span></div><div class="relative hairline-gold-focus rounded-xl transition-all"><div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="key-round" aria-hidden="true" class="lucide lucide-key-round w-4 h-4"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle></svg></div><input class="w-full pl-10 pr-10 py-2.5 bg-[#0d0e11]/80 border border-white/10 rounded-xl text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-aurum-500 focus:ring-1 focus:ring-aurum-500 transition duration-200" id="passkey" placeholder="Min. 12 characters &amp; symbols" required="" type="password"><button class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-zinc-500 hover:text-aurum-400 transition-colors" id="toggle-password" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" class="lucide lucide-eye w-4 h-4" id="eye-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div><div class="mt-2 flex items-center gap-1.5"><div class="h-1 flex-1 rounded-full bg-aurum-500"></div><div class="h-1 flex-1 rounded-full bg-aurum-500"></div><div class="h-1 flex-1 rounded-full bg-aurum-500/60"></div><div class="h-1 flex-1 rounded-full bg-white/10"></div><span class="text-[10px] font-mono text-zinc-400 pl-1.5">Strong Entropy</span></div></div><div class="pt-1"><label class="flex items-start gap-2.5 cursor-pointer group"><input class="mt-0.5 rounded border-white/20 bg-obsidian-950 text-aurum-500 focus:ring-aurum-500 focus:ring-offset-obsidian-950" required="" type="checkbox"><span class="text-xs text-zinc-400 leading-snug">I agree to the <a class="text-aurum-400 hover:text-aurum-300 underline underline-offset-2" href="#">Terms of Service</a> and sovereign <a class="text-aurum-400 hover:text-aurum-300 underline underline-offset-2" href="#">Privacy Charter</a>.</span></label></div><div class="pt-2"><button class="w-full relative group overflow-hidden bg-gradient-to-r from-aurum-500 via-aurum-600 to-aurum-500 text-obsidian-950 font-semibold py-3 px-6 rounded-xl hover:shadow-[0_0_30px_rgba(229,195,120,0.45)] transition-all duration-300 flex items-center justify-center gap-2 text-sm tracking-wide" id="submit-btn" type="submit"><span class="font-serif tracking-wider font-bold text-obsidian-950">Commission Workspace →</span></button></div></form><div class="relative my-6 text-center"><div class="absolute inset-0 flex items-center"><div class="w-full border-t border-white/10"></div></div><span class="relative px-4 bg-[#121316] text-[11px] font-mono uppercase tracking-widest text-zinc-500">or continue with</span></div><div class="flex justify-center"><button class="w-full flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-xl border border-white/10 bg-obsidian-900/60 hover:bg-obsidian-900 hover:border-aurum-500/30 text-xs font-mono text-zinc-300 transition-all hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" type="button"><svg class="w-4 h-4 fill-current text-zinc-300" viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"></path></svg><span class="">Google Enterprise SSO</span></button></div><div class="flex justify-center items-center mt-6 text-xs text-zinc-400 space-x-2"><span class="">Already have an account?</span><a class="text-aurum-400 hover:text-aurum-300 font-medium underline underline-offset-4 decoration-aurum-500/30 transition-colors" href="#signin">Sign In →</a></div></div></div></div>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: FloatingMonolithFootnote -->
+<footer class="relative z-20 border-t border-white/5 py-6 px-6 bg-obsidian-950/80 text-center text-xs text-zinc-500 font-mono"><div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4"><div class="text-[11px] text-zinc-500">© 2025 AI ToolBox // Atelier Suite. All rights reserved.</div><div class="flex items-center gap-6 text-[11px]"><a class="text-zinc-400 hover:text-aurum-400 transition-colors" href="#">Privacy</a><a class="text-zinc-400 hover:text-aurum-400 transition-colors" href="#">Terms</a><a class="text-zinc-400 hover:text-aurum-400 transition-colors" href="#">Security Protocol</a></div></div></footer>
+<!-- END: FloatingMonolithFootnote -->
+<!-- BEGIN: InteractiveScripts -->
+<!-- Canvas Aurum Particles Generator -->
+<script data-purpose="aurum-dust-particle-simulation">
+    (function () {
+      const canvas = document.getElementById('aurum-dust-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      const particleCount = 45;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      class AurumParticle {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 1.8 + 0.5;
+          this.speedY = -(Math.random() * 0.4 + 0.1);
+          this.speedX = (Math.random() - 0.5) * 0.25;
+          this.opacity = Math.random() * 0.6 + 0.15;
+          this.goldHue = Math.floor(Math.random() * 15 + 40); // 40-55 is golden/champagne
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX;
+          if (this.y < 0 || this.x < 0 || this.x > canvas.width) {
+            this.reset();
+            this.y = canvas.height + 5;
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${this.goldHue}, 85%, 65%, ${this.opacity})`;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = `hsla(${this.goldHue}, 90%, 60%, 0.6)`;
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new AurumParticle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
+<!-- Interactive Tier Toggle & Form Interactivity -->
+<script data-purpose="form-interactivity-handlers">
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Lucide Icons
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      // Tier Selector Selection logic
+      const tierButtons = document.querySelectorAll('.tier-btn');
+      tierButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tierButtons.forEach(b => {
+            b.classList.remove('border-aurum-500', 'bg-aurum-500/10', 'active');
+            b.classList.add('border-white/10', 'bg-obsidian-900/60');
+            const icon = b.querySelector('.tier-check');
+            if (icon) {
+              icon.setAttribute('data-lucide', 'circle');
+              icon.classList.remove('text-aurum-400');
+              icon.classList.add('text-zinc-600');
+            }
+          });
+
+          btn.classList.add('border-aurum-500', 'bg-aurum-500/10', 'active');
+          btn.classList.remove('border-white/10', 'bg-obsidian-900/60');
+          const activeIcon = btn.querySelector('.tier-check');
+          if (activeIcon) {
+            activeIcon.setAttribute('data-lucide', 'check-circle-2');
+            activeIcon.classList.add('text-aurum-400');
+            activeIcon.classList.remove('text-zinc-600');
+          }
+          if (window.lucide) window.lucide.createIcons();
+        });
+      });
+
+      // Toggle passkey visibility
+      const toggleBtn = document.getElementById('toggle-password');
+      const passkeyInput = document.getElementById('passkey');
+      const eyeIcon = document.getElementById('eye-icon');
+
+      if (toggleBtn && passkeyInput) {
+        toggleBtn.addEventListener('click', () => {
+          const isPassword = passkeyInput.getAttribute('type') === 'password';
+          passkeyInput.setAttribute('type', isPassword ? 'text' : 'password');
+          if (eyeIcon) {
+            eyeIcon.setAttribute('data-lucide', isPassword ? 'eye-off' : 'eye');
+            if (window.lucide) window.lucide.createIcons();
+          }
+        });
+      }
+
+      // Workspace slug auto-cleaner
+      const slugInput = document.getElementById('workspaceSlug');
+      if (slugInput) {
+        slugInput.addEventListener('input', (e) => {
+          e.target.value = e.target.value.toLowerCase().replace(/[^a-z0-9_-]/g, '');
+        });
+      }
+    });
+
+    function handleCommissionSubmit() {
+      const submitBtn = document.getElementById('submit-btn');
+      if (!submitBtn) return;
+      
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-black inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Allocating Hardware HSM Enclave...</span>
+      `;
+
+      setTimeout(() => {
+        submitBtn.innerHTML = `
+          <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+          <span>Workspace Provisioned Successfully</span>
+        `;
+        submitBtn.classList.remove('from-aurum-500', 'to-aurum-500');
+        submitBtn.classList.add('bg-emerald-500', 'text-black');
+        if (window.lucide) window.lucide.createIcons();
+      }, 1600);
+    }
+  </script>
+<!-- END: InteractiveScripts -->
+
+
+</body></html>

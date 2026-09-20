@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+sqlalchemy
+python-dotenv
+pydantic
+requests
+beautifulsoup4
+groq
+openai
+google-genai
+google-auth
+anthropic
+requests
+httpx
+pytest

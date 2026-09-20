@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary": "#3c2f00", "on-primary": "#3f2e00", "primary": "#ffe09d", "surface-container": "#1f1f23", "secondary-fixed": "#ffe088", "surface-dim": "#121316", "tertiary-fixed": "#d7e3f6", "on-primary-fixed": "#251a00", "surface": "#121316", "surface-variant": "#343538", "inverse-primary": "#745b1a", "outline": "#999080", "on-surface-variant": "#d0c5b4", "on-secondary-fixed": "#241a00", "on-tertiary-container": "#485463", "on-tertiary-fixed-variant": "#3c4856", "surface-container-low": "#1b1b1f", "on-secondary-fixed-variant": "#574500", "tertiary-fixed-dim": "#bbc7d9", "secondary-container": "#af8d11", "on-secondary-container": "#342800", "secondary": "#e9c349", "surface-tint": "#e4c277", "tertiary": "#d8e4f6", "on-tertiary": "#26313f", "on-error": "#690005", "primary-fixed-dim": "#e4c277", "secondary-fixed-dim": "#e9c349", "primary-fixed": "#ffdf9b", "on-background": "#e3e2e6", "on-surface": "#e3e2e6", "on-primary-fixed-variant": "#5a4302", "surface-container-high": "#292a2d", "on-error-container": "#ffdad6", "tertiary-container": "#bcc8da", "outline-variant": "#4d4639", "on-primary-container": "#684f0f", "background": "#121316", "surface-container-lowest": "#0d0e11", "on-tertiary-fixed": "#101c29", "inverse-on-surface": "#2f3034", "error-container": "#93000a", "surface-bright": "#38393d", "error": "#ffb4ab", "surface-container-highest": "#343538", "primary-container": "#e5c378", "inverse-surface": "#e3e2e6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1.5rem", "space-md": "1rem", "margin-tablet": "1.5rem", "gutter-tablet": "1rem", "space-xl": "2.5rem", "margin": "3rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-md": ["Inter"], "label-md": ["Inter"], "display-md": ["Inter"], "label-lg": ["Inter"], "label-caps": ["Inter"], "body-sm": ["Inter"], "display-lg": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Inter"], "headline-sm": ["Inter"], "body-lg": ["Inter"] }, "fontSize": { "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "label-md": ["11px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "display-md": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "label-lg": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }], "label-caps": ["10px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.025em", "fontWeight": "300" }], "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script></head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 h-20 bg-surface-container-lowest/80 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div class="h-20 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-[280px]"><div class="relative flex items-center justify-center p-space-xs rounded-full bg-surface-container-high/40 shadow-[0_0_15px_rgba(229,195,120,0.15)]"><img alt="Brand logo. - Primary color: #64ffda
+- Font: inter
+- Mode: dark
+- Roundness: rounded-sm
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WDAuPk3LjBeLe1nmEKfCDayYzTnYE4zr1OLwZIqUWK5kmyzMXlMQIleCvL5LVG89lYTBmjtCfRpYLNW9tdB8ZvjBSy2MZJUu8OcVgQeD5io7enXjVZduXp2sMOu5xNLr_avPsTSbzrdiWX4fqrpNxqknqgwnAoLdl3Ofhz4Ihld-R6DiSIhw06lPIl1LXvFsLTvn6iZb7ySq1Z0JQsQjtnIrvXdkNd9R8qKiTDkQLNnQI2gQajJQ5Tbw"/><span class="absolute inset-0 rounded-full shadow-[inset_0_0_8px_rgba(229,195,120,0.4)] pointer-events-none"></span></div><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm tracking-wider text-on-surface uppercase">AI ToolBox</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-high/60 font-label-caps text-label-caps text-secondary tracking-widest shadow-[0_0_10px_rgba(233,195,73,0.2)]">ATELIER SUITE</span></div></div><div class="hidden md:flex flex-1 max-w-xl items-center justify-center"><div class="group relative flex items-center w-full max-w-md h-10 px-space-md rounded-full bg-surface-container-low/60 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] hover:bg-surface-container-high/60 transition-all duration-300"><span class="material-symbols-outlined text-on-surface-variant text-base mr-space-sm group-hover:text-primary transition-colors">search</span><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 select-none">Search tools, prompts, models...</span><kbd class="flex items-center gap-space-xs px-space-xs py-0.5 rounded bg-surface-container-highest/80 font-label-caps text-label-caps text-on-surface-variant group-hover:text-primary group-hover:shadow-[0_0_8px_rgba(255,224,157,0.3)] transition-all">⌘K</kbd></div></div><div class="flex items-center gap-space-md justify-end min-w-[280px]"><button class="relative group overflow-hidden flex items-center gap-space-xs px-space-md py-space-sm rounded-full bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-lg text-label-lg shadow-[0_0_20px_rgba(229,195,120,0.25)] hover:shadow-[0_0_25px_rgba(229,195,120,0.45)] transition-all"><span class="material-symbols-outlined text-sm">add</span><span>Add Tool</span><span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out"></span></button><div class="relative flex items-center justify-center w-10 h-10 rounded-full bg-surface-container-high/40 text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_rgba(233,195,73,0.8)]"></span></div><div class="relative p-0.5 rounded-full bg-gradient-to-tr from-secondary to-primary-container shadow-[0_0_12px_rgba(229,195,120,0.3)] cursor-pointer"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UGdBuQRnkxxRNEGzbUKQsQl6THHD3CVNEYhfu94MHP22YkfoAqZdrxHYKoovqN8sQ69cdJ0eAJF8G59oNeoT1B9nW_7e5X1lGO5d89nlHX62na1E0uI6gfSKJeOsgAcLb_KBx32cN7srob_4qb5UqNRYJes1zhZS_z9DrGkVr7okiCSLtqJXFKIvSQgt-3_noS9v-VxAOGIQG6_zCjWyEdP4tb7YTdKwaGg9N19DgsWXb5MpuXnRdQNg"/></div></div></div></header><aside class="fixed left-0 top-20 bottom-0 w-72 z-40 bg-surface-container-lowest/70 backdrop-blur-2xl shadow-[4px_0_24px_rgba(0,0,0,0.4)] flex flex-col justify-between p-space-md transition-all duration-300"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-medium shadow-[0_0_15px_rgba(229,195,120,0.2)]"><div class="px-space-md py-space-xs font-label-caps text-label-caps text-outline uppercase tracking-widest">Navigation</div><a class="group flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-lg group-hover:text-primary transition-colors">dashboard</span><span class="font-label-lg text-label-lg">Dashboard</span></a><a aria-current="page" class="group flex items-center gap-space-md px-space-md py-space-sm rounded-xl transition-all bg-primary-container text-on-primary-container font-medium shadow-[0_0_15px_rgba(229,195,120,0.2)]" data-path="all-tools" href="#"><span class="material-symbols-outlined text-lg group-hover:text-primary transition-colors">apps</span><span class="font-label-lg text-label-lg">All Tools</span></a><a class="group flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all" data-path="favorites" href="#"><span class="material-symbols-outlined text-lg group-hover:text-primary transition-colors">star</span><span class="font-label-lg text-label-lg">Favorites</span></a><a class="group flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all" data-path="collections-categories" href="#"><span class="material-symbols-outlined text-lg group-hover:text-primary transition-colors">category</span><span class="font-label-lg text-label-lg">Collections / Categories</span></a><a class="group flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all" data-path="prompt-vault" href="#"><span class="material-symbols-outlined text-lg group-hover:text-primary transition-colors">folder_special</span><span class="font-label-lg text-label-lg">Prompt Vault</span></a><a class="group flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all" data-path="ask-ai" href="#"><span class="material-symbols-outlined text-lg group-hover:text-primary transition-colors">smart_toy</span><span class="font-label-lg text-label-lg">Ask AI</span></a></nav><div class="flex flex-col gap-space-sm"><div class="p-space-md rounded-xl bg-surface-container-low/60 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"><div class="flex items-center justify-between mb-space-xs"><span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Quick Storage</span><span class="font-label-caps text-label-caps text-primary">68%</span></div><div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden"><div class="h-full w-[68%] rounded-full bg-gradient-to-r from-primary-container to-secondary shadow-[0_0_8px_rgba(229,195,120,0.5)]"></div></div><div class="mt-space-xs flex justify-between items-center"><span class="font-body-sm text-body-sm text-on-surface-variant">13.6 GB / 20 GB</span></div></div><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high/50 hover:text-on-surface transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-lg">settings</span><span class="font-label-lg text-label-lg">Settings</span></a></div></aside><div class="pl-72"><main class="relative w-full pt-20 px-gutter min-h-screen bg-surface"><div class="flex flex-col w-full relative pb-space-xl">
+<!-- Dynamic WebGL Background Pipeline -->
+<!-- STITCH_SHADER_START:ANIMATION_23 class="fixed inset-0 w-full h-full pointer-events-none -z-10" -->
+<div class="fixed inset-0 w-full h-full pointer-events-none -z-10" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_23" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_23');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+// Simplex noise helpers
+vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
+vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
+
+float snoise(vec3 v) {
+  const vec2 C = vec2(1.0/6.0, 1.0/3.0);
+  const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+  vec3 i  = floor(v + dot(v, C.yyy));
+  vec3 x0 = v - i + dot(i, C.xxx);
+  vec3 g = step(x0.yzx, x0.xyz);
+  vec3 l = 1.0 - g;
+  vec3 i1 = min(g.xyz, l.zxy);
+  vec3 i2 = max(g.xyz, l.zxy);
+  vec3 x1 = x0 - i1 + C.xxx;
+  vec3 x2 = x0 - i2 + C.yyy;
+  vec3 x3 = x0 - D.yyy;
+  i = mod289(i);
+  vec4 p = permute(permute(permute(
+             i.z + vec4(0.0, i1.z, i2.z, 1.0))
+           + i.y + vec4(0.0, i1.y, i2.y, 1.0))
+           + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+  float n_ = 0.142857142857;
+  vec3  ns = n_ * D.wyz - D.xzx;
+  vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
+  vec4 x_ = floor(j * ns.z);
+  vec4 y_ = floor(j - 7.0 * x_);
+  vec4 x = x_ *ns.x + ns.yyyy;
+  vec4 y = y_ *ns.x + ns.yyyy;
+  vec4 h = 1.0 - abs(x) - abs(y);
+  vec4 b0 = vec4(x.xy, y.xy);
+  vec4 b1 = vec4(x.zw, y.zw);
+  vec4 s0 = floor(b0)*2.0 + 1.0;
+  vec4 s1 = floor(b1)*2.0 + 1.0;
+  vec4 sh = -step(h, vec4(0.0));
+  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;
+  vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+  vec3 p0 = vec3(a0.xy, h.x);
+  vec3 p1 = vec3(a0.zw, h.y);
+  vec3 p2 = vec3(a1.xy, h.z);
+  vec3 p3 = vec3(a1.zw, h.w);
+  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+  p0 *= norm.x;
+  p1 *= norm.y;
+  p2 *= norm.z;
+  p3 *= norm.w;
+  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+  m = m * m;
+  return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
+}
+
+void main() {
+    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+    vec2 mouse = u_mouse / u_resolution;
+    
+    // Dynamic fluid time
+    float t = u_time * 0.18;
+    
+    // Luxury dark palette
+    vec3 deepBlack = vec3(0.032, 0.038, 0.048);
+    vec3 obsidian = vec3(0.065, 0.075, 0.095);
+    vec3 champagneGold = vec3(0.92, 0.78, 0.48);
+    vec3 luminousBronze = vec3(0.65, 0.48, 0.28);
+    vec3 emeraldSheen = vec3(0.20, 0.45, 0.42);
+    
+    // Multi-octave noise flow
+    float n1 = snoise(vec3(uv * 1.8 + vec2(t * 0.35, -t * 0.2), t * 0.8));
+    float n2 = snoise(vec3(uv * 2.8 - vec2(t * 0.25, t * 0.3), t * 1.1));
+    float n3 = snoise(vec3(uv * 4.0 + vec2(n1 * 0.5, n2 * 0.5), t * 0.4));
+    
+    // Interactive mouse fluid wake
+    float mouseDist = length(uv - mouse);
+    float mouseWave = smoothstep(0.4, 0.0, mouseDist) * (0.5 + 0.5 * sin(u_time * 2.0 - mouseDist * 12.0));
+    
+    // Fluid ribbons & caustic highlights
+    float ribbon = smoothstep(0.15, 0.65, n1 * 0.5 + n2 * 0.35 + n3 * 0.15 + 0.5);
+    float edgeLight = pow(1.0 - abs(n1), 3.0) * 0.18;
+    
+    // Ambient color blending
+    vec3 col = mix(deepBlack, obsidian, uv.y + n1 * 0.15);
+    col = mix(col, emeraldSheen * 0.25, clamp(n2 * 0.3, 0.0, 1.0));
+    
+    // Champagne gold light orbs
+    float orb1 = smoothstep(0.7, 0.15, length(uv - vec2(0.85, 0.15) - vec2(sin(t)*0.12, cos(t)*0.1)));
+    float orb2 = smoothstep(0.8, 0.2, length(uv - vec2(0.15, 0.85) + vec2(cos(t)*0.1, sin(t)*0.12)));
+    
+    col += champagneGold * orb1 * 0.22;
+    col += luminousBronze * orb2 * 0.20;
+    col += champagneGold * (pow(ribbon, 4.0) * 0.14);
+    col += champagneGold * edgeLight;
+    col += champagneGold * (mouseWave * 0.25);
+    
+    // Micro chromatic vignette
+    float vig = uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y);
+    col *= clamp(16.0 * vig * 0.45 + 0.62, 0.0, 1.0);
+    
+    gl_FragColor = vec4(col, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_23 -->
+<!-- Ambient Light Aureoles -->
+<div class="absolute top-12 left-1/4 w-[500px] h-[320px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<div class="absolute top-96 right-10 w-[420px] h-[420px] bg-secondary/5 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+<!-- Page Header & Global Controls -->
+<header class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-xl">
+<div class="flex flex-col gap-space-sm max-w-3xl">
+<div class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full w-fit bg-surface-container-high/60 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(233,195,73,0.9)] animate-pulse"></span>
+<span class="font-label-caps text-label-caps tracking-widest text-primary uppercase">Registry &amp; Archive</span>
+</div>
+<h1 class="font-display-lg text-display-lg tracking-tight text-on-surface">Curated Directory</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+        127 high-order AI instruments orchestrated by domain, cognitive bandwidth, and curated deployment notes.
+      </p>
+</div>
+<!-- Telemetry Status & View Density Switcher -->
+<div class="flex items-center gap-space-md flex-wrap lg:flex-nowrap">
+<div class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full bg-surface-container-high/40 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-caps text-label-caps tracking-wider text-on-surface-variant uppercase font-semibold">6 Active Deployments</span>
+</div>
+<!-- View Selector -->
+<div class="flex items-center p-1 rounded-full bg-surface-container-high/60 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]" id="viewToggleGroup">
+<button aria-label="Grid layout" class="flex items-center justify-center w-8 h-8 rounded-full bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(229,195,120,0.3)] transition-all duration-300" id="viewGridBtn">
+<span class="material-symbols-outlined text-base">grid_view</span>
+</button>
+<button aria-label="List layout" class="flex items-center justify-center w-8 h-8 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-300" id="viewListBtn">
+<span class="material-symbols-outlined text-base">view_agenda</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Search & Command Matrix Bar -->
+<section class="flex flex-col gap-space-md mb-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-center">
+<!-- Search Field -->
+<div class="lg:col-span-7 group relative flex items-center h-12 px-space-md rounded-2xl bg-surface-container-low/70 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] transition-all duration-300 focus-within:shadow-[inset_0_1px_0_0_rgba(255,224,157,0.35),0_0_20px_rgba(233,195,73,0.12)]">
+<span class="material-symbols-outlined text-on-surface-variant text-lg mr-space-sm group-focus-within:text-primary transition-colors">travel_explore</span>
+<input class="w-full bg-transparent font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none" id="directorySearchInput" placeholder="Filter by instrument name, telemetry tag, or core capability..." type="text"/>
+<kbd class="hidden sm:inline-flex items-center gap-0.5 px-space-xs py-0.5 rounded-lg bg-surface-container-highest/80 font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary transition-all">⌘K</kbd>
+</div>
+<!-- Quick Telemetry Filter Badges -->
+<div class="lg:col-span-5 flex items-center gap-space-xs overflow-x-auto pb-1 lg:pb-0" id="quickFilterPills">
+<button class="quick-pill group flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/40 backdrop-blur-xl text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider transition-all duration-200 hover:bg-surface-container-high/70 hover:text-primary" data-filter="favorites">
+<span class="material-symbols-outlined text-sm text-secondary group-hover:scale-110 transition-transform">star</span>
+<span>Favorites</span>
+</button>
+<button class="quick-pill group flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/40 backdrop-blur-xl text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider transition-all duration-200 hover:bg-surface-container-high/70 hover:text-primary" data-filter="rating">
+<span class="material-symbols-outlined text-sm text-primary">verified</span>
+<span>Rating 4.8+</span>
+</button>
+<button class="quick-pill group flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/40 backdrop-blur-xl text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider transition-all duration-200 hover:bg-surface-container-high/70 hover:text-primary" data-filter="api">
+<span class="material-symbols-outlined text-sm">hub</span>
+<span>API Available</span>
+</button>
+<button class="quick-pill group flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high/40 backdrop-blur-xl text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider transition-all duration-200 hover:bg-surface-container-high/70 hover:text-primary" data-filter="freemium">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+<span>Freemium</span>
+</button>
+</div>
+</div>
+<!-- Category Ribbon Tabs with Champagne Underline Logic -->
+<div class="relative overflow-x-auto scrollbar-none pt-2 pb-1">
+<nav class="flex items-center gap-space-sm min-w-max" id="categoryNav">
+<button class="cat-pill active relative px-space-md py-space-sm rounded-full font-label-lg text-label-lg tracking-wide transition-all duration-300 bg-primary-container text-on-primary-container font-semibold shadow-[0_0_15px_rgba(229,195,120,0.25)]" data-category="all">
+<span>ALL</span>
+<span class="ml-1 text-on-primary-container/80 text-xs font-normal">(127)</span>
+</button>
+<button class="cat-pill relative px-space-md py-space-sm rounded-full font-label-lg text-label-lg tracking-wide text-on-surface-variant transition-all duration-300 hover:text-on-surface hover:bg-surface-container-high/40" data-category="coding">
+<span>CODING</span>
+<span class="ml-1 text-outline text-xs">(31)</span>
+</button>
+<button class="cat-pill relative px-space-md py-space-sm rounded-full font-label-lg text-label-lg tracking-wide text-on-surface-variant transition-all duration-300 hover:text-on-surface hover:bg-surface-container-high/40" data-category="research">
+<span>RESEARCH</span>
+<span class="ml-1 text-outline text-xs">(24)</span>
+</button>
+<button class="cat-pill relative px-space-md py-space-sm rounded-full font-label-lg text-label-lg tracking-wide text-on-surface-variant transition-all duration-300 hover:text-on-surface hover:bg-surface-container-high/40" data-category="design">
+<span>DESIGN &amp; 3D</span>
+<span class="ml-1 text-outline text-xs">(18)</span>
+</button>
+<button class="cat-pill relative px-space-md py-space-sm rounded-full font-label-lg text-label-lg tracking-wide text-on-surface-variant transition-all duration-300 hover:text-on-surface hover:bg-surface-container-high/40" data-category="audio">
+<span>AUDIO &amp; VOICE</span>
+<span class="ml-1 text-outline text-xs">(12)</span>
+</button>
+<button class="cat-pill relative px-space-md py-space-sm rounded-full font-label-lg text-label-lg tracking-wide text-on-surface-variant transition-all duration-300 hover:text-on-surface hover:bg-surface-container-high/40" data-category="productivity">
+<span>PRODUCTIVITY</span>
+<span class="ml-1 text-outline text-xs">(14)</span>
+</button>
+<button class="cat-pill relative px-space-md py-space-sm rounded-full font-label-lg text-label-lg tracking-wide text-on-surface-variant transition-all duration-300 hover:text-on-surface hover:bg-surface-container-high/40" data-category="local">
+<span>LOCAL MODELS</span>
+<span class="ml-1 text-outline text-xs">(8)</span>
+</button>
+</nav>
+</div>
+</section>
+<!-- 3x2 Glass Directory Catalog Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-lg transition-all duration-500" id="catalogContainer">
+<!-- Card 1: Cursor IDE -->
+<article class="group relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-low/50 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_32px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-surface-container/60 hover:shadow-[inset_0_1px_0_0_rgba(255,224,157,0.3),0_20px_40px_rgba(0,0,0,0.55),0_0_25px_rgba(229,195,120,0.12)]" data-card-cat="coding">
+<!-- Glass Sheen Overlay -->
+<div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<!-- Top Row: Icon, Title, Rating, Favorite Toggle -->
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="relative flex items-center justify-center w-12 h-12 rounded-xl bg-surface-container-highest/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] flex-shrink-0">
+<span class="material-symbols-outlined text-2xl text-primary">terminal</span>
+</div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Cursor IDE</h2>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps mt-0.5">
+<span>CODING</span>
+<span>/</span>
+<span>IDE</span>
+<span>/</span>
+<span>LOCAL VECTOR</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/70 text-secondary font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-xs">star</span>
+<span>4.9</span>
+</div>
+<button aria-label="Toggle Favorite" class="fav-toggle w-8 h-8 rounded-full flex items-center justify-center text-outline hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-base">star</span>
+</button>
+</div>
+</div>
+<!-- Curator Log Note -->
+<div class="p-space-md rounded-xl bg-surface-container-highest/40 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+<div class="flex items-center gap-1 text-primary font-label-caps text-label-caps tracking-widest uppercase mb-1">
+<span class="material-symbols-outlined text-xs">verified_user</span>
+<span>Curator Log</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+            Essential for refactoring and full repository navigation. Multi-file edits with local index caching provide lightning turnaround.
+          </p>
+</div>
+<!-- Tags / Badge -->
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Synced v0.42</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline tracking-wider">REST + COPILOT API</span>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md border-t border-white/[0.04] relative z-10">
+<button class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all">
+          Details
+        </button>
+<button class="flex items-center gap-1 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-medium shadow-[0_0_14px_rgba(229,195,120,0.2)] hover:shadow-[0_0_20px_rgba(229,195,120,0.4)] transition-all">
+<span>Launch</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+</div>
+</article>
+<!-- Card 2: v0 by Vercel -->
+<article class="group relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-low/50 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_32px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-surface-container/60 hover:shadow-[inset_0_1px_0_0_rgba(255,224,157,0.3),0_20px_40px_rgba(0,0,0,0.55),0_0_25px_rgba(229,195,120,0.12)]" data-card-cat="design">
+<div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="relative flex items-center justify-center w-12 h-12 rounded-xl bg-surface-container-highest/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] flex-shrink-0">
+<span class="material-symbols-outlined text-2xl text-secondary">layers</span>
+</div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">v0 by Vercel</h2>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps mt-0.5">
+<span>DESIGN</span>
+<span>/</span>
+<span>FRONTEND</span>
+<span>/</span>
+<span>REACT</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/70 text-secondary font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-xs">star</span>
+<span>4.7</span>
+</div>
+<button aria-label="Toggle Favorite" class="fav-toggle w-8 h-8 rounded-full flex items-center justify-center text-outline hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-base">star</span>
+</button>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-highest/40 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+<div class="flex items-center gap-1 text-primary font-label-caps text-label-caps tracking-widest uppercase mb-1">
+<span class="material-symbols-outlined text-xs">verified_user</span>
+<span>Curator Log</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+            Rapid component prototyping and seamless design handoff. Exceptional shadcn/ui alignment and instant Tailwind token injection.
+          </p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Cloud Next.js</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline tracking-wider">SANDBOX READY</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md border-t border-white/[0.04] relative z-10">
+<button class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all">
+          Details
+        </button>
+<button class="flex items-center gap-1 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-medium shadow-[0_0_14px_rgba(229,195,120,0.2)] hover:shadow-[0_0_20px_rgba(229,195,120,0.4)] transition-all">
+<span>Launch</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+</div>
+</article>
+<!-- Card 3: GitHub Copilot -->
+<article class="group relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-low/50 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_32px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-surface-container/60 hover:shadow-[inset_0_1px_0_0_rgba(255,224,157,0.3),0_20px_40px_rgba(0,0,0,0.55),0_0_25px_rgba(229,195,120,0.12)]" data-card-cat="coding">
+<div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="relative flex items-center justify-center w-12 h-12 rounded-xl bg-surface-container-highest/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] flex-shrink-0">
+<span class="material-symbols-outlined text-2xl text-primary">code_blocks</span>
+</div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">GitHub Copilot</h2>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps mt-0.5">
+<span>CODING</span>
+<span>/</span>
+<span>CLI</span>
+<span>/</span>
+<span>INLINE</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/70 text-secondary font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-xs">star</span>
+<span>4.6</span>
+</div>
+<button aria-label="Toggle Favorite" class="fav-toggle w-8 h-8 rounded-full flex items-center justify-center text-outline hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-base">star</span>
+</button>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-highest/40 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+<div class="flex items-center gap-1 text-primary font-label-caps text-label-caps tracking-widest uppercase mb-1">
+<span class="material-symbols-outlined text-xs">verified_user</span>
+<span>Curator Log</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+            Fast boilerplate and unit test generation on keystroke. The workspace daemon effectively resolves enterprise library documentation.
+          </p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Workspace Daemon</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline tracking-wider">ENTERPRISE TIER</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md border-t border-white/[0.04] relative z-10">
+<button class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all">
+          Details
+        </button>
+<button class="flex items-center gap-1 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-medium shadow-[0_0_14px_rgba(229,195,120,0.2)] hover:shadow-[0_0_20px_rgba(229,195,120,0.4)] transition-all">
+<span>Launch</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+</div>
+</article>
+<!-- Card 4: Perplexity Pro -->
+<article class="group relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-low/50 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_32px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-surface-container/60 hover:shadow-[inset_0_1px_0_0_rgba(255,224,157,0.3),0_20px_40px_rgba(0,0,0,0.55),0_0_25px_rgba(229,195,120,0.12)]" data-card-cat="research">
+<div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="relative flex items-center justify-center w-12 h-12 rounded-xl bg-surface-container-highest/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] flex-shrink-0">
+<span class="material-symbols-outlined text-2xl text-secondary">manage_search</span>
+</div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Perplexity Pro</h2>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps mt-0.5">
+<span>RESEARCH</span>
+<span>/</span>
+<span>SEARCH</span>
+<span>/</span>
+<span>PRO</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/70 text-secondary font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-xs">star</span>
+<span>4.9</span>
+</div>
+<button aria-label="Toggle Favorite" class="fav-toggle w-8 h-8 rounded-full flex items-center justify-center text-outline hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-base">star</span>
+</button>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-highest/40 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+<div class="flex items-center gap-1 text-primary font-label-caps text-label-caps tracking-widest uppercase mb-1">
+<span class="material-symbols-outlined text-xs">verified_user</span>
+<span>Curator Log</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+            Verified facts and scientific citations without ad spam. Unmatched for market landscape synthesis and live academic aggregation.
+          </p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Live Web Sync</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline tracking-wider">MULTI-MODEL ARRAYS</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md border-t border-white/[0.04] relative z-10">
+<button class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all">
+          Details
+        </button>
+<button class="flex items-center gap-1 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-medium shadow-[0_0_14px_rgba(229,195,120,0.2)] hover:shadow-[0_0_20px_rgba(229,195,120,0.4)] transition-all">
+<span>Launch</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+</div>
+</article>
+<!-- Card 5: Claude 3.5 Sonnet -->
+<article class="group relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-low/50 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_32px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-surface-container/60 hover:shadow-[inset_0_1px_0_0_rgba(255,224,157,0.3),0_20px_40px_rgba(0,0,0,0.55),0_0_25px_rgba(229,195,120,0.12)]" data-card-cat="research">
+<div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="relative flex items-center justify-center w-12 h-12 rounded-xl bg-surface-container-highest/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] flex-shrink-0">
+<span class="material-symbols-outlined text-2xl text-primary">psychology</span>
+</div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Claude 3.5 Sonnet</h2>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps mt-0.5">
+<span>REASONING</span>
+<span>/</span>
+<span>API</span>
+<span>/</span>
+<span>ARTIFACTS</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/70 text-secondary font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-xs">star</span>
+<span>5.0</span>
+</div>
+<button aria-label="Toggle Favorite" class="fav-toggle w-8 h-8 rounded-full flex items-center justify-center text-outline hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-base">star</span>
+</button>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-highest/40 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+<div class="flex items-center gap-1 text-primary font-label-caps text-label-caps tracking-widest uppercase mb-1">
+<span class="material-symbols-outlined text-xs">verified_user</span>
+<span>Curator Log</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+            Best-in-class code architecture and nuanced complex analysis. Real-time visual artifact rendering provides high agency in creative builds.
+          </p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>200k Context</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline tracking-wider">STATE-OF-ART</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md border-t border-white/[0.04] relative z-10">
+<button class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all">
+          Details
+        </button>
+<button class="flex items-center gap-1 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-medium shadow-[0_0_14px_rgba(229,195,120,0.2)] hover:shadow-[0_0_20px_rgba(229,195,120,0.4)] transition-all">
+<span>Launch</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+</div>
+</article>
+<!-- Card 6: ElevenLabs -->
+<article class="group relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-low/50 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_12px_32px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-surface-container/60 hover:shadow-[inset_0_1px_0_0_rgba(255,224,157,0.3),0_20px_40px_rgba(0,0,0,0.55),0_0_25px_rgba(229,195,120,0.12)]" data-card-cat="audio">
+<div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="relative flex items-center justify-center w-12 h-12 rounded-xl bg-surface-container-highest/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] flex-shrink-0">
+<span class="material-symbols-outlined text-2xl text-secondary">graphic_eq</span>
+</div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">ElevenLabs</h2>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps mt-0.5">
+<span>AUDIO</span>
+<span>/</span>
+<span>SPEECH</span>
+<span>/</span>
+<span>VOICE CLONING</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<div class="flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high/70 text-secondary font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-xs">star</span>
+<span>4.8</span>
+</div>
+<button aria-label="Toggle Favorite" class="fav-toggle w-8 h-8 rounded-full flex items-center justify-center text-outline hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-base">star</span>
+</button>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-highest/40 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+<div class="flex items-center gap-1 text-primary font-label-caps text-label-caps tracking-widest uppercase mb-1">
+<span class="material-symbols-outlined text-xs">verified_user</span>
+<span>Curator Log</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+            Pristine narration fidelity and emotional cadence preservation. The latency metrics are suited for real-time generative conversational agents.
+          </p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Multilingual v2</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline tracking-wider">ULTRA LOW-JITTER</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-lg mt-space-md border-t border-white/[0.04] relative z-10">
+<button class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all">
+          Details
+        </button>
+<button class="flex items-center gap-1 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-medium shadow-[0_0_14px_rgba(229,195,120,0.2)] hover:shadow-[0_0_20px_rgba(229,195,120,0.4)] transition-all">
+<span>Launch</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Load More Action Panel -->
+<div class="flex flex-col items-center justify-center pt-space-xl pb-space-lg">
+<button class="group relative flex items-center gap-space-sm px-space-xl py-space-md rounded-full bg-surface-container-high/40 backdrop-blur-2xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:border-secondary/40 hover:bg-surface-container-high/70 transition-all duration-300" id="loadMoreBtn">
+<span class="font-label-lg text-label-lg text-on-surface font-medium group-hover:text-primary transition-colors">Load More Curated Records</span>
+<span class="material-symbols-outlined text-base text-secondary group-hover:translate-y-0.5 transition-transform">expand_more</span>
+<span class="absolute inset-0 rounded-full shadow-[0_0_20px_rgba(229,195,120,0.15)] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></span>
+</button>
+<span class="font-body-sm text-body-sm text-outline mt-space-sm">Showing 6 of 127 total calibrated instruments</span>
+</div>
+<!-- Telemetry Footer Bar -->
+<footer class="mt-space-lg p-space-md rounded-2xl bg-surface-container-lowest/80 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-lg flex-wrap">
+<!-- Index Health -->
+<div class="flex items-center gap-space-xs">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Index Health:</span>
+<span class="font-label-caps text-label-caps text-emerald-400">100% Endpoints Operational</span>
+</div>
+<!-- Latency Metric -->
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_rgba(233,195,73,0.8)]"></span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Latency:</span>
+<span class="font-label-caps text-label-caps text-primary">28ms avg</span>
+</div>
+</div>
+<!-- Cluster Status Note -->
+<div class="flex items-center gap-space-sm text-outline font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-sm">security_update_good</span>
+<span class="uppercase tracking-widest">Global Edge Cache Validated</span>
+</div>
+</footer>
+</div>
+<script>
+  (function() {
+    // Interactive Grid vs List Density View Switcher
+    const gridBtn = document.getElementById('viewGridBtn');
+    const listBtn = document.getElementById('viewListBtn');
+    const catalogContainer = document.getElementById('catalogContainer');
+
+    if (gridBtn && listBtn && catalogContainer) {
+      gridBtn.addEventListener('click', () => {
+        catalogContainer.classList.remove('xl:grid-cols-1', 'md:grid-cols-1');
+        catalogContainer.classList.add('md:grid-cols-2', 'xl:grid-cols-3');
+        gridBtn.className = "flex items-center justify-center w-8 h-8 rounded-full bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(229,195,120,0.3)] transition-all duration-300";
+        listBtn.className = "flex items-center justify-center w-8 h-8 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-300";
+      });
+
+      listBtn.addEventListener('click', () => {
+        catalogContainer.classList.remove('md:grid-cols-2', 'xl:grid-cols-3');
+        catalogContainer.classList.add('md:grid-cols-1', 'xl:grid-cols-1');
+        listBtn.className = "flex items-center justify-center w-8 h-8 rounded-full bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(229,195,120,0.3)] transition-all duration-300";
+        gridBtn.className = "flex items-center justify-center w-8 h-8 rounded-full text-on-surface-variant hover:text-on-surface transition-all duration-300";
+      });
+    }
+
+    // Category Filter Selection Micro-interactions
+    const categoryButtons = document.querySelectorAll('.cat-pill');
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryButtons.forEach(b => {
+          b.className = "cat-pill relative px-space-md py-space-sm rounded-full font-label-lg text-label-lg tracking-wide text-on-surface-variant transition-all duration-300 hover:text-on-surface hover:bg-surface-container-high/40";
+        });
+        btn.className = "cat-pill active relative px-space-md py-space-sm rounded-full font-label-lg text-label-lg tracking-wide transition-all duration-300 bg-primary-container text-on-primary-container font-semibold shadow-[0_0_15px_rgba(229,195,120,0.25)]";
+
+        const targetCat = btn.getAttribute('data-category');
+        const cards = document.querySelectorAll('#catalogContainer article');
+        cards.forEach(card => {
+          if (targetCat === 'all' || card.getAttribute('data-card-cat') === targetCat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Quick Filter Badges Toggle
+    const filterPills = document.querySelectorAll('.quick-pill');
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const isActive = pill.classList.toggle('bg-primary-container/20');
+        pill.classList.toggle('text-primary');
+        pill.classList.toggle('shadow-[0_0_12px_rgba(229,195,120,0.2)]');
+      });
+    });
+
+    // Favorite Star Click Animation
+    const favButtons = document.querySelectorAll('.fav-toggle');
+    favButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          const isFilled = icon.getAttribute('style') && icon.getAttribute('style').includes("'FILL' 1");
+          if (isFilled) {
+            icon.removeAttribute('style');
+            icon.classList.remove('text-secondary');
+          } else {
+            icon.setAttribute('style', "font-variation-settings: 'FILL' 1;");
+            icon.classList.add('text-secondary');
+          }
+        }
+      });
+    });
+
+    // Keyboard shortcut listener for Command + K
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('directorySearchInput');
+        if (searchInput) {
+          searchInput.focus();
+        }
+      }
+    });
+  })();
+</script></main></div></body></html>

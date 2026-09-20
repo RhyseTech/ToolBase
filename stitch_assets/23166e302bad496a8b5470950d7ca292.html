@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #090A0D;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      main > :first-child {
+        margin-top: 0 !important;
+      }
+      main > :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-variant": "#22252B",
+            "hairline-highlight": "rgba(255, 255, 255, 0.07)",
+            "surface": "#090A0D",
+            "primary-container": "#d4af37",
+            "tertiary-container": "#c8b07b",
+            "tertiary-fixed": "#fae0a7",
+            "on-background": "#e3e2e5",
+            "text-tertiary": "#707682",
+            "surface-container-highest": "#282B32",
+            "surface-elevated": "#14171C",
+            "on-primary-fixed-variant": "#574500",
+            "error-container": "#93000a",
+            "on-tertiary": "#3d2e05",
+            "platinum-muted": "#D6DBE2",
+            "on-surface": "#e3e2e5",
+            "surface-container-lowest": "#060709",
+            "on-surface-variant": "#9EA4B0",
+            "secondary": "#e9c176",
+            "primary": "#f2ca50",
+            "surface-subtle": "#0E1013",
+            "secondary-fixed": "#ffdea5",
+            "surface-tint": "#d4af37",
+            "outline-variant": "#2D3038",
+            "inverse-surface": "#e3e2e5",
+            "surface-bright": "#38393b",
+            "surface-dim": "#090A0D",
+            "inverse-on-surface": "#303033",
+            "on-primary-container": "#181403",
+            "on-secondary-container": "#dab36a",
+            "tertiary": "#e5cb94",
+            "text-primary": "#F5F6F8",
+            "surface-container": "#15181E",
+            "background": "#090A0D",
+            "on-primary": "#241a00",
+            "on-tertiary-fixed-variant": "#55451a",
+            "on-secondary-fixed-variant": "#5d4201",
+            "surface-container-low": "#0F1116",
+            "surface-container-high": "#1C1F26",
+            "on-secondary-fixed": "#261900",
+            "primary-fixed-dim": "#e9c349",
+            "outline": "#857D6F",
+            "surface-canvas": "#060709",
+            "tertiary-fixed-dim": "#ddc48d",
+            "on-primary-fixed": "#241a00",
+            "on-error": "#690005",
+            "secondary-fixed-dim": "#e9c176",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed": "#251a00",
+            "on-secondary": "#412d00",
+            "surface-panel": "#11141A",
+            "hairline-border": "rgba(255, 255, 255, 0.08)",
+            "champagne-glow": "rgba(212, 175, 55, 0.12)",
+            "champagne": "#D4AF37",
+            "champagne-light": "#E5C378",
+            "bronze-muted": "#C9A96E",
+            "on-tertiary-container": "#534318",
+            "secondary-container": "#604403",
+            "inverse-primary": "#735c00",
+            "error": "#ffb4ab",
+            "text-secondary": "#9EA4B0",
+            "primary-fixed": "#ffe088"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.375rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "gutter": "0.75rem",
+            "space-sm": "0.5rem"
+          },
+          fontFamily: {
+            "sans": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "label-sm": ["Inter", "sans-serif"],
+            "headline-xl": ["Inter", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "label-xs": ["Inter", "sans-serif"],
+            "headline-lg": ["Inter", "sans-serif"],
+            "headline-md": ["Inter", "sans-serif"],
+            "serif-display": ["Cinzel", "serif"]
+          },
+          fontSize: {
+            "body-sm": ["12px", { "lineHeight": "17px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "15px", "fontWeight": "500" }],
+            "headline-xl": ["32px", { "lineHeight": "38px", "fontWeight": "300" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "body-lg": ["15px", { "lineHeight": "23px", "fontWeight": "400" }],
+            "label-xs": ["10px", { "lineHeight": "13px", "fontWeight": "600" }],
+            "headline-lg": ["23px", { "lineHeight": "30px", "fontWeight": "400" }],
+            "headline-md": ["17px", { "lineHeight": "23px", "fontWeight": "500" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-body-md text-body-md text-platinum-muted antialiased flex flex-col min-h-screen selection:bg-[#D4AF37]/30 selection:text-white">
+<!-- Header -->
+<header class="fixed top-0 inset-x-0 z-50 bg-[#090A0D]/85 backdrop-blur-xl border-b border-white/[0.06] pt-safe shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
+<div class="h-16 px-margin flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2.5 min-w-0 flex-1">
+<!-- Refined Atelier Emblem -->
+<div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1C1F26] to-[#12141A] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_2px_10px_rgba(212,175,55,0.1)] shrink-0">
+<span class="material-symbols-outlined text-[17px] text-[#E5C378]">token</span>
+</div>
+<div class="flex items-center gap-2 truncate">
+<span class="text-[17px] font-medium text-text-primary tracking-wide truncate">AI ToolBox</span>
+<span class="px-1.5 py-0.5 rounded-[4px] bg-[#1A1D24] text-[#D4AF37] border border-[#D4AF37]/25 text-[9px] font-semibold tracking-widest uppercase shrink-0">ATELIER</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0">
+<button aria-label="Quick Search" class="w-10 h-10 flex items-center justify-center rounded-lg text-text-secondary hover:text-white hover:bg-white/[0.04] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button aria-label="Notifications" class="relative w-10 h-10 flex items-center justify-center rounded-lg text-text-secondary hover:text-white hover:bg-white/[0.04] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-[#D4AF37] ring-2 ring-[#090A0D] shadow-[0_0_8px_rgba(212,175,55,0.7)]"></span>
+</button>
+<button aria-label="Profile" class="w-10 h-10 flex items-center justify-center rounded-full p-0.5 ring-1 ring-[#D4AF37]/30 hover:ring-[#D4AF37]/60 transition-all ml-0.5" type="button">
+<img alt="Profile" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UGdBuQRnkxxRNEGzbUKQsQl6THHD3CVNEYhfu94MHP22YkfoAqZdrxHYKoovqN8sQ69cdJ0eAJF8G59oNeoT1B9nW_7e5X1lGO5d89nlHX62na1E0uI6gfSKJeOsgAcLb_KBx32cN7srob_4qb5UqNRYJes1zhZS_z9DrGkVr7okiCSLtqJXFKIvSQgt-3_noS9v-VxAOGIQG6_zCjWyEdP4tb7YTdKwaGg9N19DgsWXb5MpuXnRdQNg"/>
+</button>
+</div>
+</div>
+</header>
+<main class="flex flex-col relative w-full pt-16 pb-28 bg-[#090A0D] min-h-screen">
+<div class="flex flex-col w-full px-margin pb-6 gap-space-xl">
+<!-- Greeting Header -->
+<section class="flex flex-col gap-1 pt-4">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-medium tracking-[0.14em] uppercase text-[#9EA4B0] flex items-center gap-1.5">
+            Good evening <span class="opacity-70 text-xs">·</span> <span class="text-[#D6DBE2] tracking-normal font-normal">Executive Suite</span>
+</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-[#D4AF37]/30 text-[#E5C378] text-[9px] font-semibold tracking-widest uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shadow-[0_0_6px_rgba(212,175,55,0.8)] animate-pulse"></span>
+            SYNCED
+          </span>
+</div>
+<h1 class="text-[25px] sm:text-[27px] font-light text-text-primary tracking-tight leading-snug">
+          Your AI intelligence, <span class="font-normal italic text-[#E5C378]/90">curated</span>.
+        </h1>
+</section>
+<!-- Quick Add Hero Action Panel -->
+<section class="relative flex flex-col p-5 rounded-2xl bg-gradient-to-b from-[#15181E]/90 to-[#0F1116] border border-white/[0.08] shadow-[0_12px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.06)] overflow-hidden">
+<div class="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-[#D4AF37]/[0.05] blur-3xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-lg bg-[#1D212A] border border-[#D4AF37]/25 flex items-center justify-center text-[#E5C378]">
+<span class="material-symbols-outlined text-[15px]">bookmark_add</span>
+</div>
+<h2 class="text-[16px] font-medium text-text-primary tracking-tight">Save an AI Tool</h2>
+</div>
+<span class="font-semibold text-[9px] tracking-widest uppercase text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-2 py-0.5 rounded-full">AUTO-TAG</span>
+</div>
+<p class="text-[12.5px] text-[#9EA4B0] font-normal leading-relaxed mb-4">
+          Paste a repository or platform URL. Atelier intelligence extracts capabilities, pricing, and benchmarks automatically.
+        </p>
+<div class="flex flex-col gap-2.5">
+<div class="relative flex items-center bg-[#090A0D]/70 border border-white/[0.08] rounded-xl transition-all focus-within:border-[#D4AF37]/50 focus-within:ring-1 focus-within:ring-[#D4AF37]/40 shadow-inner">
+<span class="material-symbols-outlined absolute left-3.5 text-[17px] text-[#707682]">link</span>
+<input class="w-full bg-transparent py-2.5 pl-10 pr-24 text-[12px] text-text-primary placeholder:text-[#5F6572] focus:outline-none tracking-wide" id="url-input" placeholder="https://tool-or-repo.com" type="url"/>
+<div class="absolute right-2 flex items-center gap-1">
+<button class="px-2.5 py-1 rounded-md bg-[#1C2028] hover:bg-[#252A35] border border-white/[0.08] text-[#D6DBE2] text-[10px] font-medium tracking-wider uppercase flex items-center gap-1.5 transition-all active:scale-95" id="paste-btn" title="Paste from clipboard" type="button">
+<span class="material-symbols-outlined text-[12px] text-[#D4AF37]">content_paste</span>
+<span>Paste</span>
+</button>
+</div>
+</div>
+<button class="w-full h-11 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#E5C378] to-[#C9A96E] text-[#121006] text-[13px] font-semibold tracking-wide flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(212,175,55,0.22)] hover:shadow-[0_4px_24px_rgba(212,175,55,0.32)] active:scale-[0.99] transition-all" id="analyze-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="font-medium tracking-wide">Analyze Tool →</span>
+</button>
+</div>
+</section>
+<!-- Statistics Grid (2x2) -->
+<section class="grid grid-cols-2 gap-3">
+<!-- Stat 1 -->
+<div class="flex flex-col justify-between p-3.5 rounded-xl bg-[#11141A]/90 border border-white/[0.06] hover:border-[#D4AF37]/25 transition-all shadow-sm">
+<div class="flex items-center justify-between text-[#9EA4B0]">
+<span class="text-[11px] font-medium tracking-wider uppercase">Total Tools</span>
+<span class="material-symbols-outlined text-[16px] text-[#D4AF37]">layers</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-[26px] font-light text-text-primary tracking-tight font-sans">127</span>
+<span class="text-[10px] font-medium text-[#E5C378] tracking-wide">+12%</span>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="flex flex-col justify-between p-3.5 rounded-xl bg-[#11141A]/90 border border-white/[0.06] hover:border-[#D4AF37]/25 transition-all shadow-sm">
+<div class="flex items-center justify-between text-[#9EA4B0]">
+<span class="text-[11px] font-medium tracking-wider uppercase">Categories</span>
+<span class="material-symbols-outlined text-[16px] text-[#C9A96E]">category</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-[26px] font-light text-text-primary tracking-tight font-sans">18</span>
+<span class="text-[10px] font-medium text-[#707682] tracking-wider uppercase">Active</span>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="flex flex-col justify-between p-3.5 rounded-xl bg-[#11141A]/90 border border-white/[0.06] hover:border-[#D4AF37]/25 transition-all shadow-sm">
+<div class="flex items-center justify-between text-[#9EA4B0]">
+<span class="text-[11px] font-medium tracking-wider uppercase">Favorites</span>
+<span class="material-symbols-outlined text-[16px] text-[#D4AF37]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-[26px] font-light text-text-primary tracking-tight font-sans">32</span>
+<span class="text-[10px] font-medium text-[#707682] tracking-wider uppercase">Pinned</span>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="flex flex-col justify-between p-3.5 rounded-xl bg-[#11141A]/90 border border-white/[0.06] hover:border-[#D4AF37]/25 transition-all shadow-sm">
+<div class="flex items-center justify-between text-[#9EA4B0]">
+<span class="text-[11px] font-medium tracking-wider uppercase">Used This Mo</span>
+<span class="material-symbols-outlined text-[16px] text-[#C9A96E]">trending_up</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-[26px] font-light text-text-primary tracking-tight font-sans">14</span>
+<span class="text-[10px] font-medium text-[#707682] tracking-wider uppercase">Runs</span>
+</div>
+</div>
+</section>
+<!-- Categories Section (Horizontal quick-filter rail) -->
+<section class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="text-[16px] font-medium text-text-primary tracking-tight">Categories</h2>
+<span class="px-1.5 py-0.5 rounded bg-white/[0.05] border border-white/[0.08] text-[#9EA4B0] text-[10px] font-mono">8</span>
+</div>
+<button class="text-[11px] font-medium tracking-wider uppercase text-[#D4AF37] hover:text-[#E5C378] transition-colors" type="button">Customize</button>
+</div>
+<!-- Horizontal Category Scroll -->
+<div class="flex gap-2 overflow-x-auto pb-1 -mx-margin px-margin">
+<button class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#D4AF37]/20 to-[#C9A96E]/15 border border-[#D4AF37]/45 text-[#F5F6F8] shadow-sm">
+<span class="text-[12px]">🔎</span>
+<span class="text-[11px] font-medium tracking-wide">Search</span>
+<span class="text-[10px] text-[#D4AF37] font-semibold ml-0.5">24</span>
+</button>
+<button class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#11141A] border border-white/[0.07] hover:border-white/[0.15] text-[#D6DBE2] transition-colors">
+<span class="text-[12px]">💻</span>
+<span class="text-[11px] font-medium tracking-wide">Coding</span>
+<span class="text-[10px] text-[#707682] ml-0.5">31</span>
+</button>
+<button class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#11141A] border border-white/[0.07] hover:border-white/[0.15] text-[#D6DBE2] transition-colors">
+<span class="text-[12px]">🎨</span>
+<span class="text-[11px] font-medium tracking-wide">Design</span>
+<span class="text-[10px] text-[#707682] ml-0.5">18</span>
+</button>
+<button class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#11141A] border border-white/[0.07] hover:border-white/[0.15] text-[#D6DBE2] transition-colors">
+<span class="text-[12px]">🖼</span>
+<span class="text-[11px] font-medium tracking-wide">Image</span>
+<span class="text-[10px] text-[#707682] ml-0.5">15</span>
+</button>
+<button class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#11141A] border border-white/[0.07] hover:border-white/[0.15] text-[#D6DBE2] transition-colors">
+<span class="text-[12px]">🎬</span>
+<span class="text-[11px] font-medium tracking-wide">Video</span>
+<span class="text-[10px] text-[#707682] ml-0.5">9</span>
+</button>
+<button class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#11141A] border border-white/[0.07] hover:border-white/[0.15] text-[#D6DBE2] transition-colors">
+<span class="text-[12px]">🎙</span>
+<span class="text-[11px] font-medium tracking-wide">Voice</span>
+<span class="text-[10px] text-[#707682] ml-0.5">8</span>
+</button>
+<button class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#11141A] border border-white/[0.07] hover:border-white/[0.15] text-[#D6DBE2] transition-colors">
+<span class="text-[12px]">🧠</span>
+<span class="text-[11px] font-medium tracking-wide">Research</span>
+<span class="text-[10px] text-[#707682] ml-0.5">21</span>
+</button>
+<button class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#11141A] border border-white/[0.07] hover:border-white/[0.15] text-[#D6DBE2] transition-colors">
+<span class="text-[12px]">🤖</span>
+<span class="text-[11px] font-medium tracking-wide">Agents</span>
+<span class="text-[10px] text-[#707682] ml-0.5">12</span>
+</button>
+</div>
+</section>
+<!-- Recently Added Tools Section -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="text-[16px] font-medium text-text-primary tracking-tight">Recently Added</h2>
+<span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
+</div>
+<a class="text-[11px] font-medium tracking-wider uppercase text-[#D4AF37] hover:text-[#E5C378] flex items-center gap-1 transition-colors" href="#">
+            View all <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Cards Stack -->
+<div class="flex flex-col gap-3">
+<!-- Tool Card 1: Perplexity -->
+<article class="flex flex-col p-4 rounded-xl bg-[#11141A]/95 border border-white/[0.07] hover:border-[#D4AF37]/30 shadow-[0_4px_20px_rgba(0,0,0,0.35)] gap-3 transition-all active:scale-[0.99]">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-11 h-11 rounded-lg overflow-hidden bg-[#1A1D24] border border-white/[0.08] shrink-0 flex items-center justify-center p-0.5">
+<img class="w-full h-full object-cover rounded-md" data-alt="Minimal vector icon graphic representing AI search engine with turquoise accents on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLNe0LSJcy3LuKMpapdpuI33JbC-ScqX1DvDzlZXF_EXeRhpXZonbZ2niB-BnJ4HdO5IPSU9d2t5HJkBIVWcvArEgBs2sjnUK5qe7MN8Ar1RE3am0UedorJnXa_u8vMyLnTpx_Mo6_yV_fp8tHQz01yY4O15cToJbmtofRqLX5ZbEEqoQhq2DWgldRw-N5GLBxD-ORehDAaELEdf7x_40DKMB1sFMQXiRRVNWCmfTcOG3qEv-K1VcK"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h3 class="text-[15px] font-medium text-text-primary tracking-tight truncate">Perplexity</h3>
+<span class="font-semibold text-[9px] tracking-widest uppercase text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-1.5 py-0.5 rounded">WEB</span>
+</div>
+<p class="text-[12px] text-[#9EA4B0] font-normal truncate mt-0.5">AI search and live web research engine</p>
+</div>
+</div>
+<button aria-label="Toggle favorite" class="favorite-btn p-1.5 rounded-lg text-[#D4AF37] bg-white/[0.03] border border-white/[0.06] hover:bg-[#D4AF37]/10 transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-0.5 border-t border-white/[0.04]">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[#A2A7B0] text-[10px] font-medium tracking-wide">Search</span>
+<span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[#A2A7B0] text-[10px] font-medium tracking-wide">Research</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-[#D4AF37]">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-semibold text-text-primary font-mono">4.5</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-0.5">
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-white/[0.03] border border-white/[0.08] text-[#D6DBE2] text-[11px] font-medium tracking-wide hover:bg-white/[0.07] transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[14px] text-[#707682]">info</span>
+                Details
+              </button>
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/35 text-[#E5C378] text-[11px] font-medium tracking-wide hover:bg-[#D4AF37]/20 transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                Launch
+              </button>
+</div>
+</article>
+<!-- Tool Card 2: Claude 3.5 Sonnet -->
+<article class="flex flex-col p-4 rounded-xl bg-[#11141A]/95 border border-white/[0.07] hover:border-[#D4AF37]/30 shadow-[0_4px_20px_rgba(0,0,0,0.35)] gap-3 transition-all active:scale-[0.99]">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-11 h-11 rounded-lg overflow-hidden bg-[#1A1D24] border border-white/[0.08] shrink-0 flex items-center justify-center p-0.5">
+<img class="w-full h-full object-cover rounded-md" data-alt="Modern technical geometric avatar emblem with warm coral and slate tones for a large language model" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9KKy27rc3SsR2cCdfVGYdCAFGn29BvUla8khkVDAdq4E0CbALtWIsGT_09R21thVtOcOZPj8cHR3QIil1kRGM90FCXxM-vJ52Nh41TAfMTbE2XOqu7Gbx2_4urHw10p_aV0mKLN5BOFI-lAMEOM1UINnoM5vg_CJBsd5vdVjBIjZo4p9LlxOD-nGemVmUvvtTmeBqqkue9hqaa0q0Xc76k5JfI-9i0kRf326vP65LEtS35sMWLg4G"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h3 class="text-[15px] font-medium text-text-primary tracking-tight truncate">Claude 3.5 Sonnet</h3>
+<span class="font-semibold text-[9px] tracking-widest uppercase text-[#C9A96E] bg-[#C9A96E]/10 border border-[#C9A96E]/20 px-1.5 py-0.5 rounded">API</span>
+</div>
+<p class="text-[12px] text-[#9EA4B0] font-normal truncate mt-0.5">Advanced reasoning, coding &amp; analysis model</p>
+</div>
+</div>
+<button aria-label="Toggle favorite" class="favorite-btn p-1.5 rounded-lg text-[#D4AF37] bg-white/[0.03] border border-white/[0.06] hover:bg-[#D4AF37]/10 transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-0.5 border-t border-white/[0.04]">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[#A2A7B0] text-[10px] font-medium tracking-wide">Coding</span>
+<span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[#A2A7B0] text-[10px] font-medium tracking-wide">Reasoning</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-[#D4AF37]">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-semibold text-text-primary font-mono">5.0</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-0.5">
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-white/[0.03] border border-white/[0.08] text-[#D6DBE2] text-[11px] font-medium tracking-wide hover:bg-white/[0.07] transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[14px] text-[#707682]">info</span>
+                Details
+              </button>
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/35 text-[#E5C378] text-[11px] font-medium tracking-wide hover:bg-[#D4AF37]/20 transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                Launch
+              </button>
+</div>
+</article>
+<!-- Tool Card 3: Midjourney v6 -->
+<article class="flex flex-col p-4 rounded-xl bg-[#11141A]/95 border border-white/[0.07] hover:border-[#D4AF37]/30 shadow-[0_4px_20px_rgba(0,0,0,0.35)] gap-3 transition-all active:scale-[0.99]">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-11 h-11 rounded-lg overflow-hidden bg-[#1A1D24] border border-white/[0.08] shrink-0 flex items-center justify-center p-0.5">
+<img class="w-full h-full object-cover rounded-md" data-alt="Surreal deep indigo sailboat sails on dark ocean with luminous neon grid line artwork, high resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6uZpZMv26HqjkCFmKPDNy4SLIiqFo7Dct-LOdJ0IEbakVaDcKF8lYFbSmKojFfMEZBrwozvdkR0rCVDpeqJ6tFsmZsmyfNk3TCWFeSi7hv8wg0y-jnolh92k4mVDknhXcEcqP4th8Wq378f_OKqDytXH_h4-PeNuFTduq5ETt_tP6BqWBygef5P1UaUKRBCyxx4Wyjc81tQefvf81lKYdXZmyu5ULNTs_7kvtuXWOyWbaT5yeraTv"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h3 class="text-[15px] font-medium text-text-primary tracking-tight truncate">Midjourney v6</h3>
+<span class="font-semibold text-[9px] tracking-widest uppercase text-[#9EA4B0] bg-white/[0.04] border border-white/[0.08] px-1.5 py-0.5 rounded">BOT</span>
+</div>
+<p class="text-[12px] text-[#9EA4B0] font-normal truncate mt-0.5">Generative image synthesis &amp; artistic rendering</p>
+</div>
+</div>
+<button aria-label="Toggle favorite" class="favorite-btn p-1.5 rounded-lg text-[#707682] bg-white/[0.03] border border-white/[0.06] hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">star</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-0.5 border-t border-white/[0.04]">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[#A2A7B0] text-[10px] font-medium tracking-wide">Image</span>
+<span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[#A2A7B0] text-[10px] font-medium tracking-wide">Creative</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-[#D4AF37]">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-semibold text-text-primary font-mono">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-0.5">
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-white/[0.03] border border-white/[0.08] text-[#D6DBE2] text-[11px] font-medium tracking-wide hover:bg-white/[0.07] transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[14px] text-[#707682]">info</span>
+                Details
+              </button>
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/35 text-[#E5C378] text-[11px] font-medium tracking-wide hover:bg-[#D4AF37]/20 transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                Launch
+              </button>
+</div>
+</article>
+</div>
+</section>
+<!-- Realtime System Pulse Footer Status -->
+<section class="flex items-center justify-between p-3 rounded-lg bg-[#0F1116] border border-white/[0.05] text-[10px] font-medium tracking-wider uppercase text-[#707682]">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shadow-[0_0_6px_rgba(212,175,55,0.6)]"></span>
+<span>Index: 127 tools loaded</span>
+</div>
+<div class="flex items-center gap-1 text-[#C9A96E]">
+<span class="material-symbols-outlined text-[12px]">keyboard_command_key</span>
+<span class="tracking-normal uppercase">K to search</span>
+</div>
+</section>
+</div>
+<script>
+      (function() {
+        const pasteBtn = document.getElementById('paste-btn');
+        const urlInput = document.getElementById('url-input');
+        const analyzeBtn = document.getElementById('analyze-btn');
+
+        if (pasteBtn && urlInput) {
+          pasteBtn.addEventListener('click', async () => {
+            try {
+              const text = await navigator.clipboard.readText();
+              if (text) {
+                urlInput.value = text;
+                urlInput.focus();
+              }
+            } catch (err) {
+              urlInput.value = 'https://github.com/vllm-project/vllm';
+              urlInput.focus();
+            }
+          });
+        }
+
+        if (analyzeBtn && urlInput) {
+          analyzeBtn.addEventListener('click', () => {
+            const val = urlInput.value.trim();
+            if (!val) {
+              urlInput.focus();
+              urlInput.placeholder = 'Please paste a valid URL first...';
+              return;
+            }
+            analyzeBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span><span>Analyzing metadata...</span>';
+            setTimeout(() => {
+              analyzeBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span><span>Tool Parsed & Added!</span>';
+              setTimeout(() => {
+                analyzeBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">bolt</span><span class="font-medium tracking-wide">Analyze Tool &rarr;</span>';
+                urlInput.value = '';
+              }, 1500);
+            }, 800);
+          });
+        }
+
+        // Toggle favorite state
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const icon = btn.querySelector('.material-symbols-outlined');
+            const isFilled = icon.style.fontVariationSettings?.includes("'FILL' 1");
+            if (isFilled) {
+              icon.style.fontVariationSettings = "'FILL' 0";
+              btn.classList.remove('text-[#D4AF37]');
+              btn.classList.add('text-[#707682]');
+            } else {
+              icon.style.fontVariationSettings = "'FILL' 1";
+              btn.classList.add('text-[#D4AF37]');
+              btn.classList.remove('text-[#707682]');
+            }
+          });
+        });
+      })();
+    </script>
+</main>
+<!-- Luxury Minimal Dock Bottom Navigation -->
+<nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-[#090A0D]/90 backdrop-blur-2xl border-t border-white/[0.06] shadow-[0_-8px_32px_rgba(0,0,0,0.7)]" data-active-classes="text-[#D4AF37]">
+<div class="flex justify-around items-center h-16 px-space-xs max-w-lg mx-auto">
+<a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[50px] h-14 transition-colors text-[#D4AF37]" data-path="dashboard" href="#">
+<span class="material-symbols-outlined text-[21px]">home</span>
+<span class="text-[9px] font-semibold tracking-wider uppercase">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 min-w-[50px] h-14 text-[#707682] hover:text-[#D6DBE2] transition-colors" data-path="tools" href="#">
+<span class="material-symbols-outlined text-[21px]">grid_view</span>
+<span class="text-[9px] font-semibold tracking-wider uppercase">Tools</span>
+</a>
+<!-- Center Understated Luxury Add Action -->
+<a class="flex flex-col items-center justify-center gap-0.5 min-w-[54px] h-14 -mt-3 transition-transform active:scale-95" data-path="add-tool" href="#">
+<div class="w-11 h-11 rounded-full bg-gradient-to-tr from-[#C9A96E] via-[#E5C378] to-[#D4AF37] text-[#121006] flex items-center justify-center shadow-[0_4px_16px_rgba(212,175,55,0.35)] border border-[#fae0a7]/40">
+<span class="material-symbols-outlined text-[22px] font-medium">add</span>
+</div>
+<span class="text-[9px] font-semibold tracking-wider uppercase text-[#C9A96E] mt-0.5">Add</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 min-w-[50px] h-14 text-[#707682] hover:text-[#D6DBE2] transition-colors" data-path="ask-ai" href="#">
+<span class="material-symbols-outlined text-[21px]">smart_toy</span>
+<span class="text-[9px] font-semibold tracking-wider uppercase">Ask AI</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 min-w-[50px] h-14 text-[#707682] hover:text-[#D6DBE2] transition-colors" data-path="settings" href="#">
+<span class="material-symbols-outlined text-[21px]">settings</span>
+<span class="text-[9px] font-semibold tracking-wider uppercase">Settings</span>
+</a>
+</div>
+</nav>
+</body></html>

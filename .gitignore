@@ -1,0 +1,33 @@
+# Python / backend
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+*.py[cod]
+.pytest_cache/
+backend/.pytest_cache/
+.coverage
+htmlcov/
+
+# Databases (local dev data — never commit)
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Secrets (never commit real keys)
+backend/.env
+frontend/.env.local
+frontend/.env.*.local
+*.pem
+
+# Frontend build output (covered by frontend/.gitignore too)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/coverage/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

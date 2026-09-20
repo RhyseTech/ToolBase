@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-variant": "#343538", "outline": "#999080", "on-tertiary-container": "#485463", "secondary-fixed-dim": "#e9c349", "error-container": "#93000a", "on-error-container": "#ffdad6", "on-secondary": "#3c2f00", "error": "#ffb4ab", "on-tertiary": "#26313f", "secondary-fixed": "#ffe088", "on-error": "#690005", "tertiary-fixed": "#d7e3f6", "primary-fixed": "#ffdf9b", "on-surface-variant": "#d0c5b4", "tertiary-fixed-dim": "#bbc7d9", "surface-tint": "#e4c277", "secondary": "#e9c349", "on-background": "#e3e2e6", "secondary-container": "#af8d11", "primary-fixed-dim": "#e4c277", "on-tertiary-fixed-variant": "#3c4856", "inverse-on-surface": "#2f3034", "surface-container-low": "#1b1b1f", "tertiary": "#d8e4f6", "on-surface": "#e3e2e6", "surface-container": "#1f1f23", "on-tertiary-fixed": "#101c29", "on-primary-container": "#684f0f", "surface-container-highest": "#343538", "on-secondary-container": "#342800", "surface-container-lowest": "#0d0e11", "outline-variant": "#4d4639", "inverse-primary": "#745b1a", "on-primary-fixed": "#251a00", "surface-container-high": "#292a2d", "primary-container": "#e5c378", "tertiary-container": "#bcc8da", "inverse-surface": "#e3e2e6", "on-primary-fixed-variant": "#5a4302", "on-primary": "#3f2e00", "on-secondary-fixed": "#241a00", "primary": "#ffe09d", "surface": "#121316", "background": "#121316", "on-secondary-fixed-variant": "#574500", "surface-dim": "#121316", "surface-bright": "#38393d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "space-sm": "0.5rem", "margin-tablet": "1.5rem", "margin": "3rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "gutter": "1.5rem", "gutter-tablet": "1rem", "space-md": "1rem" }, "fontFamily": { "label-md": ["Inter"], "display-md": ["Inter"], "headline-sm": ["Inter"], "body-lg": ["Inter"], "label-caps": ["Inter"], "headline-lg": ["Inter"], "display-lg": ["Inter"], "body-sm": ["Inter"], "label-lg": ["Inter"], "headline-md": ["Inter"], "body-md": ["Inter"] }, "fontSize": { "label-md": ["11px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "display-md": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "label-caps": ["10px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.025em", "fontWeight": "300" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }], "label-lg": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen relative"><div class="fixed top-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[140px] pointer-events-none -z-10"></div><div class="fixed bottom-0 right-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[160px] pointer-events-none -z-10"></div><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface/75 backdrop-blur-2xl shadow-[0_1px_8px_rgba(0,0,0,0.4)] flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><img alt="Brand logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WDAuPk3LjBeLe1nmEKfCDayYzTnYE4zr1OLwZIqUWK5kmyzMXlMQIleCvL5LVG89lYTBmjtCfRpYLNW9tdB8ZvjBSy2MZJUu8OcVgQeD5io7enXjVZduXp2sMOu5xNLr_avPsTSbzrdiWX4fqrpNxqknqgwnAoLdl3Ofhz4Ihld-R6DiSIhw06lPIl1LXvFsLTvn6iZb7ySq1Z0JQsQjtnIrvXdkNd9R8qKiTDkQLNnQI2gQajJQ5Tbw"/><span class="font-headline-sm text-headline-sm text-on-surface font-medium tracking-tight">Atelier Suite</span><span class="font-label-caps text-label-caps px-space-xs py-0.5 rounded-full bg-surface-container-highest text-primary font-semibold uppercase tracking-wider ml-space-xs">Executive</span></div><div class="flex items-center gap-space-md"><div class="relative flex items-center bg-surface-container-lowest/80 rounded-lg px-space-md py-space-xs gap-space-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] w-72"><span class="material-symbols-outlined text-outline text-base">search</span><input class="bg-transparent border-0 outline-none text-on-surface font-body-sm text-body-sm placeholder:text-outline w-full" placeholder="Search tools, vaults..." type="text"/><span class="font-label-caps text-label-caps text-outline bg-surface-container-high px-space-xs py-0.5 rounded border border-outline-variant/30">⌘K</span></div><button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-gradient-to-br from-primary-container to-secondary text-on-primary font-label-lg text-label-lg shadow-[0_0_20px_rgba(229,195,120,0.3)] hover:opacity-95 transition-opacity font-medium"><span class="material-symbols-outlined text-sm font-semibold">add</span><span>Add Tool</span></button><button class="relative p-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary-container/40" src="https://lh3.googleusercontent.com/aida/AEtjO1UGdBuQRnkxxRNEGzbUKQsQl6THHD3CVNEYhfu94MHP22YkfoAqZdrxHYKoovqN8sQ69cdJ0eAJF8G59oNeoT1B9nW_7e5X1lGO5d89nlHX62na1E0uI6gfSKJeOsgAcLb_KBx32cN7srob_4qb5UqNRYJes1zhZS_z9DrGkVr7okiCSLtqJXFKIvSQgt-3_noS9v-VxAOGIQG6_zCjWyEdP4tb7YTdKwaGg9N19DgsWXb5MpuXnRdQNg"/><div class="hidden xl:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">V. Sterling</span><span class="font-label-caps text-label-caps text-outline uppercase">Managing Director</span></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-72 bg-surface-container-lowest/80 backdrop-blur-2xl z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-md overflow-y-auto"><div class="px-space-sm"><span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Workspace Architecture</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-gradient-to-r from-primary-container/20 to-secondary/10 text-primary font-medium rounded-lg shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_0_20px_rgba(229,195,120,0.2)] border border-primary/30"><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="dashboard" href="#"><span>Dashboard</span></a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="all-tools" href="#"><span>All Tools</span></a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="favorites" href="#"><span>Favorites</span></a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="collections-categories" href="#"><span>Collections &amp; Categories</span></a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="prompt-vault" href="#"><span>Prompt Vault</span></a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="ask-ai" href="#"><span>Ask AI</span></a></nav></div><div class="flex flex-col gap-space-md"><div class="bg-surface-container/60 rounded-xl p-space-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"><div class="flex items-center justify-between mb-space-xs"><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Quick Storage</span><span class="font-label-caps text-label-caps text-primary font-semibold">68%</span></div><div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden mb-space-xs"><div class="h-full bg-gradient-to-r from-primary-fixed-dim to-secondary rounded-full w-[68%]"></div></div><div class="flex items-center justify-between font-label-caps text-label-caps text-outline"><span>Allocated</span><span>13.6 GB / 20 GB</span></div></div><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="settings" href="#"><span>Settings</span></a></div></aside><div class="pl-72"><main class="w-full pt-16 bg-background min-h-screen px-space-xl py-space-xl"><div class="flex flex-col w-full gap-space-xl">
+<!-- TOP HEADER & REASONING LAYER META -->
+<section class="flex flex-col gap-space-md">
+<!-- Sovereign Tag Badge -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-surface-container-high/70 shadow-sm backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest font-semibold uppercase">
+          SOVEREIGN REASONING LAYER // ENCLAVE SYNERGY V4.8
+        </span>
+<span class="text-outline/40 font-body-sm">|</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">
+          ZERO-DATA RETENTION ACTIVE
+        </span>
+</div>
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-lowest/80 text-outline font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-xs text-secondary">shield_lock</span>
+<span>ENCRYPTED MEMORY ENCLAVE</span>
+</div>
+</div>
+<!-- Title and Top Action Strip -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<h1 class="font-display-md text-display-md text-on-surface tracking-tight font-light">
+          Ask AI &amp; <span class="text-primary-container italic font-normal selection:bg-primary selection:text-on-primary">Sovereign Copilot</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Autonomous cross-enclave synthesis query engine. Seamlessly reasons across your 127 indexed AI tools, prompt macros, and encrypted benchmark dossiers.
+        </p>
+</div>
+<!-- Controls Right: Model selector, Mode, and New Session -->
+<div class="flex items-center gap-space-sm flex-wrap self-start lg:self-end">
+<!-- Model Pill -->
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-xl bg-surface-container/70 shadow-sm backdrop-blur-md">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-lg text-label-lg text-on-surface font-medium">Claude 3.5 Sonnet</span>
+<span class="font-label-caps text-label-caps px-1.5 py-0.5 rounded bg-surface-container-highest text-primary-fixed-dim">
+            ⚡ 14ms
+          </span>
+<span class="material-symbols-outlined text-outline text-base">expand_more</span>
+</div>
+<!-- Mode Pill -->
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-xl bg-surface-container/50 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors shadow-sm">
+<span class="material-symbols-outlined text-base text-secondary">psychology</span>
+<span class="font-label-lg text-label-lg font-medium">Deep Synthesis &amp; Audit</span>
+</div>
+<!-- Action Buttons -->
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-xl bg-surface-container-high/60 hover:bg-surface-container-highest text-on-surface font-label-lg text-label-lg transition-all shadow-sm">
+<span class="material-symbols-outlined text-base text-outline">history</span>
+<span>Clear Context</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-xl bg-gradient-to-br from-primary-container to-secondary text-on-primary font-label-lg text-label-lg shadow-lg hover:opacity-95 transition-all font-semibold">
+<span class="material-symbols-outlined text-base">add</span>
+<span>New Session</span>
+</button>
+</div>
+</div>
+</section>
+<!-- TELEMETRY HUD (4 Glass Metric Cards) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1: Indexed Knowledge Base -->
+<div class="flex flex-col justify-between p-space-lg rounded-xl bg-surface-container/40 backdrop-blur-xl shadow-md relative overflow-hidden group hover:bg-surface-container/60 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Indexed Knowledge Base</span>
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps px-2 py-0.5 rounded-full bg-secondary-container/30 text-primary">
+<span class="w-1 h-1 rounded-full bg-secondary animate-ping"></span>
+          ● LIVE
+        </span>
+</div>
+<div class="mt-space-md mb-space-xs">
+<div class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">127 Instruments</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">100% Vectorized &amp; Quantized</p>
+</div>
+<div class="flex items-center gap-space-xs text-outline font-label-caps text-label-caps pt-space-xs">
+<span class="material-symbols-outlined text-xs text-secondary">database</span>
+<span>Cross-Vault Synced</span>
+</div>
+</div>
+<!-- Card 2: Context Window -->
+<div class="flex flex-col justify-between p-space-lg rounded-xl bg-surface-container/40 backdrop-blur-xl shadow-md relative overflow-hidden group hover:bg-surface-container/60 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Context Window</span>
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded bg-surface-container-highest text-primary-fixed-dim">
+          3.2k Reserve
+        </span>
+</div>
+<div class="mt-space-md mb-space-xs">
+<div class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">184k <span class="text-outline font-normal text-headline-sm">/ 200k</span></div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden mt-space-sm">
+<div class="h-full bg-gradient-to-r from-primary-fixed-dim via-secondary to-primary-container rounded-full w-[92%]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between font-label-caps text-label-caps text-outline pt-space-xs">
+<span>Prompt Payload 92%</span>
+<span class="text-secondary font-medium">Ultra High Concurrency</span>
+</div>
+</div>
+<!-- Card 3: Synthesis Latency -->
+<div class="flex flex-col justify-between p-space-lg rounded-xl bg-surface-container/40 backdrop-blur-xl shadow-md relative overflow-hidden group hover:bg-surface-container/60 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Synthesis Latency</span>
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded bg-surface-container-highest text-secondary font-medium">
+          +34% Faster
+        </span>
+</div>
+<div class="mt-space-md mb-space-xs">
+<div class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">210ms</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Local GPU Tensor Accelerator</p>
+</div>
+<div class="flex items-center gap-space-xs text-outline font-label-caps text-label-caps pt-space-xs">
+<span class="material-symbols-outlined text-xs text-secondary">memory</span>
+<span>Dual RTX 4090 Enclave Node</span>
+</div>
+</div>
+<!-- Card 4: Zero-Drift Fidelity -->
+<div class="flex flex-col justify-between p-space-lg rounded-xl bg-surface-container/40 backdrop-blur-xl shadow-md relative overflow-hidden group hover:bg-surface-container/60 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Zero-Drift Fidelity</span>
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded bg-surface-container-highest text-primary-container font-medium">
+          Verified Audit
+        </span>
+</div>
+<div class="mt-space-md mb-space-xs flex items-baseline justify-between">
+<div>
+<div class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">99.8%</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Mathematical Grounding</p>
+</div>
+<!-- Inline Sparkline Graphic (Champagne Gold Wave) -->
+<svg class="w-24 h-10 text-primary-container" fill="none" viewbox="0 0 100 40">
+<path d="M0 32 Q 25 30, 40 18 T 75 14 T 100 6" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M0 32 Q 25 30, 40 18 T 75 14 T 100 6 L 100 40 L 0 40 Z" fill="currentColor" fill-opacity="0.08"></path>
+</svg>
+</div>
+<div class="flex items-center gap-space-xs text-outline font-label-caps text-label-caps pt-space-xs">
+<span class="material-symbols-outlined text-xs text-primary">verified_user</span>
+<span>Zero Hallucination Vector Guard</span>
+</div>
+</div>
+</section>
+<!-- MAIN WORKSPACE SPLIT VIEW (Conversational Canvas + Context Inspector) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT / CONVERSATIONAL CANVAS (Cols 1-8) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Session Header Bar -->
+<div class="flex items-center justify-between px-space-lg py-space-md rounded-xl bg-surface-container/50 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-secondary text-lg">forum</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-medium truncate">
+              Session #402: High-Concurrence Multi-Agent Orchestration &amp; Model Stacking
+            </span>
+<span class="font-label-caps text-label-caps text-outline">Active · 3m ago · Atelier Sovereign Instance #881</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="p-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Bookmark Session">
+<span class="material-symbols-outlined text-base">bookmark</span>
+</button>
+<button class="p-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Export Markdown">
+<span class="material-symbols-outlined text-base">ios_share</span>
+</button>
+<button class="p-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Session Settings">
+<span class="material-symbols-outlined text-base">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Dialogue Timeline Container -->
+<div class="flex flex-col gap-space-lg py-space-xs">
+<!-- TURN 1: USER PROMPT -->
+<div class="flex flex-col gap-space-xs pl-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-gradient-to-tr from-secondary-container to-primary-container text-on-secondary font-label-caps text-label-caps font-bold flex items-center justify-center shadow-sm">
+              VS
+            </div>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase font-semibold">V. Sterling · Managing Director</span>
+<span class="font-label-caps text-label-caps text-outline">14:28:10 UTC</span>
+</div>
+<div class="p-space-lg rounded-2xl rounded-tl-sm bg-surface-container-high/60 backdrop-blur-md shadow-sm max-w-3xl">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+              Evaluate our current tool stack for enterprise full-stack prototyping. Should we replace <strong class="text-primary font-medium">v0 + Cursor</strong> with <strong class="text-primary font-medium">Devin</strong> for autonomous frontend sprints, or keep the hybrid LangGraph supervisor pipeline? Reference our Prompt Vault macros.
+            </p>
+<div class="mt-space-sm flex items-center gap-space-xs text-outline font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-xs text-secondary">attachment</span>
+<span>Referenced: Prompt Vault Macro #06 (Autonomous Swarm)</span>
+</div>
+</div>
+</div>
+<!-- TURN 2: AI SOVEREIGN RESPONSE -->
+<div class="flex flex-col gap-space-sm">
+<!-- Meta Header -->
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary shadow-inner">
+<span class="material-symbols-outlined text-base">auto_awesome</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-caps text-label-caps text-primary tracking-widest font-semibold uppercase">
+                  ATELIER INTELLIGENCE // CLAUDE 3.5 ENCLAVE
+                </span>
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded bg-surface-container-highest text-secondary">
+                  REASONED IN 480MS · 1,420 TOKENS
+                </span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-outline">ENCLAVE BENCHMARK V8.4</span>
+</div>
+<!-- The AI Response Container -->
+<div class="p-space-xl rounded-2xl rounded-tl-sm bg-surface-container/60 backdrop-blur-2xl shadow-xl flex flex-col gap-space-lg">
+<!-- Collapsible Synthetic Reasoning Chain (Open State) -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest/70 p-space-md shadow-inner">
+<div class="flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-base">hub</span>
+<span class="font-label-caps text-label-caps text-on-surface font-semibold tracking-wider uppercase">Synthetic Reasoning Chain (3 Steps Verified)</span>
+</div>
+<div class="flex items-center gap-space-xs text-outline group-hover:text-primary transition-colors font-label-caps text-label-caps">
+<span>Collapsible Trace</span>
+<span class="material-symbols-outlined text-base">expand_less</span>
+</div>
+</div>
+<!-- Steps -->
+<div class="mt-space-md flex flex-col gap-space-sm pl-space-md">
+<div class="flex items-start gap-space-sm text-body-sm font-body-sm text-on-surface-variant">
+<span class="text-secondary font-mono text-xs">01/</span>
+<div>
+<span class="text-on-surface font-medium">Retrieved 3 Tool Dossiers:</span>
+                    Cursor IDE (★ 4.9), v0 by Vercel (★ 4.7), Devin (★ 4.8) via local embeddings.
+                  </div>
+</div>
+<div class="flex items-start gap-space-sm text-body-sm font-body-sm text-on-surface-variant">
+<span class="text-secondary font-mono text-xs">02/</span>
+<div>
+<span class="text-on-surface font-medium">Cross-referenced Prompt Vault Macro #06:</span>
+<span class="italic text-on-surface-variant/90">“Autonomous Multi-Agent Swarm Orchestrator”</span>.
+                  </div>
+</div>
+<div class="flex items-start gap-space-sm text-body-sm font-body-sm text-on-surface-variant">
+<span class="text-secondary font-mono text-xs">03/</span>
+<div>
+<span class="text-on-surface font-medium">Benchmarked Cost &amp; Latency Tradeoffs:</span>
+                    $0.04/turn interactive generation vs $2.80/task asynchronous agent execution.
+                  </div>
+</div>
+</div>
+</div>
+<!-- Executive Synthesis Recommendation -->
+<div class="flex flex-col gap-space-md">
+<div class="font-headline-sm text-headline-sm text-primary font-medium tracking-tight">
+                Architectural Recommendation: Retain Hybrid Multi-Tier Pipeline
+              </div>
+<div class="font-body-md text-body-md text-on-surface-variant space-y-space-md leading-relaxed">
+<p>
+                  After analyzing historical velocity records across 48 prototyping runs, <strong class="text-on-surface font-medium">we advise against a wholesale migration to fully autonomous agents (Devin)</strong> for real-time iterative design sprints. While Devin excels at decoupled asynchronous GitHub issue remediation, interactive UX authoring requires instantaneous tactile feedback loops.
+                </p>
+<div class="p-space-md rounded-xl bg-surface-container-high/40 text-on-surface">
+<div class="font-label-caps text-label-caps text-secondary uppercase font-semibold mb-1">Executive Synthesis Formula</div>
+<p class="font-body-md text-body-md">
+<strong class="text-primary">v0 by Vercel</strong> for scaffold generation (0–60%) → <strong class="text-primary">Cursor IDE</strong> for AST-level precision tailoring (60–95%) → <strong class="text-primary">LangGraph Supervisor</strong> for headless PR audit verification (95–100%).
+                  </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-xs">
+<div class="p-space-md rounded-xl bg-surface-container-lowest/50">
+<div class="flex items-center gap-space-xs font-label-lg text-label-lg text-on-surface font-medium mb-1">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+                      Hybrid Advantages
+                    </div>
+<ul class="font-body-sm text-body-sm text-outline space-y-1 list-disc list-inside">
+<li>Latency: 4.2s per code diff vs ~180s for full container boot</li>
+<li>Token Economy: Reduces sprint consumption by 72%</li>
+<li>Human-in-the-loop granular design governance</li>
+</ul>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest/50">
+<div class="flex items-center gap-space-xs font-label-lg text-label-lg text-on-surface font-medium mb-1">
+<span class="material-symbols-outlined text-outline text-sm">warning</span>
+                      Full-Autonomous Risk
+                    </div>
+<ul class="font-body-sm text-body-sm text-outline space-y-1 list-disc list-inside">
+<li>3.4x higher turnaround penalty for subtle CSS micro-adjustments</li>
+<li>Hallucination divergence on uncommitted Tailwind design tokens</li>
+<li>$2.80 average task expenditure with limited interactive undo</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Referenced Tool Artifact Chips -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Referenced Instrument Dossiers</span>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<!-- Artifact A: Cursor -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container-high/40 hover:bg-surface-container-high/80 transition-all cursor-pointer group shadow-sm">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">terminal</span>
+</div>
+<span class="font-label-caps text-label-caps px-1.5 py-0.5 rounded bg-surface-container-lowest text-secondary">
+                      ★ 4.9
+                    </span>
+</div>
+<div class="mt-space-sm">
+<div class="font-label-lg text-label-lg text-on-surface font-medium group-hover:text-primary transition-colors">Cursor IDE</div>
+<div class="font-body-sm text-body-sm text-outline">Codebase Orchestrator</div>
+</div>
+<div class="flex items-center justify-between font-label-caps text-label-caps text-outline pt-space-xs mt-space-xs">
+<span class="bg-surface-container-highest px-1 rounded">⌥3</span>
+<span class="text-primary flex items-center gap-0.5">Dossier <span class="material-symbols-outlined text-xs">north_east</span></span>
+</div>
+</div>
+<!-- Artifact B: v0 -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container-high/40 hover:bg-surface-container-high/80 transition-all cursor-pointer group shadow-sm">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-lg">layers</span>
+</div>
+<span class="font-label-caps text-label-caps px-1.5 py-0.5 rounded bg-surface-container-lowest text-secondary">
+                      ★ 4.7
+                    </span>
+</div>
+<div class="mt-space-sm">
+<div class="font-label-lg text-label-lg text-on-surface font-medium group-hover:text-primary transition-colors">v0 by Vercel</div>
+<div class="font-body-sm text-body-sm text-outline">Generative UI Framework</div>
+</div>
+<div class="flex items-center justify-between font-label-caps text-label-caps text-outline pt-space-xs mt-space-xs">
+<span class="bg-surface-container-highest px-1 rounded">⌥6</span>
+<span class="text-primary flex items-center gap-0.5">Dossier <span class="material-symbols-outlined text-xs">north_east</span></span>
+</div>
+</div>
+<!-- Artifact C: Devin -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container-high/40 hover:bg-surface-container-high/80 transition-all cursor-pointer group shadow-sm">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-lg">robot_2</span>
+</div>
+<span class="font-label-caps text-label-caps px-1.5 py-0.5 rounded bg-surface-container-lowest text-secondary">
+                      ★ 4.8
+                    </span>
+</div>
+<div class="mt-space-sm">
+<div class="font-label-lg text-label-lg text-on-surface font-medium group-hover:text-primary transition-colors">Devin Agent</div>
+<div class="font-body-sm text-body-sm text-outline">Autonomous Engineer</div>
+</div>
+<div class="flex items-center justify-between font-label-caps text-label-caps text-outline pt-space-xs mt-space-xs">
+<span class="bg-surface-container-highest px-1 rounded">Async</span>
+<span class="text-primary flex items-center gap-0.5">Explore <span class="material-symbols-outlined text-xs">north_east</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Quick Action Buttons Footer -->
+<div class="flex items-center justify-between flex-wrap gap-space-sm pt-space-sm">
+<div class="flex items-center gap-space-xs flex-wrap">
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-sm text-secondary">content_copy</span>
+<span>Copy Synthesis</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-sm text-primary">alt_route</span>
+<span>Fork to Prompt Vault</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-sm text-outline">folder_zip</span>
+<span>Insert into Workspace Bundle</span>
+</button>
+</div>
+<button class="flex items-center gap-space-xs text-outline hover:text-primary transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">cached</span>
+<span>Regenerate with Sonar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- FLOATING GLASS QUERY COMPOSER BAR -->
+<div class="flex flex-col gap-space-xs rounded-2xl bg-surface-container-low/90 backdrop-blur-2xl p-space-md shadow-2xl mt-space-xs">
+<!-- Context Attachment Pills Bar -->
+<div class="flex items-center gap-space-xs flex-wrap px-space-xs">
+<div class="flex items-center gap-space-xs px-space-sm py-0.5 rounded-md bg-surface-container-highest text-primary font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-xs text-secondary">token</span>
+<span>Attached: Systems Architecture Teardown Macro</span>
+<span class="material-symbols-outlined text-xs cursor-pointer hover:text-on-surface">close</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-0.5 rounded-md bg-surface-container-highest text-on-surface-variant font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Active Enclave: Local Ollama + Cloud Sonnet</span>
+</div>
+</div>
+<!-- Input Textarea -->
+<div class="relative w-full">
+<textarea class="w-full bg-transparent border-0 outline-none text-on-surface font-body-md text-body-md placeholder:text-outline/60 resize-none px-space-xs py-space-xs" placeholder="Ask anything across your AI toolbox, dossiers, or paste a prompt macro..." rows="3"></textarea>
+</div>
+<!-- Composer Bottom Controls Toolbar -->
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center gap-1 p-space-xs rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" title="Attach Tool or File">
+<span class="material-symbols-outlined text-base">attach_file</span>
+</button>
+<button class="flex items-center gap-1 px-space-xs py-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" title="Insert Macro (⌥P)">
+<span class="material-symbols-outlined text-base text-secondary">bolt</span>
+<span>Macro Picker <kbd class="px-1 py-0.5 rounded bg-surface-container text-outline">⌥P</kbd></span>
+</button>
+<div class="h-4 w-px bg-surface-variant"></div>
+<button class="flex items-center gap-1 px-space-xs py-1 rounded-lg text-primary font-label-caps text-label-caps" title="Web Retrieval Active">
+<span class="material-symbols-outlined text-base">language</span>
+<span>Live Retrieval (Active)</span>
+</button>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-caps text-label-caps text-outline">142 / 200k tokens</span>
+<button class="flex items-center gap-space-xs px-space-lg py-space-xs rounded-xl bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-lg text-label-lg font-semibold shadow-lg hover:opacity-95 transition-all">
+<span>Execute Query</span>
+<span class="material-symbols-outlined text-sm font-bold">keyboard_return</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT / INSPECTOR & KNOWLEDGE CONTEXT DRAWER (Cols 9-12) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Card 1: Quick Macro Injection (From Prompt Vault) -->
+<div class="flex flex-col p-space-lg rounded-2xl bg-surface-container/40 backdrop-blur-xl shadow-md gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">auto_fix_high</span>
+<span class="font-label-caps text-label-caps uppercase text-on-surface font-semibold tracking-wider">Quick Macro Injection</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline hover:text-primary cursor-pointer">Vault ↗</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Macro 1 -->
+<div class="flex flex-col p-space-md rounded-xl bg-surface-container-high/40 hover:bg-surface-container-high/70 transition-all group">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-lg text-label-lg text-on-surface font-medium group-hover:text-primary transition-colors">
+                Principal Systems Architecture Teardown
+              </span>
+<button class="font-label-caps text-label-caps px-2 py-1 rounded bg-secondary-container/40 text-primary hover:bg-secondary-container font-semibold transition-all">
+                Inject
+              </button>
+</div>
+<div class="flex items-center justify-between text-outline font-label-caps text-label-caps mt-1">
+<span>Claude 3.5 Sonnet</span>
+<span>240 tokens</span>
+</div>
+</div>
+<!-- Macro 2 -->
+<div class="flex flex-col p-space-md rounded-xl bg-surface-container-high/40 hover:bg-surface-container-high/70 transition-all group">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-lg text-label-lg text-on-surface font-medium group-hover:text-primary transition-colors">
+                Empirical Research &amp; Whitepaper Verification
+              </span>
+<button class="font-label-caps text-label-caps px-2 py-1 rounded bg-secondary-container/40 text-primary hover:bg-secondary-container font-semibold transition-all">
+                Inject
+              </button>
+</div>
+<div class="flex items-center justify-between text-outline font-label-caps text-label-caps mt-1">
+<span>Perplexity Sonar</span>
+<span>160 tokens</span>
+</div>
+</div>
+<!-- Macro 3 -->
+<div class="flex flex-col p-space-md rounded-xl bg-surface-container-high/40 hover:bg-surface-container-high/70 transition-all group">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-lg text-label-lg text-on-surface font-medium group-hover:text-primary transition-colors">
+                Production Design System &amp; React Blueprint
+              </span>
+<button class="font-label-caps text-label-caps px-2 py-1 rounded bg-secondary-container/40 text-primary hover:bg-secondary-container font-semibold transition-all">
+                Inject
+              </button>
+</div>
+<div class="flex items-center justify-between text-outline font-label-caps text-label-caps mt-1">
+<span>v0 Model Pipeline</span>
+<span>380 tokens</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Active Context References -->
+<div class="flex flex-col p-space-lg rounded-2xl bg-surface-container/40 backdrop-blur-xl shadow-md gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">pin_drop</span>
+<span class="font-label-caps text-label-caps uppercase text-on-surface font-semibold tracking-wider">Active Context References</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-highest/50">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-base">travel_explore</span>
+<span class="font-body-sm text-body-sm text-on-surface">Perplexity Pro</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline">28ms Edge</span>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-highest/50">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-base">neurology</span>
+<span class="font-body-sm text-body-sm text-on-surface">Claude 3.5 Sonnet</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline">Enclave Core</span>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-highest/50">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-outline text-base">brush</span>
+<span class="font-body-sm text-body-sm text-on-surface">Midjourney v6.1</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline">REST Synced</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest/60 flex flex-col gap-1">
+<div class="flex items-center gap-space-xs text-primary font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-xs">verified</span>
+<span>Zero Hallucination Grounding</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">
+            100% anchored to verified Atelier Suite corpus files and active benchmarks.
+          </p>
+</div>
+</div>
+<!-- Card 3: Recent Enclave Conversations -->
+<div class="flex flex-col p-space-lg rounded-2xl bg-surface-container/40 backdrop-blur-xl shadow-md gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">schedule</span>
+<span class="font-label-caps text-label-caps uppercase text-on-surface font-semibold tracking-wider">Recent Enclave Threads</span>
+</div>
+<button class="font-label-caps text-label-caps text-outline hover:text-on-surface">View All</button>
+</div>
+<div class="flex flex-col gap-space-xs">
+<a class="flex flex-col p-space-sm rounded-lg hover:bg-surface-container-high transition-colors" href="#">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Q3 AI Tech Stack Rationalization</span>
+<span class="font-label-caps text-label-caps text-outline">12m ago · 8 Turns</span>
+</a>
+<a class="flex flex-col p-space-sm rounded-lg hover:bg-surface-container-high transition-colors" href="#">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Fine-Tuning Local Llama 3 on Design Tokens</span>
+<span class="font-label-caps text-label-caps text-outline">Yesterday · 16 Turns</span>
+</a>
+<a class="flex flex-col p-space-sm rounded-lg hover:bg-surface-container-high transition-colors" href="#">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Midjourney v6 Prompts for Luxury Watch Editorial</span>
+<span class="font-label-caps text-label-caps text-outline">2 days ago · 24 Turns</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- BOTTOM DOCK / STATUS STRIP -->
+<footer class="flex flex-col sm:flex-row items-center justify-between gap-space-md py-space-md px-space-lg rounded-xl bg-surface-container-lowest/80 backdrop-blur-xl text-outline font-label-caps text-label-caps shadow-sm">
+<div class="flex items-center gap-space-md flex-wrap">
+<span class="text-on-surface-variant font-medium">FAST HOTKEYS:</span>
+<div class="flex items-center gap-1">
+<kbd class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface">⌥ + K</kbd>
+<span>Command Palette</span>
+</div>
+<span class="text-surface-variant">•</span>
+<div class="flex items-center gap-1">
+<kbd class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface">⌥ + P</kbd>
+<span>Insert Macro</span>
+</div>
+<span class="text-surface-variant">•</span>
+<div class="flex items-center gap-1">
+<kbd class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface">⌥ + 1–6</kbd>
+<span>Launch Workhorse</span>
+</div>
+<span class="text-surface-variant">•</span>
+<div class="flex items-center gap-1">
+<kbd class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface">⌘ + ↵</kbd>
+<span>Execute Query</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-on-surface-variant">Enclave Tunnel: Optimal (18ms)</span>
+<span class="text-surface-variant">•</span>
+<span class="text-primary font-medium">TLS 1.3 End-to-End Encrypted</span>
+</div>
+</footer>
+</div>
+<script>
+  // Simple interactive macro injection micro-interaction
+  document.querySelectorAll('button').forEach(button => {
+    if (button.textContent.trim() === 'Inject') {
+      button.addEventListener('click', (e) => {
+        const cardTitle = e.target.closest('div').querySelector('.font-label-lg').textContent.trim();
+        const textarea = document.querySelector('textarea');
+        if (textarea) {
+          textarea.value = `[Injected Macro: ${cardTitle}]\n` + textarea.value;
+          textarea.focus();
+        }
+      });
+    }
+  });
+</script></main></div></body></html>
