@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { ShaderBackground } from "@/components/ShaderBackground";
 import { QuickIntake } from "@/components/QuickIntake";
 import { DashboardDirectory } from "@/components/DashboardDirectory";

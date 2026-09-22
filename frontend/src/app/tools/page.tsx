@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { ShaderBackground } from "@/components/ShaderBackground";
 import { ToolCatalog } from "@/components/ToolCatalog";
 import { ScrollProgress } from "@/components/magic/ScrollProgress";

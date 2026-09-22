@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { ShaderBackground } from "@/components/ShaderBackground";
 import { VaultClient } from "@/components/VaultClient";
 import { API_BASE } from "@/lib/providers";
