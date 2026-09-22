@@ -19,6 +19,15 @@ from app.database import Base, get_db  # noqa: E402
 from app.main import app  # noqa: E402  (runs create_all on real DB — harmless)
 
 
+@pytest.fixture(autouse=True)
+def _force_sqlite(monkeypatch):
+    """Keep tests hermetic: backend/.env may enable Appwrite (USE_APPWRITE=1),
+    which would route tool endpoints to the live cloud project."""
+    from app.services import aw_repo
+
+    monkeypatch.setattr(aw_repo, "USE_APPWRITE", False)
+
+
 @pytest.fixture()
 def db_session():
     fd, path = tempfile.mkstemp(suffix=".test.db")

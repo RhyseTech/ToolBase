@@ -1,11 +1,10 @@
-from fastapi import APIRouter, Depends, Header, HTTPException, Query
-from sqlalchemy.orm import Session
+from fastapi import APIRouter, Header, HTTPException, Query, Request
+from fastapi.responses import JSONResponse
 from typing import List, Optional
 import os
 import requests
-from app.database import get_db
-from app.models import domain as models
 from app.schemas import domain as schemas
+from app.services import aw_repo
 
 router = APIRouter(
     prefix="/api/provider-keys",
@@ -14,79 +13,47 @@ router = APIRouter(
 
 VALID = set(schemas.PROVIDERS)
 
-
-def _public(row: models.ProviderKey) -> dict:
-    return {
-        "id": row.id,
-        "provider": row.provider,
-        "label": row.label or "",
-        "model": row.model or "",
-        "created_at": row.created_at,
-        "updated_at": row.updated_at,
-        "has_key": bool(row.api_key),
-    }
-
-
-@router.get("/", response_model=List[schemas.ProviderKey])
-def list_keys(db: Session = Depends(get_db)):
-    rows = db.query(models.ProviderKey).order_by(models.ProviderKey.id.asc()).all()
-    return [_public(r) for r in rows]
-
+@router.get("/")
+def list_keys(request: Request):
+    _, _, aw_uid = aw_repo.resolve_identity(request)
+    return JSONResponse(aw_repo.list_keys(aw_uid))
 
 @router.get("/options")
-def key_options(db: Session = Depends(get_db)):
+def key_options(request: Request):
     """Switcher data for Ask AI: saved providers+models plus sane defaults."""
-    rows = db.query(models.ProviderKey).order_by(models.ProviderKey.id.asc()).all()
+    _, _, aw_uid = aw_repo.resolve_identity(request)
+    rows = aw_repo.list_keys(aw_uid)
     saved = [
-        {"id": r.id, "provider": r.provider, "label": r.label or r.provider,
-         "model": r.model or (schemas.PROVIDER_DEFAULT_MODELS.get(r.provider, [""])[0]),
-         "has_key": bool(r.api_key)}
-        for r in rows if r.api_key
+        {"id": r["id"], "provider": r["provider"], "label": r["label"] or r["provider"],
+         "model": r["model"] or (schemas.PROVIDER_DEFAULT_MODELS.get(r["provider"], [""])[0]),
+         "has_key": r["has_key"]}
+        for r in rows if r["has_key"]
     ]
     return {"saved": saved, "defaults": schemas.PROVIDER_DEFAULT_MODELS}
 
 
-@router.post("/", response_model=schemas.ProviderKey)
-def create_key(payload: schemas.ProviderKeyCreate, db: Session = Depends(get_db)):
+@router.post("/")
+def create_key(payload: schemas.ProviderKeyCreate, request: Request):
+    _, _, aw_uid = aw_repo.resolve_identity(request)
     provider = (payload.provider or "").strip().lower()
     if provider not in VALID:
         raise HTTPException(status_code=400, detail=f"provider must be one of {sorted(VALID)}")
     if provider != "ollama" and not (payload.api_key or "").strip():
         raise HTTPException(status_code=400, detail="api_key is required")
     model = (payload.model or "").strip() or schemas.PROVIDER_DEFAULT_MODELS[provider][0]
-    # One credential per provider: upsert
-    row = db.query(models.ProviderKey).filter(models.ProviderKey.provider == provider).first()
-    if row:
-        row.label = (payload.label or "").strip() or row.label
-        row.api_key = payload.api_key.strip()
-        row.model = model
-    else:
-        row = models.ProviderKey(
-            provider=provider,
-            label=(payload.label or "").strip(),
-            api_key=payload.api_key.strip(),
-            model=model,
-        )
-        db.add(row)
-    db.commit()
-    db.refresh(row)
-    return _public(row)
+    return JSONResponse(
+        aw_repo.upsert_key(provider, (payload.label or "").strip(), payload.api_key.strip(), model, aw_uid)
+    )
 
 
 @router.delete("/{key_id}")
-def delete_key(key_id: int, db: Session = Depends(get_db)):
-    row = db.query(models.ProviderKey).filter(models.ProviderKey.id == key_id).first()
-    if row is None:
-        raise HTTPException(status_code=404, detail="Key not found")
-    db.delete(row)
-    db.commit()
-    return {"ok": True}
+def delete_key(key_id: str):
+    return JSONResponse(aw_repo.delete_key(key_id))
 
 
 def _live_models(provider: str, api_key: str) -> List[str]:
     """Fetch the actual available model ids from the provider. Raises on failure."""
     if provider == "ollama":
-        # Local daemon — no key needed
         r = requests.get("http://localhost:11434/api/tags", timeout=10)
         r.raise_for_status()
         names = [m.get("name") for m in r.json().get("models", []) if m.get("name")]
@@ -96,7 +63,7 @@ def _live_models(provider: str, api_key: str) -> List[str]:
     if provider == "gemini":
         from google import genai
         client = genai.Client(api_key=api_key)
-        listed = list(client.models.list())  # single fetch — reused below
+        listed = list(client.models.list()) 
         names = []
         for m in listed:
             n = (getattr(m, "name", "") or "").replace("models/", "")
@@ -130,23 +97,17 @@ def list_models(
     provider: str = Query(...),
     api_key: Optional[str] = Query(default=None),
     x_provider_key: Optional[str] = Header(default=None),
-    db: Session = Depends(get_db),
+    request: Request = None,
 ):
-    """Live available models for a provider.
-
-    Uses the saved backend key (or env fallback). To preview with an unsaved
-    key, send it in the X-Provider-Key header (preferred — query strings leak
-    into logs/history); ?api_key=… still works for back-compat. Falls back to
-    presets on failure.
-    """
     provider = (provider or "").strip().lower()
     if provider not in VALID:
         raise HTTPException(status_code=400, detail=f"provider must be one of {sorted(VALID)}")
     key = (x_provider_key or "").strip() or (api_key or "").strip()
     if not key:
-        row = db.query(models.ProviderKey).filter(models.ProviderKey.provider == provider).first()
-        if row and (row.api_key or "").strip():
-            key = row.api_key.strip()
+        if request is not None:
+            _, _, aw_uid = aw_repo.resolve_identity(request)
+            key = aw_repo.get_secret(provider, aw_uid)
+            
     if not key and provider != "ollama":
         from app.api.ai import ENV_KEYS
         key = (os.environ.get(ENV_KEYS.get(provider, ""), "") or "").strip()

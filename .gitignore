@@ -8,6 +8,14 @@ backend/.pytest_cache/
 .coverage
 htmlcov/
 
+# Stich (Google UI design tool)
+stich_assets/
+stich_assets_auth/
+stich_assets_logo/
+stich_assets_new/
+stich_assets_shader/
+
+
 # Databases (local dev data — never commit)
 *.db
 *.db-journal
@@ -25,6 +33,17 @@ frontend/node_modules/
 frontend/.next/
 frontend/out/
 frontend/coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Stitch design mockups (reference-only binaries already tracked stay tracked;
+# new screen fetches stay local)
+stitch_assets*/
+screen_*.json
 
 # OS / editors
 .DS_Store

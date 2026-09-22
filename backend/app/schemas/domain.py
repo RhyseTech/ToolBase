@@ -27,6 +27,8 @@ class ToolBase(BaseModel):
     favorite: Optional[bool] = False
     archived: Optional[bool] = False
     owner_email: Optional[str] = ""
+    owner_id: Optional[str] = ""
+    can_manage: Optional[bool] = False
     visibility: Optional[str] = "public"  # public | private
 
 class ToolCreate(ToolBase):

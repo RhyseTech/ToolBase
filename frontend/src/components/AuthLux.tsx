@@ -114,7 +114,7 @@ export function MonolithPanel({
 export function LuxCard({ children, wide = false }: { children: React.ReactNode; wide?: boolean }) {
   return (
     <div className={`w-full ${wide ? 'lg:col-span-7' : ''} flex justify-center`}>
-      <div className="w-full max-w-xl rounded-2xl p-6 sm:p-8 border border-primary-container/25 relative bg-surface-container-low/70 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_0_35px_-5px_rgba(229,195,120,0.15)]">
+      <div className="w-full max-w-xl rounded-2xl p-5 sm:p-6 border border-primary-container/25 relative bg-surface-container-low/70 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_0_35px_-5px_rgba(229,195,120,0.15)]">
         <div className="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-bl-[80px] blur-xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-secondary/10 rounded-tr-[70px] blur-xl pointer-events-none" />
         <div className="relative z-10">{children}</div>
@@ -124,7 +124,7 @@ export function LuxCard({ children, wide = false }: { children: React.ReactNode;
 }
 
 const inputCls =
-  'w-full bg-surface-container-highest/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all duration-200';
+  'w-full bg-surface-container-highest/60 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all duration-200';
 
 export function LuxInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return <input {...props} className={`${inputCls} ${props.className || ''}`} />;
@@ -171,7 +171,7 @@ export function LuxSubmit({
     <button
       type="submit"
       disabled={disabled || loading}
-      className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-lg text-label-lg font-semibold shadow-[0_0_25px_rgba(229,195,120,0.35)] hover:shadow-[0_0_35px_rgba(229,195,120,0.5)] hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary text-on-primary font-label-lg text-label-lg font-semibold shadow-[0_0_25px_rgba(229,195,120,0.35)] hover:shadow-[0_0_35px_rgba(229,195,120,0.5)] hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
     >
       {loading ? (
         <>

@@ -1,6 +1,5 @@
 fastapi
 uvicorn
-sqlalchemy
 python-dotenv
 pydantic
 requests
@@ -13,3 +12,6 @@ anthropic
 requests
 httpx
 pytest
+appwrite
+python-multipart
+gunicorn

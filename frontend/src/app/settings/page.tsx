@@ -294,10 +294,11 @@ export default function Settings() {
                 </button>
               ))}
               <button
-                onClick={() => {
+                onClick={async () => {
                   // Real local logout: wipe identity, keep device settings
                   // (appearance, keys, integrations), then land on sign-in.
-                  const cleared = {
+                  const { signOutAppwrite } = await import('@/lib/appwrite-auth');
+                  await signOutAppwrite();                  const cleared = {
                     ...form,
                     displayName: '',
                     email: '',

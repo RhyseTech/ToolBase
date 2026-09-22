@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { AiSparkIcon } from "@/components/AiSparkIcon";
 import { SETTINGS_EVENT } from "@/lib/settings";
+import { API_BASE, authHeaders } from "@/lib/providers";
 
 function formatBytes(n: number): string {
   if (!Number.isFinite(n) || n < 0) return "0 B";
@@ -60,6 +61,14 @@ export function Sidebar() {
   const { stats } = useStorageStats();
   const pct = stats ? Math.round(stats.pct) : 0;
   const full = pct >= 90;
+  
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    fetch(`${API_BASE}/api/auth/me`, { headers: authHeaders() })
+      .then(res => res.json())
+      .then(data => setIsAdmin(!!data?.is_admin))
+      .catch(() => setIsAdmin(false));
+  }, [pathname]); // Re-check when route changes, just in case login state changed
 
   const navItems = [
     { href: "/", icon: "dashboard", label: "Dashboard" },
@@ -69,6 +78,10 @@ export function Sidebar() {
     { href: "/vault", icon: "folder_special", label: "Prompt Vault" },
     { href: "/ask", icon: "ai-spark", label: "Ask AI" },
   ];
+  
+  if (isAdmin) {
+    navItems.push({ href: "/admin", icon: "admin_panel_settings", label: "Admin Portal" });
+  }
 
   return (
     <aside className="fixed left-0 top-20 bottom-0 w-72 z-40 bg-surface-container-lowest/70 backdrop-blur-2xl shadow-[4px_0_24px_rgba(0,0,0,0.4)] flex flex-col justify-between p-space-md transition-all duration-300">

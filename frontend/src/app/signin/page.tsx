@@ -16,6 +16,9 @@ import {
   persistLocalProfile,
 } from '@/components/AuthLux';
 import { GoogleSignIn } from '@/components/GoogleSignIn';
+import { OtpAuth } from '@/components/OtpAuth';
+import { appwriteConfigured, getAccount } from '@/lib/appwrite-client';
+import { finishAppwriteSession, looksOffline } from '@/lib/appwrite-auth';
 
 const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://127.0.0.1:8000';
 
@@ -25,6 +28,7 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [channel, setChannel] = useState<'email' | 'phone'>('email');
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,6 +43,27 @@ export default function SignIn() {
     }
     setLoading(true);
     try {
+      // Prefer Appwrite sessions when configured. If Appwrite rejects the
+      // login (unknown account there — e.g. local-only accounts like the
+      // seeded admin), fall through to legacy backend auth instead of
+      // erroring out. Only true network failures skip Appwrite silently.
+      if (appwriteConfigured()) {
+        try {
+          await getAccount()?.createEmailPasswordSession(email.trim(), password);
+          const done = await finishAppwriteSession();
+          if (done.ok) {
+            router.push('/');
+            return;
+          }
+          // Session established but profile sync failed — still try backend
+          // before giving up, so local-only accounts keep working.
+        } catch (e: unknown) {
+          if (looksOffline(e)) {
+            // offline → fall through to legacy backend flow below
+          }
+          // invalid credentials on Appwrite → try backend next (no return!)
+        }
+      }
       const r = await fetch(`${BACKEND}/api/auth/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -81,6 +106,37 @@ export default function SignIn() {
             <p className="text-sm text-on-surface-variant leading-relaxed mt-1">Sign in to access your AI workspace.</p>
           </div>
 
+          <div className="flex flex-col gap-4">
+          {/* Channel tabs */}
+          <div className="grid grid-cols-2 gap-1 p-1 rounded-xl bg-surface-container-lowest/70 border border-white/10">
+            {(
+              [
+                { id: 'email', label: 'Gmail', icon: 'mail' },
+                { id: 'phone', label: 'Phone', icon: 'smartphone' },
+              ] as const
+            ).map((c) => (
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => {
+                  setChannel(c.id);
+                  setError('');
+                }}
+                className={`flex items-center justify-center gap-2 py-2 rounded-lg font-label-lg text-label-lg transition-all ${
+                  channel === c.id
+                    ? 'bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(229,195,120,0.3)]'
+                    : 'text-on-surface-variant hover:text-on-surface'
+                }`}
+              >
+                <span className="material-symbols-outlined text-base">{c.icon}</span>
+                <span>{c.label}</span>
+              </button>
+            ))}
+          </div>
+
+          {channel === 'phone' && appwriteConfigured() ? (
+            <OtpAuth channel="phone" />
+          ) : (
           <form onSubmit={submit} className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
               <LuxLabel htmlFor="signin-email">Email address</LuxLabel>
@@ -118,7 +174,10 @@ export default function SignIn() {
               <span>Sign in to ToolBase</span>
               <span className="material-symbols-outlined text-base">arrow_forward</span>
             </LuxSubmit>
+          </form>
+          )}
 
+          <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3 text-[11px] tracking-widest text-outline uppercase">
               <span className="flex-1 h-px bg-white/10" />
               <span>or</span>
@@ -134,7 +193,8 @@ export default function SignIn() {
               </Link>
             </p>
             <p className="text-center text-[11px] text-outline">POC local vault — credentials stay in this browser.</p>
-          </form>
+          </div>
+          </div>
         </LuxCard>
       </div>
     </AuthShell>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { TypingHint } from '@/components/magic/TypingAnimation';
 import { API_BASE, authHeaders } from '@/lib/providers';
 
@@ -11,6 +12,7 @@ const HINTS = [
 ];
 
 export function QuickIntake() {
+  const router = useRouter();
   const [url, setUrl] = useState('');
   const [analyzing, setAnalyzing] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -72,8 +74,8 @@ export function QuickIntake() {
       if (!saveRes.ok) throw new Error('Save failed');
       
       setUrl('');
-      // Reload page to show new tool
-      window.location.reload();
+      // Refresh Next.js server data cleanly without a full page reload flash
+      router.refresh();
       
     } catch (error) {
       console.error('Error analyzing tool:', error);

@@ -24,7 +24,7 @@ Required fields:
 - subcategory (string)
 - use_cases (list of strings)
 - features (list of strings)
-- tags (list of strings)
+- tags (list of short human-readable lowercase keywords, e.g. ["backend", "auth", "database"]; NEVER ids, hashes, codes, or model numbers)
 - pricing (string)
 - strengths (list of strings)
 - limitations (list of strings)

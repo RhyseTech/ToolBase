@@ -169,6 +169,7 @@ export function ToolCatalog({ tools }: { tools: any[] }) {
                 colorClass="text-primary"
                 tagLabel={tool.subcategory || 'Active'}
                 favorite={tool.favorite} visibility={tool.visibility}
+                can_manage={tool.can_manage}
                 layout="grid"
               />
               </BlurFade>
@@ -195,6 +196,7 @@ export function ToolCatalog({ tools }: { tools: any[] }) {
                 colorClass="text-primary"
                 tagLabel={tool.subcategory || 'Active'}
                 favorite={tool.favorite} visibility={tool.visibility}
+                can_manage={tool.can_manage}
                 layout="list"
               />
               </BlurFade>

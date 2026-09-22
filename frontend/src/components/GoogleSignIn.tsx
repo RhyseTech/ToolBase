@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { persistLocalProfile } from '@/components/AuthLux';
 import { loadSettings } from '@/lib/settings';
+import { OAuthProvider } from 'appwrite';
+import { appwriteConfigured, getAccount } from '@/lib/appwrite-client';
 
 declare global {
   interface Window {
@@ -150,6 +152,20 @@ export function GoogleSignIn({ label = 'Continue with Google' }: { label?: strin
 
   const click = () => {
     setError('');
+    // Prefer Appwrite OAuth2 (real session + JWT) when configured.
+    if (appwriteConfigured()) {
+      try {
+        const origin = window.location.origin;
+        getAccount()?.createOAuth2Session(
+          OAuthProvider.Google,
+          `${origin}/oauth/callback`,
+          `${origin}/signin?error=google`
+        );
+        return;
+      } catch {
+        // fall through to legacy GIS flow
+      }
+    }
     if (!tokenClientRef.current) {
       setError('Google is still loading — try again in a second.');
       return;

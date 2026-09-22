@@ -1,20 +1,16 @@
-from fastapi import APIRouter, HTTPException, Depends, Request
+from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
-from typing import List, Optional
-from sqlalchemy.orm import Session
-from app.database import get_db
-from app.models import domain as models
+from typing import List, Optional, Any
 from app.services.scraper import assert_public_url, extract_text_from_url
 from app.services.ai import analyze_tool_content
+from app.services import aw_repo
 import time
 import os
+import urllib.parse
 
-# In-memory per-IP sliding-window rate limits (no extra deps).
-# Protects LLM spend on the unauthenticated AI endpoints.
 _RATE_HITS: dict[str, list[float]] = {}
 MAX_QUESTION_CHARS = 4000
 MAX_MACRO_CHARS = 8000
-
 
 def _check_rate(request: Request, key: str, limit: int, window_s: int = 60) -> None:
     client = (request.client.host if request and request.client else "unknown")
@@ -34,14 +30,12 @@ router = APIRouter(
 class AnalyzeRequest(BaseModel):
     url: str
 
-
 class AskRequest(BaseModel):
     question: str
     macro: Optional[str] = None
-    tool_ids: Optional[List[int]] = None
-    provider: Optional[str] = None  # openai | gemini | groq | openrouter
+    tool_ids: Optional[List[Any]] = None
+    provider: Optional[str] = None
     model: Optional[str] = None
-
 
 ENV_KEYS = {
     "groq": "GROQ_API_KEY",
@@ -56,20 +50,20 @@ ENV_KEYS = {
 
 CHAT_PROVIDERS = ("openai", "gemini", "groq", "openrouter", "anthropic", "deepseek", "mistral", "xai", "ollama")
 
-
-def _resolve_credential(provider: str, db: Session) -> tuple[str, str]:
-    """Return (api_key, model-or-empty) — saved ProviderKey wins, env is fallback."""
-    row = db.query(models.ProviderKey).filter(models.ProviderKey.provider == provider).first()
-    if row and (row.api_key or "").strip():
-        return row.api_key.strip(), (row.model or "").strip()
+def _resolve_credential(provider: str, aw_uid: str) -> tuple[str, str]:
+    secret = aw_repo.get_secret(provider, aw_uid)
+    if secret:
+        # Appwrite provider_keys collection tracks model, but get_secret just returns the key.
+        # We can fetch the model directly via find_key
+        row = aw_repo.find_key(provider, aw_uid)
+        model = row.get("model", "") if row else ""
+        return secret, model
     env_key = (os.environ.get(ENV_KEYS.get(provider, ""), "") or "").strip()
     if env_key and env_key != "dummy_key_to_prevent_startup_crash":
         return env_key, ""
     return "", ""
 
-
 def _chat(provider: str, api_key: str, model: str, system: str, user: str) -> str:
-    """One chat completion across all supported providers. Returns answer text."""
     if provider == "gemini":
         from google import genai
         client = genai.Client(api_key=api_key)
@@ -104,7 +98,6 @@ def _chat(provider: str, api_key: str, model: str, system: str, user: str) -> st
             **extra,
         )
         return (resp.choices[0].message.content or "").strip()
-    # default: groq
     from groq import Groq
     client = Groq(api_key=api_key)
     resp = client.chat.completions.create(
@@ -115,8 +108,6 @@ def _chat(provider: str, api_key: str, model: str, system: str, user: str) -> st
         model=model,
     )
     return (resp.choices[0].message.content or "").strip()
-
-import urllib.parse
 
 @router.post("/analyze-tool")
 def analyze_tool(payload: AnalyzeRequest, request: Request):
@@ -129,7 +120,6 @@ def analyze_tool(payload: AnalyzeRequest, request: Request):
     if not content:
         print(f"Warning: Could not extract content from {payload.url}, falling back to URL inference.")
 
-    
     analysis_result = analyze_tool_content(payload.url, content)
     if not analysis_result:
         raise HTTPException(status_code=500, detail="AI analysis failed")
@@ -155,15 +145,11 @@ def analyze_tool(payload: AnalyzeRequest, request: Request):
         
     return analysis_result
 
-
 @router.post("/ask")
-def ask_ai(payload: AskRequest, request: Request, db: Session = Depends(get_db)):
-    """Real chat endpoint for the Ask AI page.
-
-    Builds context from live tools (+ optional attached macro) and answers
-    via Groq. This replaces the hardcoded mock dialogue in the frontend.
-    """
+def ask_ai(payload: AskRequest, request: Request):
     _check_rate(request, "ask", limit=60)
+    email, is_admin, aw_uid = aw_repo.resolve_identity(request)
+    
     question = (payload.question or "").strip()
     if not question:
         raise HTTPException(status_code=400, detail="Question is required")
@@ -173,38 +159,42 @@ def ask_ai(payload: AskRequest, request: Request, db: Session = Depends(get_db))
     if len(macro_text) > MAX_MACRO_CHARS:
         raise HTTPException(status_code=400, detail=f"Macro too long (max {MAX_MACRO_CHARS} characters)")
 
-    # Live tool context (cap to keep prompt small) — includes tags, pricing,
-    # and saved vault artifacts (videos, notes, MCP, links, experiences)
+    tools = []
     if payload.tool_ids:
-        tools = db.query(models.Tool).filter(models.Tool.id.in_(payload.tool_ids)).limit(6).all()
+        for tid in payload.tool_ids[:6]:
+            try:
+                tools.append(aw_repo.get_tool(str(tid), email, is_admin))
+            except Exception:
+                pass
     else:
-        tools = db.query(models.Tool).limit(6).all()
+        tools = aw_repo.list_tools(email, is_admin, 0, 6)
+        
     tool_lines = []
     for t in tools:
         try:
-            tags = ", ".join([g.name for g in getattr(t, "tags", []) or []]) or "—"
+            tags = ", ".join([str(g) for g in t.get("tags", []) or []]) or "—"
         except Exception:
             tags = "—"
         arts = []
         try:
-            items = db.query(models.ToolArtifact).filter(models.ToolArtifact.tool_id == t.id).all()
+            items = aw_repo.list_artifacts(t["id"])
             buckets: dict = {}
             for a in items:
-                buckets.setdefault((a.kind or "note"), []).append(a)
+                buckets.setdefault(a.get("kind", "note"), []).append(a)
             for kind in ("video", "link", "mcp", "note", "experience", "skill", "prompt"):
                 for a in buckets.get(kind, [])[:3]:
-                    label = (a.title or kind).strip() or kind
-                    body = (a.content or "").strip().replace("\n", " ")[:160]
+                    label = (a.get("title") or kind).strip() or kind
+                    body = (a.get("content") or "").strip().replace("\n", " ")[:160]
                     arts.append(f"[{kind}] {label}" + (f": {body}" if body else ""))
         except Exception:
             pass
         vault = "; ".join(arts) if arts else "no saved videos/notes/mcp/links"
         tool_lines.append(
-            f"- {t.name} ({t.category or 'Uncategorized'}"
-            + (f" > {t.subcategory}" if t.subcategory else "")
-            + f", ★{t.rating or 0}, {t.pricing or 'pricing n/a'}"
-            + (", ★STARRED" if t.favorite else "")
-            + f", tags: {tags}): {(t.description or '')[:200]} [{t.url}] | vault: {vault}"
+            f"- {t.get('name', 'Unknown')} ({t.get('category') or 'Uncategorized'}"
+            + (f" > {t.get('subcategory')}" if t.get('subcategory') else "")
+            + f", ★{t.get('rating') or 0}, {t.get('pricing') or 'pricing n/a'}"
+            + (", ★STARRED" if t.get('favorite') else "")
+            + f", tags: {tags}): {(t.get('description') or '')[:200]} [{t.get('url')}] | vault: {vault}"
         )
     context_block = "\n".join(tool_lines) if tool_lines else "(no tools indexed yet)"
     macro_block = f"\nAttached macro:\n{macro_text}\n" if macro_text else ""
@@ -228,7 +218,7 @@ def ask_ai(payload: AskRequest, request: Request, db: Session = Depends(get_db))
         provider = ((payload.provider or "").strip().lower() or "groq")
         if provider not in CHAT_PROVIDERS:
             raise HTTPException(status_code=400, detail="Unknown provider")
-        api_key, saved_model = _resolve_credential(provider, db)
+        api_key, saved_model = _resolve_credential(provider, aw_uid)
         if not api_key and provider != "ollama":
             raise HTTPException(
                 status_code=400,
@@ -249,7 +239,7 @@ def ask_ai(payload: AskRequest, request: Request, db: Session = Depends(get_db))
             "model": model,
             "provider": provider,
             "latency_ms": latency_ms,
-            "tools_used": [{"id": t.id, "name": t.name} for t in tools],
+            "tools_used": [{"id": t["id"], "name": t.get("name", "")} for t in tools],
         }
     except HTTPException:
         raise

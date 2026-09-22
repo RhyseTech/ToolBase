@@ -43,16 +43,28 @@ export const apiUrl = (path: string) =>
   `${API_BASE}${path.startsWith('/') ? path : `/${path}`}`;
 
 /** Identity header for per-user visibility scoping. Read at call time (not
- * module load) so login/logout take effect without a reload. */
+ * module load) so login/logout take effect without a reload.
+ * Sends the Appwrite JWT first (verified server-side), legacy email second
+ * (backend falls back when the JWT is absent or stale). */
 export function authHeaders(extra?: Record<string, string>): Record<string, string> {
-  let email = '';
+  const headers: Record<string, string> = { ...extra };
   try {
     if (typeof window !== 'undefined') {
-      const raw = window.localStorage.getItem('aitoolbox-settings-v1');
-      if (raw) email = (JSON.parse(raw).email || '').trim().toLowerCase();
+      const raw = window.localStorage.getItem('tb_jwt_cache');
+      if (raw) {
+        const parsed = JSON.parse(raw) as { token?: string; exp?: number };
+        if (parsed.token && parsed.exp && parsed.exp - Date.now() > 60_000) {
+          headers['Authorization'] = `Bearer ${parsed.token}`;
+        }
+      }
+      const sraw = window.localStorage.getItem('aitoolbox-settings-v1');
+      if (sraw) {
+        const email = (JSON.parse(sraw).email || '').trim().toLowerCase();
+        if (email) headers['X-User-Email'] = email;
+      }
     }
   } catch {
-    email = '';
+    /* storage unavailable — anonymous */
   }
-  return email ? { ...extra, 'X-User-Email': email } : { ...extra };
+  return headers;
 }

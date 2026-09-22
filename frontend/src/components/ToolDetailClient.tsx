@@ -37,16 +37,54 @@ export type ImageAdjust = {
 
 const DEFAULT_ADJUST: ImageAdjust = { src: '', fit: 'cover', brightness: 100, contrast: 100, saturate: 100 };
 
-function parseImage(content: string): ImageAdjust {
+function parseImage(content: string): ImageAdjust & { fileId?: string } {
   try {
     const o = JSON.parse(content);
-    if (o && typeof o.src === 'string') return { ...DEFAULT_ADJUST, ...o };
+    if (o && (typeof o.src === 'string' || typeof o.fileId === 'string')) {
+      const merged = { ...DEFAULT_ADJUST, ...o };
+      // file-backed images resolve at render; never persist the proxy URL
+      if (!merged.src && typeof o.fileId === 'string' && o.fileId) {
+        merged.src = `${API}/api/files/${o.fileId}`;
+      }
+      return merged;
+    }
   } catch {}
   return { ...DEFAULT_ADJUST, src: content || '' };
 }
 
 function adjustFilter(a: ImageAdjust): string {
   return `brightness(${a.brightness}%) contrast(${a.contrast}%) saturate(${a.saturate}%)`;
+}
+
+/** Resolve playable/viewable src: fileId JSON -> backend proxy, else raw. */
+function resolveContentSrc(content: string): string {
+  const c = (content || '').trim();
+  if (c.startsWith('{')) {
+    try {
+      const o = JSON.parse(c);
+      if (o && typeof o.fileId === 'string' && o.fileId) {
+        return `${API}/api/files/${o.fileId}`;
+      }
+      if (o && typeof o.src === 'string') return o.src;
+    } catch {}
+  }
+  return content;
+}
+
+/** Upload a file to the backend bucket. Null when unavailable (caller falls back). */
+async function uploadMedia(file: File, kind: 'video' | 'image'): Promise<{ fileId: string; name: string } | null> {
+  try {
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('kind', kind);
+    const res = await fetch(`${API}/api/uploads`, { method: 'POST', body: fd });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!data?.fileId) return null;
+    return { fileId: data.fileId, name: data.name || file.name };
+  } catch {
+    return null;
+  }
 }
 
 const OPENROUTER_SKILL_TEMPLATE = `---
@@ -400,13 +438,19 @@ export function ToolDetailClient({ tool }: { tool: any }) {
     }
     setUploading(true);
     try {
-      const dataUrl = await new Promise<string>((resolve, reject) => {
-        const r = new FileReader();
-        r.onload = () => resolve(r.result as string);
-        r.onerror = () => reject(new Error('read failed'));
-        r.readAsDataURL(f);
-      });
-      await pushVideo(videoTitle.trim() || f.name, dataUrl);
+      // Prefer bucket upload (fileId); fall back to inline data URL offline.
+      const up = await uploadMedia(f, 'video');
+      if (up) {
+        await pushVideo(videoTitle.trim() || f.name, JSON.stringify({ fileId: up.fileId, name: up.name }));
+      } else {
+        const dataUrl = await new Promise<string>((resolve, reject) => {
+          const r = new FileReader();
+          r.onload = () => resolve(r.result as string);
+          r.onerror = () => reject(new Error('read failed'));
+          r.readAsDataURL(f);
+        });
+        await pushVideo(videoTitle.trim() || f.name, dataUrl);
+      }
       setVideoTitle('');
     } catch {
       setVideoError('Could not read that file. Try a different video.');
@@ -415,17 +459,16 @@ export function ToolDetailClient({ tool }: { tool: any }) {
     }
   };
 
-  const pushImage = async (title: string, src: string, adjust?: Partial<ImageAdjust>) => {
-    const content = JSON.stringify({ ...DEFAULT_ADJUST, ...adjust, src });
+  const pushImageContent = async (title: string, content: string) => {
     const saved = await persistArtifact('image', title, content);
     const item = saved || { id: `local-${Date.now()}`, title, content };
-    const next = [item, ...images];
+    const next = [item, ...imagesRef.current];
     setImages(next);
-    try {
-      saveListCache(toolId, 'images-list', next);
-    } catch {
-      // uploaded data-URLs can exceed localStorage quota — backend copy still kept
-    }
+    saveListCache(toolId, 'images-list', next);
+  };
+
+  const pushImage = async (title: string, src: string, adjust?: Partial<ImageAdjust>) => {
+    await pushImageContent(title, JSON.stringify({ ...DEFAULT_ADJUST, ...adjust, src }));
   };
 
   const addImageUrl = async () => {
@@ -450,13 +493,22 @@ export function ToolDetailClient({ tool }: { tool: any }) {
     }
     setUploadingImg(true);
     try {
-      const dataUrl = await new Promise<string>((resolve, reject) => {
-        const r = new FileReader();
-        r.onload = () => resolve(r.result as string);
-        r.onerror = () => reject(new Error('read failed'));
-        r.readAsDataURL(f);
-      });
-      await pushImage(imgTitle.trim() || f.name, dataUrl);
+      // Prefer bucket upload (fileId); fall back to inline data URL offline.
+      const up = await uploadMedia(f, 'image');
+      if (up) {
+        await pushImageContent(
+          imgTitle.trim() || f.name,
+          JSON.stringify({ ...DEFAULT_ADJUST, fileId: up.fileId, src: '' })
+        );
+      } else {
+        const dataUrl = await new Promise<string>((resolve, reject) => {
+          const r = new FileReader();
+          r.onload = () => resolve(r.result as string);
+          r.onerror = () => reject(new Error('read failed'));
+          r.readAsDataURL(f);
+        });
+        await pushImage(imgTitle.trim() || f.name, dataUrl);
+      }
       setImgTitle('');
     } catch {
       setImgError('Could not read that file. Try a different image.');
@@ -475,7 +527,17 @@ export function ToolDetailClient({ tool }: { tool: any }) {
   };
 
   const commitImageAdjust = async (id: number | string) => {
-    const it = imagesRef.current.find((x: any) => x.id === id);
+    let it = imagesRef.current.find((x: any) => x.id === id);
+    if (!it) return;
+    // normalize: keep fileId, drop render-resolved proxy src (re-resolved live)
+    try {
+      const o = JSON.parse(it.content || '');
+      if (o && typeof o.fileId === 'string' && o.fileId && typeof o.src === 'string' && o.src.includes('/api/files/')) {
+        const clean = JSON.stringify({ ...o, src: '' });
+        setImages((cur: any[]) => cur.map((x: any) => (x.id === id ? { ...x, content: clean } : x)));
+        it = { ...it, content: clean };
+      }
+    } catch {}
     const content = it?.content || '';
     const snapshot = imagesRef.current.map((x: any) => (x.id === id ? { ...x, content } : x));
     try {
@@ -562,7 +624,7 @@ export function ToolDetailClient({ tool }: { tool: any }) {
             <span className="material-symbols-outlined text-sm text-primary group-hover:-translate-x-1 transition-transform">arrow_back</span>
             <span className="font-label-lg text-label-lg text-on-surface-variant group-hover:text-on-surface">Back to Directory</span>
           </Link>
-          <DeleteToolButton id={toolId} />
+          {tool?.can_manage && <DeleteToolButton id={toolId} />}
         </div>
         <div className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low/70 backdrop-blur-xl">
           <span className="relative flex h-2 w-2">
@@ -681,9 +743,12 @@ export function ToolDetailClient({ tool }: { tool: any }) {
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
                     {media.slice(0, 4).map((m: any) => {
-                      const ytId = getYouTubeId(m.content || '');
+                      const raw = String(m.content || '');
+                      const rawIsJson = raw.trim().startsWith('{');
+                      const ytId = rawIsJson ? null : getYouTubeId(raw);
                       const isFile = !ytId && !m.fromLink && !m.fromImage;
-                      const imgAdj = m.fromImage ? parseImage(m.content || '') : null;
+                      const imgAdj = m.fromImage ? parseImage(raw) : null;
+                      const msrc = resolveContentSrc(raw);
                       return (
                         <div key={`${m.fromImage ? 'image' : m.fromLink ? 'link' : 'video'}-${m.id}`} className="rounded-lg overflow-hidden bg-surface-container-lowest/70 flex flex-col">
                           {ytId ? (
@@ -703,7 +768,7 @@ export function ToolDetailClient({ tool }: { tool: any }) {
                           ) : isFile ? (
                             <Backlight blur={24} className="w-full">
                               {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-                              <video controls preload="metadata" src={m.content} className="w-full aspect-video bg-black" />
+                              <video controls preload="metadata" src={msrc} className="w-full aspect-video bg-black" />
                             </Backlight>
                           ) : null}
                           <div className="px-space-sm py-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">{m.title}</div>
@@ -928,16 +993,19 @@ export function ToolDetailClient({ tool }: { tool: any }) {
                   </div>
                 );
               }
-              const ytId = getYouTubeId(vd.content || '');
+              const raw = String(vd.content || '');
+              const isJson = raw.trim().startsWith('{');
+              const vsrc = resolveContentSrc(raw);
+              const ytId = isJson ? null : getYouTubeId(raw);
               return (
                 <div key={vd.id} className="rounded-xl bg-surface-container-low/70 p-space-md flex flex-col gap-space-sm">
                   <div className="flex items-center justify-between gap-2">
                     <span className="font-headline-sm text-headline-sm text-on-surface truncate">{vd.title}</span>
                     <div className="flex items-center gap-1">
-                      {ytId == null && !String(vd.content || '').startsWith('data:') && (
+                      {ytId == null && vsrc && !vsrc.startsWith('data:') && !isJson && (
                         <a href={vd.content} target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-on-surface-variant hover:text-primary" title="Open original"><span className="material-symbols-outlined text-base">open_in_new</span></a>
                       )}
-                      <button onClick={() => copy(vd.content || '', `video-${vd.id}`)} className={`p-1.5 rounded-full transition-all ${copiedKey === `video-${vd.id}` ? 'text-emerald-300' : 'text-on-surface-variant hover:text-primary'}`} title={copiedKey === `video-${vd.id}` ? 'Copied!' : 'Copy link'}>
+                      <button onClick={() => copy(vsrc || vd.content || '', `video-${vd.id}`)} className={`p-1.5 rounded-full transition-all ${copiedKey === `video-${vd.id}` ? 'text-emerald-300' : 'text-on-surface-variant hover:text-primary'}`} title={copiedKey === `video-${vd.id}` ? 'Copied!' : 'Copy link'}>
                         <span className={`material-symbols-outlined text-base inline-block ${copiedKey === `video-${vd.id}` ? 'copy-tick-pop' : ''}`}>{copiedKey === `video-${vd.id}` ? 'check' : 'content_copy'}</span>
                       </button>
                       <button onClick={() => deleteArtifact(vd.id, 'videos')} className="text-red-400/70 hover:text-red-300 p-1.5" title="Delete"><span className="material-symbols-outlined text-base">delete</span></button>
@@ -953,7 +1021,7 @@ export function ToolDetailClient({ tool }: { tool: any }) {
                   ) : (
                     <Backlight blur={28} className="w-full">
                       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-                      <video controls preload="metadata" src={vd.content} className="w-full rounded-lg bg-black max-h-[320px]" />
+                      <video controls preload="metadata" src={vsrc} className="w-full rounded-lg bg-black max-h-[320px]" />
                     </Backlight>
                   )}
                 </div>

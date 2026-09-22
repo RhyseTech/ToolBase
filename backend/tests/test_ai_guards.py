@@ -55,9 +55,9 @@ def test_signup_password_cap(client):
     assert r.status_code == 400
 
 
-def test_tool_id_must_be_int(client):
-    # Slug fallback was removed with visibility scoping: non-int ids 422.
-    assert client.get("/api/tools/some-slug").status_code == 422
+def test_tool_id_non_int_is_404(client):
+    # Slug fallback was removed with visibility scoping: non-int ids 404.
+    assert client.get("/api/tools/some-slug").status_code == 404
 
 
 def test_tool_visibility_scoping(client):

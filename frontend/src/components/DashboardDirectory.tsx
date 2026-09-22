@@ -49,6 +49,7 @@ export function DashboardDirectory({ tools }: { tools: any[] }) {
               tag={tool.pricing || 'Freemium'}
               colorClass="text-primary"
               favorite={tool.favorite} visibility={tool.visibility}
+              can_manage={tool.can_manage}
               layout="grid"
             />
           ))

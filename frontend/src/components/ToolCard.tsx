@@ -7,8 +7,16 @@ import { getLogoCandidates } from '@/lib/logo';
 import { Spotlight, setSpotlight } from '@/components/magic/MagicCard';
 import { API_BASE, authHeaders } from '@/lib/providers';
 
-function VisibilityBadge({ visibility }: { visibility?: string }) {
-  const isPrivate = (visibility || 'public') === 'private';
+/** Shorten long free-text (pricing) at a word boundary — never mid-word. */
+function smartTruncate(text: string, max = 88): string {
+  const t = (text || '').trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > 20 ? cut.slice(0, lastSpace) : cut).trimEnd() + '…';
+}
+
+function VisibilityBadge({ visibility }: { visibility?: string }) {  const isPrivate = (visibility || 'public') === 'private';
   return (
     <span
       title={isPrivate ? 'Private — only you can see this tool' : 'Global — visible to all users'}
@@ -22,7 +30,7 @@ function VisibilityBadge({ visibility }: { visibility?: string }) {
   );
 }
 
-export function ToolCard({ id, url, name, category, description, icon, rating, reviews, tag, colorClass, favorite = false, logo_url, layout = 'grid', visibility = 'public' }: any) {
+export function ToolCard({ id, url, name, category, description, icon, rating, reviews, tag, colorClass, favorite = false, logo_url, layout = 'grid', visibility = 'public', can_manage = false }: any) {
   const [isFavorite, setIsFavorite] = useState(favorite);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -154,12 +162,14 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
             <Link href={`/tools/${id}`} className="flex-shrink-0 whitespace-nowrap px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all">
               Details
             </Link>
-            <button onClick={deleteTool} aria-label="Delete Tool" className="group/delete relative flex-shrink-0 p-1.5 rounded-full text-red-500/50 hover:text-red-400 hover:bg-red-500/10 transition-all">
-              <span className="material-symbols-outlined text-[18px]">delete</span>
-              <span className="pointer-events-none absolute top-full mt-1.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded-md bg-surface-container-highest text-on-surface font-body-sm text-[11px] leading-none shadow-lg opacity-0 translate-y-1 group-hover/delete:opacity-100 group-hover/delete:translate-y-0 transition-all duration-150 z-50">
-                Delete Tool
-              </span>
-            </button>
+            {can_manage && (
+              <button onClick={deleteTool} aria-label="Delete Tool" className="group/delete relative flex-shrink-0 p-1.5 rounded-full text-red-500/50 hover:text-red-400 hover:bg-red-500/10 transition-all">
+                <span className="material-symbols-outlined text-[18px]">delete</span>
+                <span className="pointer-events-none absolute top-full mt-1.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded-md bg-surface-container-highest text-on-surface font-body-sm text-[11px] leading-none shadow-lg opacity-0 translate-y-1 group-hover/delete:opacity-100 group-hover/delete:translate-y-0 transition-all duration-150 z-50">
+                  Delete Tool
+                </span>
+              </button>
+            )}
             <a href={url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 whitespace-nowrap flex items-center gap-1 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-medium shadow-[0_0_14px_rgba(229,195,120,0.2)] hover:shadow-[0_0_20px_rgba(229,195,120,0.4)] transition-all">
               <span>Launch</span>
               <span className="material-symbols-outlined text-sm">north_east</span>
@@ -175,7 +185,7 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
       <Spotlight />
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       
-      <div className="flex flex-col gap-space-md relative z-10">
+      <div className="flex flex-col gap-space-md relative z-10 flex-1">
         <div className="flex items-start justify-between gap-space-sm">
           <div className="flex items-center gap-space-md min-w-0">
             <div className={`relative flex items-center justify-center w-12 h-12 rounded-xl bg-surface-container-highest/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] flex-shrink-0 overflow-hidden ${colorClass}`}>
@@ -187,8 +197,8 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
             </div>
             <div className="min-w-0">
               <h2 className="font-headline-sm text-headline-sm text-on-surface truncate">{name}</h2>
-              <div className="flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps mt-0.5">
-                <span>{category.toUpperCase()}</span>
+              <div className="min-w-0 flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps mt-0.5">
+                <span className="truncate">{category.toUpperCase()}</span>
               </div>
             </div>
           </div>
@@ -214,22 +224,24 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
         </div>
         
         <div className="p-space-md rounded-xl bg-surface-container-highest/40 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
-          <div className="flex items-center gap-1 text-primary font-label-caps text-label-caps tracking-widest uppercase mb-1">
+          <div className="flex items-center gap-1 text-primary font-label-caps text-label-caps tracking-widest uppercase mb-1.5">
             <span className="material-symbols-outlined text-xs">verified_user</span>
             <span>Curator Log</span>
           </div>
-          <p className="font-body-sm text-body-sm text-on-surface-variant leading-snug line-clamp-3 min-h-[54px]">
+          <p className="font-body-sm text-body-sm text-on-surface-variant leading-snug line-clamp-3">
             {description}
           </p>
         </div>
         
-        <div className="flex items-center justify-between gap-space-sm pt-1">
-          <div className="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-            <span>Active</span>
+        <div className="flex flex-col gap-1 pt-1 mt-auto">
+          <div className="flex items-center gap-space-sm">
+            <div className="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps">
+              <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              <span>Active</span>
+            </div>
+            <VisibilityBadge visibility={visibility} />
           </div>
-          <VisibilityBadge visibility={visibility} />
-          <span className="font-label-caps text-label-caps text-outline tracking-wider">{tag}</span>
+          <span className="font-body-sm text-[11px] leading-snug text-outline normal-case tracking-normal line-clamp-2 w-full" title={tag}>{smartTruncate(tag)}</span>
         </div>
       </div>
       
@@ -238,12 +250,14 @@ export function ToolCard({ id, url, name, category, description, icon, rating, r
           <Link href={`/tools/${id}`} className="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/50 transition-all">
             Details
           </Link>
-          <button onClick={deleteTool} aria-label="Delete Tool" className="group/delete relative p-1.5 rounded-full text-red-500/50 hover:text-red-400 hover:bg-red-500/10 transition-all" >
-            <span className="material-symbols-outlined text-[18px]">delete</span>
-            <span className="pointer-events-none absolute top-full mt-1.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded-md bg-surface-container-highest text-on-surface font-body-sm text-[11px] leading-none shadow-lg opacity-0 translate-y-1 group-hover/delete:opacity-100 group-hover/delete:translate-y-0 transition-all duration-150 z-50">
-              Delete Tool
-            </span>
-          </button>
+          {can_manage && (
+            <button onClick={deleteTool} aria-label="Delete Tool" className="group/delete relative p-1.5 rounded-full text-red-500/50 hover:text-red-400 hover:bg-red-500/10 transition-all" >
+              <span className="material-symbols-outlined text-[18px]">delete</span>
+              <span className="pointer-events-none absolute top-full mt-1.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded-md bg-surface-container-highest text-on-surface font-body-sm text-[11px] leading-none shadow-lg opacity-0 translate-y-1 group-hover/delete:opacity-100 group-hover/delete:translate-y-0 transition-all duration-150 z-50">
+                Delete Tool
+              </span>
+            </button>
+          )}
         </div>
         <a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-medium shadow-[0_0_14px_rgba(229,195,120,0.2)] hover:shadow-[0_0_20px_rgba(229,195,120,0.4)] transition-all">
           <span>Launch</span>

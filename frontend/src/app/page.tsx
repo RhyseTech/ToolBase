@@ -9,18 +9,9 @@ import { Particles } from "@/components/magic/Particles";
 import { ScrollProgress } from "@/components/magic/ScrollProgress";
 import { API_BASE } from "@/lib/providers";
 import { toolHeaders } from "@/lib/server-auth";
+import { Suspense } from "react";
 
-export default async function Dashboard() {
-  let tools = [];
-  try {
-    const res = await fetch(`${API_BASE}/api/tools/`, { cache: "no-store", headers: await toolHeaders() });
-    if (res.ok) {
-      tools = await res.json();
-    }
-  } catch (error) {
-    console.error("Error fetching tools:", error);
-  }
-  
+export default function Dashboard() {
   return (
     <main className="relative w-full pt-28 px-gutter min-h-screen bg-transparent">
       <ShaderBackground />
@@ -50,8 +41,29 @@ export default async function Dashboard() {
         {/* Central Quick-Intake Glassphone Command Bar */}
         <QuickIntake />
 
-        {/* KPI Metric Tiles (4-Column Layout) */}
-        <BlurFade delay={120}>
+        <Suspense fallback={<div className="mt-12 flex flex-col gap-4 w-full"><div className="animate-pulse bg-surface-container-low/60 h-32 rounded-2xl w-full"></div><div className="animate-pulse bg-surface-container-low/60 h-[500px] rounded-2xl w-full"></div></div>}>
+          <DashboardAsyncContent />
+        </Suspense>
+      </div>
+    </main>
+  );
+}
+
+async function DashboardAsyncContent() {
+  let tools: any[] = [];
+  try {
+    const res = await fetch(`${API_BASE}/api/tools/`, { cache: "no-store", headers: await toolHeaders() });
+    if (res.ok) {
+      tools = await res.json();
+    }
+  } catch (error) {
+    console.error("Error fetching tools:", error);
+  }
+
+  return (
+    <>
+      {/* KPI Metric Tiles (4-Column Layout) */}
+      <BlurFade delay={120}>
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-xl">
           {/* Tile 1 */}
           <div className="relative group p-space-lg rounded-2xl bg-surface-container-low/60 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
@@ -129,22 +141,21 @@ export default async function Dashboard() {
             </div>
           </div>
         </section>
-        </BlurFade>
+      </BlurFade>
 
-        {/* Instrument ticker */}
-        <BlurFade delay={180}>
-          <Marquee
-            items={tools.map((t: any) => t.name).filter(Boolean)}
-            className="mb-space-xl py-space-sm rounded-xl bg-surface-container-low/40 font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase"
-          />
-        </BlurFade>
+      {/* Instrument ticker */}
+      <BlurFade delay={180}>
+        <Marquee
+          items={tools.map((t: any) => t.name).filter(Boolean)}
+          className="mb-space-xl py-space-sm rounded-xl bg-surface-container-low/40 font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase"
+        />
+      </BlurFade>
 
-        {/* Working directory controls: view toggle + audit log + filters (client) */}
-        <BlurFade delay={240}>
+      {/* Working directory controls: view toggle + audit log + filters (client) */}
+      <BlurFade delay={240}>
         <DashboardDirectory tools={tools} />
-        </BlurFade>
-      </div>
-    </main>
+      </BlurFade>
+    </>
   );
 }
 

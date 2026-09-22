@@ -26,3 +26,29 @@ def test_tool_crud(client):
 
     r = client.get("/api/tools/999999")
     assert r.status_code == 404
+
+
+def test_create_sanitizes_junk_tags(client):
+    r = client.post(
+        "/api/tools/",
+        json={
+            "name": "Tag Hygiene",
+            "url": "https://tag-hygiene.example.com",
+            "tags": [
+                "backend",
+                "  auth  ",
+                "6ab22396000c92c63a2c",  # ObjectId hallucination (Appwrite bug)
+                "d41d8cd98f00b204e9800998ecf8427e",  # md5-shaped
+                "",
+                "   ",
+                "#database",
+                "BACKEND",  # dup, different case
+                "x" * 50,  # too long
+                "---",  # no alphanumerics
+                "C#",  # legit hash-containing name survives
+            ],
+        },
+    )
+    assert r.status_code == 200, r.text
+    names = [t["name"] for t in r.json()["tags"]]
+    assert names == ["backend", "auth", "database", "C#"], names
