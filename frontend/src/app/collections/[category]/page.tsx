@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { ShaderBackground } from "@/components/ShaderBackground";
 import { ToolCard } from "@/components/ToolCard";
 import { CollectionStarToggle } from "@/components/CollectionStarToggle";
